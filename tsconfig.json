@@ -5,7 +5,9 @@
       "@/ui": ["ui/src"],
       "@/ui/*": ["ui/src/*"],
       "@/web": ["web/src"],
-      "@/web/*": ["web/src/*"]
+      "@/web/*": ["web/src/*"],
+      "@/api": ["api/src"],
+      "@/api/*": ["api/src/*"]
     }
   }
 }

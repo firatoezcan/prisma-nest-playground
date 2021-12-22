@@ -6,7 +6,6 @@
     "kumar-harsh.graphql-for-vscode",
     "ms-vsliveshare.vsliveshare",
     "christian-kohler.path-intellisense",
-    "steoates.autoimport",
-    "jpoissonnier.vscode-styled-components"
+    "steoates.autoimport"
   ]
 }

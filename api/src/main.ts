@@ -1,8 +1,24 @@
 import { NestFactory } from "@nestjs/core";
+import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify";
 import { AppModule } from "./app.module";
+import { PrismaService } from "@/api/services/Prisma.service";
+import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
+import { UsersModule } from "./users/users.module";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const fastify = new FastifyAdapter();
+
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, fastify);
+  const prismaService: PrismaService = app.get(PrismaService);
+  prismaService.enableShutdownHooks(app);
+
+  const config = new DocumentBuilder().setTitle("JSON Resume").setDescription("Standarized resumes").setVersion("1.0").addTag("users").build();
+  const document = SwaggerModule.createDocument(app, config, { include: [UsersModule] });
+  SwaggerModule.setup("swagger", app, document);
+
+  app.enableCors({
+    origin: ["http://localhost:3000", "http://localhost:3002"],
+  });
   await app.listen(3001);
 }
 bootstrap();

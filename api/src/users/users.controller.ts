@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from "@nestjs/common";
-import { UsersService } from "./users.service";
-import { CreateUserDto } from "./dto/create-user.dto";
-import { UpdateUserDto } from "./dto/update-user.dto";
+import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { CreateUserDto, UpdateUserDto } from "../generated/nestjs-dto/user/dto";
+import { FindManyType, UsersService } from "./users.service";
 
 @Controller("users")
 export class UsersController {
@@ -13,22 +12,34 @@ export class UsersController {
   }
 
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  findMany(@Query() params?: FindManyType) {
+    return this.usersService.findMany(params);
   }
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.usersService.findOne(+id);
+    const idNum = Number.parseInt(id);
+    if (isNaN(idNum)) {
+      return new BadRequestException("Id needs to be an integer");
+    }
+    return this.usersService.findOne({ id: idNum });
   }
 
   @Patch(":id")
-  update(@Param("id") id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  update(@Param("id") id: string, @Body() data: UpdateUserDto) {
+    const idNum = Number.parseInt(id);
+    if (isNaN(idNum)) {
+      return new BadRequestException("Id needs to be an integer");
+    }
+    return this.usersService.update({ where: { id: idNum }, data });
   }
 
   @Delete(":id")
-  remove(@Param("id") id: string) {
-    return this.usersService.remove(+id);
+  delete(@Param("id") id: string) {
+    const idNum = Number.parseInt(id);
+    if (isNaN(idNum)) {
+      return new BadRequestException("Id needs to be an integer");
+    }
+    return this.usersService.delete({ id: idNum });
   }
 }
