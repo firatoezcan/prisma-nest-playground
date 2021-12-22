@@ -1,0 +1,41 @@
+{
+  "name": "@stack/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "next-dev": "NODE_OPTIONS='--inspect' DOTENV_CONFIG_PATH=../.env node -r dotenv/config $(yarn bin next) dev",
+    "next": "DOTENV_CONFIG_PATH=../.env node -r dotenv/config $(yarn bin next)",
+    "dev": "yarn next-dev",
+    "build": "yarn next build",
+    "start": "yarn next start",
+    "test": "jest --watch ",
+    "test:ci": "jest --ci --reporters=default --reporters=jest-junit --collectCoverage --passWithNoTests",
+    "lint": "next lint && eslint --ext .ts,.tsx --cache --fix .",
+    "tslint": "tsc --noEmit --incremental"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.4",
+    "@stack/ui": "0.0.1",
+    "eslint-config-next": "^12.0.2",
+    "next": "^12.0.7",
+    "next-i18next": "^9.2.0",
+    "next-transpile-modules": "^9.0.0"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^12.0.4",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/cookies": "^0.7.7",
+    "@types/jest": "^27.0.2",
+    "@types/node": "16.11.6",
+    "@types/react": "17.0.33",
+    "@zeit/next-source-maps": "^0.0.3",
+    "babel-jest": "27.0.6",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "jest": "27.0.6",
+    "jest-junit": "^13.0.0",
+    "next-compose-plugins": "^2.2.1",
+    "ts-jest": "^27.0.7"
+  }
+}

@@ -1,0 +1,262 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nestjsDto {
+  provider                        = "prisma-generator-nestjs-dto"
+  output                          = "../src/generated/nestjs-dto"
+  outputToNestJsResourceStructure = "true"
+  exportRelationModifierClasses   = "true"
+  reExport                        = "true"
+  createDtoPrefix                 = "Create"
+  updateDtoPrefix                 = "Update"
+  dtoSuffix                       = "Dto"
+  entityPrefix                    = ""
+  entitySuffix                    = ""
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  basics       Basic?
+  location     Location?
+  /// @DtoRelationCanCreateOnCreate
+  profiles     Profile[]
+  /// @DtoRelationCanCreateOnCreate
+  work         Work[]
+  /// @DtoRelationCanCreateOnCreate
+  volunteer    Volunteer[]
+  /// @DtoRelationCanCreateOnCreate
+  education    Education[]
+  /// @DtoRelationCanCreateOnCreate
+  awards       Award[]
+  /// @DtoRelationCanCreateOnCreate
+  publications Publication[]
+  /// @DtoRelationCanCreateOnCreate
+  skills       Skill[]
+  /// @DtoRelationCanCreateOnCreate
+  languages    Language[]
+  /// @DtoRelationCanCreateOnCreate
+  interests    Interest[]
+  /// @DtoRelationCanCreateOnCreate
+  references   Reference[]
+  /// @DtoRelationCanCreateOnCreate
+  projects     Project[]
+
+  @@map("user")
+}
+
+model Basic {
+  id        Int    @id @default(autoincrement())
+  firstName String @map("first_name")
+  lastName  String @map("last_name")
+  email     String @unique
+  label     String
+  image     String
+  phone     String
+  summary   String
+
+  userId Int   @unique @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("basic")
+}
+
+model Location {
+  id Int @id @default(autoincrement())
+
+  address     String
+  postalCode  String @map("postal_code")
+  city        String
+  countryCode String @map("country_code")
+  region      String
+
+  userId Int   @unique @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+
+  @@map("location")
+}
+
+model Profile {
+  id Int @id @default(autoincrement())
+
+  network  String
+  username String
+  url      String
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+
+  @@map("profile")
+}
+
+model Work {
+  id         Int      @id @default(autoincrement())
+  name       String
+  position   String
+  summary    String
+  url        String
+  startDate  DateTime @map("start_date") @db.Timestamptz
+  endDate    DateTime @map("end_date") @db.Timestamptz
+  highlights String[]
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("work")
+}
+
+model Volunteer {
+  id           Int      @id @default(autoincrement())
+  organization String
+  position     String
+  summary      String
+  url          String
+  startDate    DateTime @map("start_date") @db.Timestamptz
+  endDate      DateTime @map("end_date") @db.Timestamptz
+  highlights   String[]
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("volunteer")
+}
+
+model Education {
+  id          Int      @id @default(autoincrement())
+  institution String
+  area        String
+  studyType   String   @map("study_type")
+  url         String
+  startDate   DateTime @map("start_date") @db.Timestamptz
+  endDate     DateTime @map("end_date") @db.Timestamptz
+  score       String
+  courses     String[]
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("education")
+}
+
+model Award {
+  id      Int      @id @default(autoincrement())
+  title   String
+  date    DateTime @db.Timestamptz
+  awarder String
+  summary String
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("awards")
+}
+
+model Publication {
+  id          Int      @id @default(autoincrement())
+  name        String
+  publisher   String
+  url         String
+  releaseDate DateTime @map("release_date") @db.Timestamptz
+  summary     String
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("publication")
+}
+
+model Skill {
+  id    Int    @id @default(autoincrement())
+  name  String
+  level String
+
+  /// @DtoRelationCanCreateOnCreate
+  keywords SkillKeyword[]
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("skill")
+}
+
+model SkillKeyword {
+  id Int @id @default(autoincrement())
+
+  skillId Int    @map("skill_id")
+  /// @DtoRelationCanCreateOnCreate
+  skill   Skill? @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  @@map("skill_keyword")
+}
+
+model Language {
+  id      Int    @id @default(autoincrement())
+  name    String
+  fluency String
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("language")
+}
+
+model Interest {
+  id       Int      @id @default(autoincrement())
+  name     String
+  keywords String[]
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("interest")
+}
+
+model Reference {
+  id        Int    @id @default(autoincrement())
+  name      String
+  reference String
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("reference")
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  highlights  String[]
+  keywords    String[]
+  startDate   DateTime @map("start_date") @db.Timestamptz
+  endDate     DateTime @map("end_date") @db.Timestamptz
+  url         String
+  roles       String[]
+  entity      String
+  type        String
+
+  userId Int   @map("user_id")
+  /// @DtoRelationCanCreateOnCreate
+  user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("project")
+}
