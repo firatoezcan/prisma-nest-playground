@@ -1,4 +1,5 @@
 import { PrismaClientOptions } from "@prisma/client/runtime";
+import { PrismaService } from "@/api/services/Prisma.service";
 import {
   Prisma,
   User,
@@ -32,7 +33,6 @@ import { ConnectLanguageDto, CreateLanguageDto, UpdateLanguageDto } from "@/api/
 import { ConnectInterestDto, CreateInterestDto, UpdateInterestDto } from "@/api/generated/nestjs-dto/interest/dto";
 import { ConnectReferenceDto, CreateReferenceDto, UpdateReferenceDto } from "@/api/generated/nestjs-dto/reference/dto";
 import { ConnectProjectDto, CreateProjectDto, UpdateProjectDto } from "@/api/generated/nestjs-dto/project/dto";
-import { PrismaService } from "@/api/services/Prisma.service";
 
 export type UserModule = {
   name: "users";
