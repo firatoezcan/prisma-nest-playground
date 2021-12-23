@@ -1,3 +1,11 @@
+import { ApiExtraModels } from "@nestjs/swagger";
+import { ConnectUserDto } from "../../user/dto/connect-user.dto";
+
+export class CreateWorkUserRelationInputDto {
+  connect: ConnectUserDto;
+}
+
+@ApiExtraModels(ConnectUserDto, CreateWorkUserRelationInputDto)
 export class CreateWorkDto {
   name: string;
   position: string;
@@ -6,4 +14,5 @@ export class CreateWorkDto {
   startDate: Date;
   endDate: Date;
   highlights: string[];
+  user?: CreateWorkUserRelationInputDto;
 }
