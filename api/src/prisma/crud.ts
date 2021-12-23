@@ -7,12 +7,15 @@ import { CommonDelegateType, PrismaCrudClasses, PrismaModulesType } from "../gen
 const createModule = <ModuleName extends keyof PrismaModulesType>(module: PrismaModulesType[ModuleName]) => {
   type Module = PrismaModulesType[ModuleName];
   type Entity = Module["entity"];
-  class ConnectDto extends module.connectDto {}
-  class CreateDto extends module.createDto {}
-  class UpdateDto extends module.updateDto {}
   type FindManyType = Module["findManyType"];
 
-  @Injectable()
+  class ConnectDto extends module.connectDto {}
+  Object.defineProperty(ConnectDto, "name", { value: `${module.name}ConnectDto` });
+  class CreateDto extends module.createDto {}
+  Object.defineProperty(CreateDto, "name", { value: `${module.name}CreateDto` });
+  class UpdateDto extends module.updateDto {}
+  Object.defineProperty(UpdateDto, "name", { value: `${module.name}UpdateDto` });
+
   class EntityService {
     private delegate: CommonDelegateType;
 
@@ -53,6 +56,7 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
       });
     }
   }
+  Object.defineProperty(EntityService, "name", { value: `${module.name}EntityService` });
 
   @ApiTags(module.name)
   @Controller(module.name)
@@ -98,11 +102,15 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
       return this.service.delete({ id: idNum });
     }
   }
+
+  Object.defineProperty(EntityController, "name", { value: `${module.name}EntityController` });
   @Module({
     controllers: [EntityController],
     providers: [EntityService],
   })
   class EntityModule {}
+  Object.defineProperty(EntityModule, "name", { value: `${module.name}EntityModule` });
+
   return EntityModule;
 };
 
