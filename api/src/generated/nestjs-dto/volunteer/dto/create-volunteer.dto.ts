@@ -1,11 +1,3 @@
-import { ApiExtraModels } from "@nestjs/swagger";
-import { CreateUserDto } from "../../user/dto/create-user.dto";
-
-export class CreateVolunteerUserRelationInputDto {
-  create: CreateUserDto;
-}
-
-@ApiExtraModels(CreateUserDto, CreateVolunteerUserRelationInputDto)
 export class CreateVolunteerDto {
   organization: string;
   position: string;
@@ -14,5 +6,4 @@ export class CreateVolunteerDto {
   startDate: Date;
   endDate: Date;
   highlights: string[];
-  user?: CreateVolunteerUserRelationInputDto;
 }

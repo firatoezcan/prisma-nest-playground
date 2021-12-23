@@ -62,7 +62,6 @@ model Basic {
   summary   String
 
   userId Int   @unique @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("basic")
@@ -78,7 +77,6 @@ model Location {
   region      String
 
   userId Int   @unique @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
 
@@ -93,7 +91,6 @@ model Profile {
   url      String
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
 
@@ -111,7 +108,6 @@ model Work {
   highlights String[]
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("work")
@@ -128,7 +124,6 @@ model Volunteer {
   highlights   String[]
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("volunteer")
@@ -146,7 +141,6 @@ model Education {
   courses     String[]
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("education")
@@ -160,7 +154,6 @@ model Award {
   summary String
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("awards")
@@ -175,7 +168,6 @@ model Publication {
   summary     String
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("publication")
@@ -190,7 +182,6 @@ model Skill {
   keywords SkillKeyword[]
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("skill")
@@ -211,7 +202,6 @@ model Language {
   fluency String
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("language")
@@ -223,7 +213,6 @@ model Interest {
   keywords String[]
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("interest")
@@ -235,7 +224,6 @@ model Reference {
   reference String
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("reference")
@@ -255,7 +243,6 @@ model Project {
   type        String
 
   userId Int   @map("user_id")
-  /// @DtoRelationCanCreateOnCreate
   user   User? @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("project")
