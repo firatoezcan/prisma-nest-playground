@@ -30,7 +30,8 @@
     "insert": "DOTENV_CONFIG_PATH=../.env ts-node -r dotenv/config ./script.ts",
     "codegen": "yarn prisma generate && yarn codegen:format",
     "codegen:format": "prettier --write \"./src/generated/**/*.ts\"",
-    "codegen:prisma-nestjs": "DOTENV_CONFIG_PATH=../.env ts-node -r dotenv/config ./generator/prisma-nestjs-resource/index.ts && yarn codegen:format"
+    "codegen:prisma-nestjs": "DOTENV_CONFIG_PATH=../.env ts-node -r dotenv/config ./generator/prisma-nestjs-resource/index.ts && yarn codegen:format",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@casl/ability": "^5.4.3",
@@ -44,6 +45,8 @@
     "@prisma/client": "3.6.0",
     "fastify-cors": "^6.0.2",
     "fastify-swagger": "^4.13.0",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"

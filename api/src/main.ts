@@ -19,5 +19,6 @@ async function bootstrap() {
     origin: ["http://localhost:3000", "http://localhost:3002"],
   });
   await app.listen(3001);
+  console.log("Swagger Docs: http://localhost:3001/swagger");
 }
 bootstrap();

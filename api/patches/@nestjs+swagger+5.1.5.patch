@@ -1,0 +1,13 @@
+diff --git a/node_modules/@nestjs/swagger/dist/services/schema-object-factory.js b/node_modules/@nestjs/swagger/dist/services/schema-object-factory.js
+index a7a4391..68a0544 100644
+--- a/node_modules/@nestjs/swagger/dist/services/schema-object-factory.js
++++ b/node_modules/@nestjs/swagger/dist/services/schema-object-factory.js
+@@ -72,7 +72,7 @@ class SchemaObjectFactory {
+             return;
+         }
+         const extraModels = api_extra_models_explorer_1.exploreGlobalApiExtraModelsMetadata(type);
+-        extraModels.forEach((item) => this.exploreModelSchema(item, schemas, pendingSchemasRefs));
++        extraModels.filter(Boolean).forEach((item) => this.exploreModelSchema(item, schemas, pendingSchemasRefs));
+         this.modelPropertiesAccessor.applyMetadataFactory(prototype);
+         const modelProperties = this.modelPropertiesAccessor.getModelProperties(prototype);
+         const propertiesWithType = modelProperties.map((key) => {
