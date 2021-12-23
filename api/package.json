@@ -9,7 +9,6 @@
     "nest": "DOTENV_CONFIG_PATH=../.env node -r dotenv/config $(yarn bin nest)",
     "prisma": "DOTENV_CONFIG_PATH=../.env node -r dotenv/config $(yarn bin prisma)",
     "jest": "DOTENV_CONFIG_PATH=../.env node -r dotenv/config $(yarn bin jest)",
-    "codegen": "yarn prisma generate && yarn prettier --write \"./src/generated/**/*.ts\"",
     "prebuild": "rimraf dist",
     "build": "yarn nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -28,7 +27,10 @@
     "down": "docker-compose --env-file ../.env down",
     "wipe": "yarn down && yarn delete-volume",
     "delete-volume": "docker volume rm backend_db_data || true",
-    "insert": "DOTENV_CONFIG_PATH=../.env ts-node -r dotenv/config ./script.ts"
+    "insert": "DOTENV_CONFIG_PATH=../.env ts-node -r dotenv/config ./script.ts",
+    "codegen": "yarn prisma generate && yarn codegen:format",
+    "codegen:format": "prettier --write \"./src/generated/**/*.ts\"",
+    "codegen:prisma-nestjs": "DOTENV_CONFIG_PATH=../.env ts-node -r dotenv/config ./generator/prisma-nestjs-resource/index.ts && yarn codegen:format"
   },
   "dependencies": {
     "@casl/ability": "^5.4.3",
