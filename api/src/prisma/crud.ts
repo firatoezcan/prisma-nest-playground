@@ -114,11 +114,9 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
   return EntityModule;
 };
 
-const allModules = Object.values(Prisma.ModelName)
-  .filter(() => Math.random() > 0.5)
-  .map((name) => {
-    return createModule(PrismaCrudClasses[name]);
-  });
+const allModules = Object.values(Prisma.ModelName).map((name) => {
+  return createModule(PrismaCrudClasses[name]);
+});
 
 @Module({
   imports: allModules,
