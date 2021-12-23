@@ -2,10 +2,10 @@ import { Prisma } from ".prisma/client";
 import { mkdirSync, writeFileSync } from "fs";
 import { containerModuleTemplate } from "./container.module";
 import { controllerTemplate } from "./resource.controller";
-import { controllerSpecTemplate } from "./resource.controller.spec";
+import { controllerSpecTemplate } from "./resource.controller-spec";
 import { moduleTemplate } from "./resource.module";
 import { serviceTemplate } from "./resource.service";
-import { serviceSpecTemplate } from "./resource.service.spec";
+import { serviceSpecTemplate } from "./resource.service-spec";
 
 // Path is undefined when running with ts-node
 // eslint-disable-next-line @typescript-eslint/no-var-requires
