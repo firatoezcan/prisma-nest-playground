@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { CreateLocationDto, UpdateLocationDto } from "@/api/generated/nestjs-dto/location/dto";
 import { FindManyType, LocationsService } from "./locations.service";
 
+@ApiTags("locations")
 @Controller("locations")
 export class LocationsController {
   constructor(private readonly service: LocationsService) {}

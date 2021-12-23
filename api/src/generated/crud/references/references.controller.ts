@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { CreateReferenceDto, UpdateReferenceDto } from "@/api/generated/nestjs-dto/reference/dto";
 import { FindManyType, ReferencesService } from "./references.service";
 
+@ApiTags("references")
 @Controller("references")
 export class ReferencesController {
   constructor(private readonly service: ReferencesService) {}

@@ -2,9 +2,11 @@ import { TemplateInput } from ".";
 
 export const controllerTemplate = ({ model, plural, pluralLower, pascalCased }: TemplateInput) => /*Typescript */ `
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from '@nestjs/swagger';
 import { Create${model}Dto, Update${model}Dto } from "@/api/generated/nestjs-dto/${pascalCased}/dto";
 import { FindManyType, ${plural}Service } from "./${pascalCased}s.service";
 
+@ApiTags("${pluralLower}")
 @Controller("${pluralLower}")
 export class ${plural}Controller {
   constructor(private readonly service: ${plural}Service) {}

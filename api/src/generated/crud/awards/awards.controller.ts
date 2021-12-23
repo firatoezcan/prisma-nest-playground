@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { CreateAwardDto, UpdateAwardDto } from "@/api/generated/nestjs-dto/award/dto";
 import { FindManyType, AwardsService } from "./awards.service";
 
+@ApiTags("awards")
 @Controller("awards")
 export class AwardsController {
   constructor(private readonly service: AwardsService) {}

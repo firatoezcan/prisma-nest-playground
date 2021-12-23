@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { CreateProfileDto, UpdateProfileDto } from "@/api/generated/nestjs-dto/profile/dto";
 import { FindManyType, ProfilesService } from "./profiles.service";
 
+@ApiTags("profiles")
 @Controller("profiles")
 export class ProfilesController {
   constructor(private readonly service: ProfilesService) {}

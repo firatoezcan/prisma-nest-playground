@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { CreateWorkDto, UpdateWorkDto } from "@/api/generated/nestjs-dto/work/dto";
 import { FindManyType, WorksService } from "./works.service";
 
+@ApiTags("works")
 @Controller("works")
 export class WorksController {
   constructor(private readonly service: WorksService) {}

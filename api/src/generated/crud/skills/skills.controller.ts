@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { CreateSkillDto, UpdateSkillDto } from "@/api/generated/nestjs-dto/skill/dto";
 import { FindManyType, SkillsService } from "./skills.service";
 
+@ApiTags("skills")
 @Controller("skills")
 export class SkillsController {
   constructor(private readonly service: SkillsService) {}

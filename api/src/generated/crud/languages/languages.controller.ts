@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { CreateLanguageDto, UpdateLanguageDto } from "@/api/generated/nestjs-dto/language/dto";
 import { FindManyType, LanguagesService } from "./languages.service";
 
+@ApiTags("languages")
 @Controller("languages")
 export class LanguagesController {
   constructor(private readonly service: LanguagesService) {}

@@ -1,7 +1,9 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { ApiTags } from "@nestjs/swagger";
 import { CreatePublicationDto, UpdatePublicationDto } from "@/api/generated/nestjs-dto/publication/dto";
 import { FindManyType, PublicationsService } from "./publications.service";
 
+@ApiTags("publications")
 @Controller("publications")
 export class PublicationsController {
   constructor(private readonly service: PublicationsService) {}
