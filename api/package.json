@@ -26,11 +26,11 @@
     "restart": "docker-compose --env-file ../.env restart",
     "down": "docker-compose --env-file ../.env down",
     "wipe": "yarn down && yarn delete-volume",
-    "delete-volume": "docker volume rm backend_db_data || true",
+    "delete-volume": "docker volume rm api_db_data || true",
     "insert": "DOTENV_CONFIG_PATH=../.env ts-node -r dotenv/config ./script.ts",
     "codegen": "yarn prisma generate && DOTENV_CONFIG_PATH=../.env ts-node -r dotenv/config ./generator/prisma-nestjs-crud/index.ts && yarn codegen:format",
     "codegen:format": "prettier --write \"./src/generated/**/*.ts\"",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package && yarn codegen:format"
   },
   "dependencies": {
     "@casl/ability": "^5.4.3",
