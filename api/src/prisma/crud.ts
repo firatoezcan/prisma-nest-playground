@@ -2,14 +2,14 @@ import { Prisma } from ".prisma/client";
 import { PrismaService } from "@/api/services/Prisma.service";
 import { BadRequestException, Body, Controller, Delete, Get, Injectable, Module, Param, Patch, Post, Query } from "@nestjs/common";
 import { ApiTags } from "@nestjs/swagger";
-import { CommonDelegateType, PrismaModulesType } from "../generated/crud/prismaModuleTypes";
+import { CommonDelegateType, PrismaCrudClasses, PrismaModulesType } from "../generated/crud/prismaModuleTypes";
 
-const createModule = <ModuleName extends keyof PrismaModulesType>(name: ModuleName, delegate: PrismaModulesType[ModuleName]["delegate"]) => {
+const createModule = <ModuleName extends keyof PrismaModulesType>(module: PrismaModulesType[ModuleName]) => {
   type Module = PrismaModulesType[ModuleName];
   type Entity = Module["entity"];
-  type ConnectDto = Module["connectDto"];
-  type CreateDto = Module["createDto"];
-  type UpdateDto = Module["updateDto"];
+  class ConnectDto extends module.connectDto {}
+  class CreateDto extends module.createDto {}
+  class UpdateDto extends module.updateDto {}
   type FindManyType = Module["findManyType"];
 
   @Injectable()
@@ -17,7 +17,7 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(name: ModuleNa
     private delegate: CommonDelegateType;
 
     constructor() {
-      this.delegate = delegate as CommonDelegateType;
+      this.delegate = module.delegate as CommonDelegateType;
     }
 
     async findOne(where: ConnectDto): Promise<Entity | null> {
@@ -54,10 +54,12 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(name: ModuleNa
     }
   }
 
-  @ApiTags(name.toLowerCase() + "s")
-  @Controller(name.toLowerCase() + "s")
+  @ApiTags(module.name)
+  @Controller(module.name)
   class EntityController {
-    constructor(private readonly service: EntityService) {}
+    constructor(private readonly service: EntityService) {
+      this.service = new EntityService();
+    }
 
     @Post()
     create(@Body() createEntityDto: CreateDto) {
@@ -104,13 +106,14 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(name: ModuleNa
   return EntityModule;
 };
 
-const prismaService = new PrismaService();
+const allModules = Object.values(Prisma.ModelName)
+  .filter(() => Math.random() > 0.5)
+  .map((name) => {
+    return createModule(PrismaCrudClasses[name]);
+  });
 
 @Module({
-  imports: Object.values(Prisma.ModelName).map((name) => {
-    const pascalCased = name.charAt(0).toLowerCase() + name.slice(1);
-    return createModule(name, prismaService[pascalCased]);
-  }),
+  imports: allModules,
   providers: [PrismaService],
 })
 export class PrismaCrudModule {}
