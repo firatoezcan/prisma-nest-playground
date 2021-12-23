@@ -18,7 +18,7 @@
     "tslint": "concurrently 'yarn:*:tslint'",
     "prettier": "prettier --write .",
     "pubcp": "rm -rf web/public ui/public && cp -r static web/public && cp -r static ui/public",
-    "postinstall": "yarn pubcp"
+    "postinstall": "yarn pubcp && yarn api postinstall"
   },
   "keywords": [],
   "author": "Firat",
