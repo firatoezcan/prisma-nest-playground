@@ -3,7 +3,6 @@ import { FastifyAdapter, NestFastifyApplication } from "@nestjs/platform-fastify
 import { AppModule } from "./app.module";
 import { PrismaService } from "@/api/services/Prisma.service";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
-import { UsersModule } from "./users/users.module";
 
 async function bootstrap() {
   const fastify = new FastifyAdapter();
@@ -12,8 +11,8 @@ async function bootstrap() {
   const prismaService: PrismaService = app.get(PrismaService);
   prismaService.enableShutdownHooks(app);
 
-  const config = new DocumentBuilder().setTitle("JSON Resume").setDescription("Standarized resumes").setVersion("1.0").addTag("users").build();
-  const document = SwaggerModule.createDocument(app, config, { include: [UsersModule] });
+  const config = new DocumentBuilder().setTitle("JSON Resume").setDescription("Standarized resumes").setVersion("1.0").build();
+  const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("swagger", app, document);
 
   app.enableCors({
