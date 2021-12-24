@@ -58,7 +58,7 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
   }
   Object.defineProperty(EntityService, "name", { value: `${module.name}EntityService` });
 
-  @ApiTags(module.name)
+  @ApiTags(module.name, "prisma")
   @Controller(module.name)
   class EntityController {
     constructor(private readonly service: EntityService) {
