@@ -35,7 +35,7 @@ import { ConnectReferenceDto, CreateReferenceDto, UpdateReferenceDto } from "@/a
 import { ConnectProjectDto, CreateProjectDto, UpdateProjectDto } from "@/api/generated/nestjs-dto/project/dto";
 
 export type UserModule = {
-  name: "users";
+  name: "User";
   entity: User;
   delegate: Prisma.UserDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectUserDto;
@@ -45,7 +45,7 @@ export type UserModule = {
 };
 
 export type BasicModule = {
-  name: "basics";
+  name: "Basic";
   entity: Basic;
   delegate: Prisma.BasicDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectBasicDto;
@@ -55,7 +55,7 @@ export type BasicModule = {
 };
 
 export type LocationModule = {
-  name: "locations";
+  name: "Location";
   entity: Location;
   delegate: Prisma.LocationDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectLocationDto;
@@ -65,7 +65,7 @@ export type LocationModule = {
 };
 
 export type ProfileModule = {
-  name: "profiles";
+  name: "Profile";
   entity: Profile;
   delegate: Prisma.ProfileDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectProfileDto;
@@ -75,7 +75,7 @@ export type ProfileModule = {
 };
 
 export type WorkModule = {
-  name: "works";
+  name: "Work";
   entity: Work;
   delegate: Prisma.WorkDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectWorkDto;
@@ -85,7 +85,7 @@ export type WorkModule = {
 };
 
 export type VolunteerModule = {
-  name: "volunteers";
+  name: "Volunteer";
   entity: Volunteer;
   delegate: Prisma.VolunteerDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectVolunteerDto;
@@ -95,7 +95,7 @@ export type VolunteerModule = {
 };
 
 export type EducationModule = {
-  name: "educations";
+  name: "Education";
   entity: Education;
   delegate: Prisma.EducationDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectEducationDto;
@@ -105,7 +105,7 @@ export type EducationModule = {
 };
 
 export type AwardModule = {
-  name: "awards";
+  name: "Award";
   entity: Award;
   delegate: Prisma.AwardDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectAwardDto;
@@ -115,7 +115,7 @@ export type AwardModule = {
 };
 
 export type PublicationModule = {
-  name: "publications";
+  name: "Publication";
   entity: Publication;
   delegate: Prisma.PublicationDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectPublicationDto;
@@ -131,7 +131,7 @@ export type PublicationModule = {
 };
 
 export type SkillModule = {
-  name: "skills";
+  name: "Skill";
   entity: Skill;
   delegate: Prisma.SkillDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectSkillDto;
@@ -141,7 +141,7 @@ export type SkillModule = {
 };
 
 export type SkillKeywordModule = {
-  name: "skillkeywords";
+  name: "SkillKeyword";
   entity: SkillKeyword;
   delegate: Prisma.SkillKeywordDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectSkillKeywordDto;
@@ -157,7 +157,7 @@ export type SkillKeywordModule = {
 };
 
 export type LanguageModule = {
-  name: "languages";
+  name: "Language";
   entity: Language;
   delegate: Prisma.LanguageDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectLanguageDto;
@@ -167,7 +167,7 @@ export type LanguageModule = {
 };
 
 export type InterestModule = {
-  name: "interests";
+  name: "Interest";
   entity: Interest;
   delegate: Prisma.InterestDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectInterestDto;
@@ -177,7 +177,7 @@ export type InterestModule = {
 };
 
 export type ReferenceModule = {
-  name: "references";
+  name: "Reference";
   entity: Reference;
   delegate: Prisma.ReferenceDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectReferenceDto;
@@ -187,7 +187,7 @@ export type ReferenceModule = {
 };
 
 export type ProjectModule = {
-  name: "projects";
+  name: "Project";
   entity: Project;
   delegate: Prisma.ProjectDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectProjectDto;
@@ -238,104 +238,104 @@ export const PrismaCrudClasses: PrismaModulesType = {
     connectDto: ConnectUserDto,
     createDto: CreateUserDto,
     updateDto: UpdateUserDto,
-    name: "users",
+    name: "User",
   } as UserModule,
   Basic: {
     delegate: prismaService.basic,
     connectDto: ConnectBasicDto,
     createDto: CreateBasicDto,
     updateDto: UpdateBasicDto,
-    name: "basics",
+    name: "Basic",
   } as BasicModule,
   Location: {
     delegate: prismaService.location,
     connectDto: ConnectLocationDto,
     createDto: CreateLocationDto,
     updateDto: UpdateLocationDto,
-    name: "locations",
+    name: "Location",
   } as LocationModule,
   Profile: {
     delegate: prismaService.profile,
     connectDto: ConnectProfileDto,
     createDto: CreateProfileDto,
     updateDto: UpdateProfileDto,
-    name: "profiles",
+    name: "Profile",
   } as ProfileModule,
   Work: {
     delegate: prismaService.work,
     connectDto: ConnectWorkDto,
     createDto: CreateWorkDto,
     updateDto: UpdateWorkDto,
-    name: "works",
+    name: "Work",
   } as WorkModule,
   Volunteer: {
     delegate: prismaService.volunteer,
     connectDto: ConnectVolunteerDto,
     createDto: CreateVolunteerDto,
     updateDto: UpdateVolunteerDto,
-    name: "volunteers",
+    name: "Volunteer",
   } as VolunteerModule,
   Education: {
     delegate: prismaService.education,
     connectDto: ConnectEducationDto,
     createDto: CreateEducationDto,
     updateDto: UpdateEducationDto,
-    name: "educations",
+    name: "Education",
   } as EducationModule,
   Award: {
     delegate: prismaService.award,
     connectDto: ConnectAwardDto,
     createDto: CreateAwardDto,
     updateDto: UpdateAwardDto,
-    name: "awards",
+    name: "Award",
   } as AwardModule,
   Publication: {
     delegate: prismaService.publication,
     connectDto: ConnectPublicationDto,
     createDto: CreatePublicationDto,
     updateDto: UpdatePublicationDto,
-    name: "publications",
+    name: "Publication",
   } as PublicationModule,
   Skill: {
     delegate: prismaService.skill,
     connectDto: ConnectSkillDto,
     createDto: CreateSkillDto,
     updateDto: UpdateSkillDto,
-    name: "skills",
+    name: "Skill",
   } as SkillModule,
   SkillKeyword: {
     delegate: prismaService.skillKeyword,
     connectDto: ConnectSkillKeywordDto,
     createDto: CreateSkillKeywordDto,
     updateDto: UpdateSkillKeywordDto,
-    name: "skillkeywords",
+    name: "SkillKeyword",
   } as SkillKeywordModule,
   Language: {
     delegate: prismaService.language,
     connectDto: ConnectLanguageDto,
     createDto: CreateLanguageDto,
     updateDto: UpdateLanguageDto,
-    name: "languages",
+    name: "Language",
   } as LanguageModule,
   Interest: {
     delegate: prismaService.interest,
     connectDto: ConnectInterestDto,
     createDto: CreateInterestDto,
     updateDto: UpdateInterestDto,
-    name: "interests",
+    name: "Interest",
   } as InterestModule,
   Reference: {
     delegate: prismaService.reference,
     connectDto: ConnectReferenceDto,
     createDto: CreateReferenceDto,
     updateDto: UpdateReferenceDto,
-    name: "references",
+    name: "Reference",
   } as ReferenceModule,
   Project: {
     delegate: prismaService.project,
     connectDto: ConnectProjectDto,
     createDto: CreateProjectDto,
     updateDto: UpdateProjectDto,
-    name: "projects",
+    name: "Project",
   } as ProjectModule,
 };

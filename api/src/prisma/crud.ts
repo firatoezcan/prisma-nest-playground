@@ -5,16 +5,18 @@ import { ApiTags } from "@nestjs/swagger";
 import { CommonDelegateType, PrismaCrudClasses, PrismaModulesType } from "../generated/crud/prismaModuleTypes";
 
 const createModule = <ModuleName extends keyof PrismaModulesType>(module: PrismaModulesType[ModuleName]) => {
+  const { name } = module;
+
   type Module = PrismaModulesType[ModuleName];
   type Entity = Module["entity"];
   type FindManyType = Module["findManyType"];
 
   class ConnectDto extends module.connectDto {}
-  Object.defineProperty(ConnectDto, "name", { value: `${module.name}ConnectDto` });
+  Object.defineProperty(ConnectDto, "name", { value: `${name}ConnectDto` });
   class CreateDto extends module.createDto {}
-  Object.defineProperty(CreateDto, "name", { value: `${module.name}CreateDto` });
+  Object.defineProperty(CreateDto, "name", { value: `${name}CreateDto` });
   class UpdateDto extends module.updateDto {}
-  Object.defineProperty(UpdateDto, "name", { value: `${module.name}UpdateDto` });
+  Object.defineProperty(UpdateDto, "name", { value: `${name}UpdateDto` });
 
   class EntityService {
     private delegate: CommonDelegateType;
@@ -56,10 +58,11 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
       });
     }
   }
-  Object.defineProperty(EntityService, "name", { value: `${module.name}EntityService` });
+  Object.defineProperty(EntityService, "name", { value: `${name}EntityService` });
 
-  @ApiTags(module.name, "prisma")
-  @Controller(module.name)
+  const endpoint = name.charAt(0).toLowerCase() + name.slice(1) + "s";
+  @ApiTags(module.name, "Prisma")
+  @Controller(endpoint)
   class EntityController {
     constructor(private readonly service: EntityService) {
       this.service = new EntityService();
@@ -103,13 +106,13 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
     }
   }
 
-  Object.defineProperty(EntityController, "name", { value: `${module.name}EntityController` });
+  Object.defineProperty(EntityController, "name", { value: `${name}EntityController` });
   @Module({
     controllers: [EntityController],
     providers: [EntityService],
   })
   class EntityModule {}
-  Object.defineProperty(EntityModule, "name", { value: `${module.name}EntityModule` });
+  Object.defineProperty(EntityModule, "name", { value: `${name}EntityModule` });
 
   return EntityModule;
 };

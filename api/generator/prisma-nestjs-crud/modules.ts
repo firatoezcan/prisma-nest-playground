@@ -8,9 +8,9 @@ ${modules.map(({ model, pascalCased }) => `import { Connect${model}Dto, Create${
 
 ${modules
   .map(
-    ({ model, pluralLower }) => /* Typescript */ `
+    ({ model }) => /* Typescript */ `
   export type ${model}Module = {
-    name: "${pluralLower}";
+    name: "${model}";
     entity: ${model};
     delegate: Prisma.${model}Delegate<PrismaClientOptions["rejectOnNotFound"]>;
     connectDto: typeof Connect${model}Dto;
@@ -35,13 +35,13 @@ ${modules
   export const PrismaCrudClasses: PrismaModulesType = {
     ${modules
       .map(
-        ({ model, pluralLower, pascalCased }) => `
+        ({ model, pascalCased }) => `
       ${model}: {
         delegate: prismaService.${pascalCased},
         connectDto: Connect${model}Dto,
         createDto: Create${model}Dto,
         updateDto: Update${model}Dto,
-        name: "${pluralLower}",
+        name: "${model}",
       } as ${model}Module
     `
       )
