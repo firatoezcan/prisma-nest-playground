@@ -15,345 +15,345 @@
 
 import * as runtime from '../runtime';
 import {
-    AwardsCreateDto,
-    AwardsCreateDtoFromJSON,
-    AwardsCreateDtoToJSON,
-    AwardsUpdateDto,
-    AwardsUpdateDtoFromJSON,
-    AwardsUpdateDtoToJSON,
-    BasicsCreateDto,
-    BasicsCreateDtoFromJSON,
-    BasicsCreateDtoToJSON,
-    BasicsUpdateDto,
-    BasicsUpdateDtoFromJSON,
-    BasicsUpdateDtoToJSON,
-    EducationsCreateDto,
-    EducationsCreateDtoFromJSON,
-    EducationsCreateDtoToJSON,
-    EducationsUpdateDto,
-    EducationsUpdateDtoFromJSON,
-    EducationsUpdateDtoToJSON,
-    InterestsCreateDto,
-    InterestsCreateDtoFromJSON,
-    InterestsCreateDtoToJSON,
-    InterestsUpdateDto,
-    InterestsUpdateDtoFromJSON,
-    InterestsUpdateDtoToJSON,
-    LanguagesCreateDto,
-    LanguagesCreateDtoFromJSON,
-    LanguagesCreateDtoToJSON,
-    LanguagesUpdateDto,
-    LanguagesUpdateDtoFromJSON,
-    LanguagesUpdateDtoToJSON,
-    LocationsCreateDto,
-    LocationsCreateDtoFromJSON,
-    LocationsCreateDtoToJSON,
-    LocationsUpdateDto,
-    LocationsUpdateDtoFromJSON,
-    LocationsUpdateDtoToJSON,
-    ProfilesCreateDto,
-    ProfilesCreateDtoFromJSON,
-    ProfilesCreateDtoToJSON,
-    ProfilesUpdateDto,
-    ProfilesUpdateDtoFromJSON,
-    ProfilesUpdateDtoToJSON,
-    ProjectsCreateDto,
-    ProjectsCreateDtoFromJSON,
-    ProjectsCreateDtoToJSON,
-    ProjectsUpdateDto,
-    ProjectsUpdateDtoFromJSON,
-    ProjectsUpdateDtoToJSON,
-    PublicationsCreateDto,
-    PublicationsCreateDtoFromJSON,
-    PublicationsCreateDtoToJSON,
-    PublicationsUpdateDto,
-    PublicationsUpdateDtoFromJSON,
-    PublicationsUpdateDtoToJSON,
-    ReferencesCreateDto,
-    ReferencesCreateDtoFromJSON,
-    ReferencesCreateDtoToJSON,
-    ReferencesUpdateDto,
-    ReferencesUpdateDtoFromJSON,
-    ReferencesUpdateDtoToJSON,
-    SkillkeywordsCreateDto,
-    SkillkeywordsCreateDtoFromJSON,
-    SkillkeywordsCreateDtoToJSON,
-    SkillsCreateDto,
-    SkillsCreateDtoFromJSON,
-    SkillsCreateDtoToJSON,
-    SkillsUpdateDto,
-    SkillsUpdateDtoFromJSON,
-    SkillsUpdateDtoToJSON,
-    UsersCreateDto,
-    UsersCreateDtoFromJSON,
-    UsersCreateDtoToJSON,
-    VolunteersCreateDto,
-    VolunteersCreateDtoFromJSON,
-    VolunteersCreateDtoToJSON,
-    VolunteersUpdateDto,
-    VolunteersUpdateDtoFromJSON,
-    VolunteersUpdateDtoToJSON,
-    WorksCreateDto,
-    WorksCreateDtoFromJSON,
-    WorksCreateDtoToJSON,
-    WorksUpdateDto,
-    WorksUpdateDtoFromJSON,
-    WorksUpdateDtoToJSON,
+    AwardCreateDto,
+    AwardCreateDtoFromJSON,
+    AwardCreateDtoToJSON,
+    AwardUpdateDto,
+    AwardUpdateDtoFromJSON,
+    AwardUpdateDtoToJSON,
+    BasicCreateDto,
+    BasicCreateDtoFromJSON,
+    BasicCreateDtoToJSON,
+    BasicUpdateDto,
+    BasicUpdateDtoFromJSON,
+    BasicUpdateDtoToJSON,
+    EducationCreateDto,
+    EducationCreateDtoFromJSON,
+    EducationCreateDtoToJSON,
+    EducationUpdateDto,
+    EducationUpdateDtoFromJSON,
+    EducationUpdateDtoToJSON,
+    InterestCreateDto,
+    InterestCreateDtoFromJSON,
+    InterestCreateDtoToJSON,
+    InterestUpdateDto,
+    InterestUpdateDtoFromJSON,
+    InterestUpdateDtoToJSON,
+    LanguageCreateDto,
+    LanguageCreateDtoFromJSON,
+    LanguageCreateDtoToJSON,
+    LanguageUpdateDto,
+    LanguageUpdateDtoFromJSON,
+    LanguageUpdateDtoToJSON,
+    LocationCreateDto,
+    LocationCreateDtoFromJSON,
+    LocationCreateDtoToJSON,
+    LocationUpdateDto,
+    LocationUpdateDtoFromJSON,
+    LocationUpdateDtoToJSON,
+    ProfileCreateDto,
+    ProfileCreateDtoFromJSON,
+    ProfileCreateDtoToJSON,
+    ProfileUpdateDto,
+    ProfileUpdateDtoFromJSON,
+    ProfileUpdateDtoToJSON,
+    ProjectCreateDto,
+    ProjectCreateDtoFromJSON,
+    ProjectCreateDtoToJSON,
+    ProjectUpdateDto,
+    ProjectUpdateDtoFromJSON,
+    ProjectUpdateDtoToJSON,
+    PublicationCreateDto,
+    PublicationCreateDtoFromJSON,
+    PublicationCreateDtoToJSON,
+    PublicationUpdateDto,
+    PublicationUpdateDtoFromJSON,
+    PublicationUpdateDtoToJSON,
+    ReferenceCreateDto,
+    ReferenceCreateDtoFromJSON,
+    ReferenceCreateDtoToJSON,
+    ReferenceUpdateDto,
+    ReferenceUpdateDtoFromJSON,
+    ReferenceUpdateDtoToJSON,
+    SkillCreateDto,
+    SkillCreateDtoFromJSON,
+    SkillCreateDtoToJSON,
+    SkillKeywordCreateDto,
+    SkillKeywordCreateDtoFromJSON,
+    SkillKeywordCreateDtoToJSON,
+    SkillUpdateDto,
+    SkillUpdateDtoFromJSON,
+    SkillUpdateDtoToJSON,
+    UserCreateDto,
+    UserCreateDtoFromJSON,
+    UserCreateDtoToJSON,
+    VolunteerCreateDto,
+    VolunteerCreateDtoFromJSON,
+    VolunteerCreateDtoToJSON,
+    VolunteerUpdateDto,
+    VolunteerUpdateDtoFromJSON,
+    VolunteerUpdateDtoToJSON,
+    WorkCreateDto,
+    WorkCreateDtoFromJSON,
+    WorkCreateDtoToJSON,
+    WorkUpdateDto,
+    WorkUpdateDtoFromJSON,
+    WorkUpdateDtoToJSON,
 } from '../models';
 
-export interface AwardsEntityControllerCreateRequest {
-    awardsCreateDto: AwardsCreateDto;
+export interface CreateAwardRequest {
+    awardCreateDto: AwardCreateDto;
 }
 
-export interface AwardsEntityControllerDeleteRequest {
+export interface CreateBasicRequest {
+    basicCreateDto: BasicCreateDto;
+}
+
+export interface CreateEducationRequest {
+    educationCreateDto: EducationCreateDto;
+}
+
+export interface CreateInterestRequest {
+    interestCreateDto: InterestCreateDto;
+}
+
+export interface CreateLanguageRequest {
+    languageCreateDto: LanguageCreateDto;
+}
+
+export interface CreateLocationRequest {
+    locationCreateDto: LocationCreateDto;
+}
+
+export interface CreateProfileRequest {
+    profileCreateDto: ProfileCreateDto;
+}
+
+export interface CreateProjectRequest {
+    projectCreateDto: ProjectCreateDto;
+}
+
+export interface CreatePublicationRequest {
+    publicationCreateDto: PublicationCreateDto;
+}
+
+export interface CreateReferenceRequest {
+    referenceCreateDto: ReferenceCreateDto;
+}
+
+export interface CreateSkillRequest {
+    skillCreateDto: SkillCreateDto;
+}
+
+export interface CreateSkillKeywordRequest {
+    skillKeywordCreateDto: SkillKeywordCreateDto;
+}
+
+export interface CreateUserRequest {
+    userCreateDto: UserCreateDto;
+}
+
+export interface CreateVolunteerRequest {
+    volunteerCreateDto: VolunteerCreateDto;
+}
+
+export interface CreateWorkRequest {
+    workCreateDto: WorkCreateDto;
+}
+
+export interface DeleteAwardRequest {
     id: string;
 }
 
-export interface AwardsEntityControllerFindOneRequest {
+export interface DeleteBasicRequest {
     id: string;
 }
 
-export interface AwardsEntityControllerUpdateRequest {
-    id: string;
-    awardsUpdateDto: AwardsUpdateDto;
-}
-
-export interface BasicsEntityControllerCreateRequest {
-    basicsCreateDto: BasicsCreateDto;
-}
-
-export interface BasicsEntityControllerDeleteRequest {
+export interface DeleteEducationRequest {
     id: string;
 }
 
-export interface BasicsEntityControllerFindOneRequest {
+export interface DeleteInterestRequest {
     id: string;
 }
 
-export interface BasicsEntityControllerUpdateRequest {
-    id: string;
-    basicsUpdateDto: BasicsUpdateDto;
-}
-
-export interface EducationsEntityControllerCreateRequest {
-    educationsCreateDto: EducationsCreateDto;
-}
-
-export interface EducationsEntityControllerDeleteRequest {
+export interface DeleteLanguageRequest {
     id: string;
 }
 
-export interface EducationsEntityControllerFindOneRequest {
+export interface DeleteLocationRequest {
     id: string;
 }
 
-export interface EducationsEntityControllerUpdateRequest {
-    id: string;
-    educationsUpdateDto: EducationsUpdateDto;
-}
-
-export interface InterestsEntityControllerCreateRequest {
-    interestsCreateDto: InterestsCreateDto;
-}
-
-export interface InterestsEntityControllerDeleteRequest {
+export interface DeleteProfileRequest {
     id: string;
 }
 
-export interface InterestsEntityControllerFindOneRequest {
+export interface DeleteProjectRequest {
     id: string;
 }
 
-export interface InterestsEntityControllerUpdateRequest {
-    id: string;
-    interestsUpdateDto: InterestsUpdateDto;
-}
-
-export interface LanguagesEntityControllerCreateRequest {
-    languagesCreateDto: LanguagesCreateDto;
-}
-
-export interface LanguagesEntityControllerDeleteRequest {
+export interface DeletePublicationRequest {
     id: string;
 }
 
-export interface LanguagesEntityControllerFindOneRequest {
+export interface DeleteReferenceRequest {
     id: string;
 }
 
-export interface LanguagesEntityControllerUpdateRequest {
-    id: string;
-    languagesUpdateDto: LanguagesUpdateDto;
-}
-
-export interface LocationsEntityControllerCreateRequest {
-    locationsCreateDto: LocationsCreateDto;
-}
-
-export interface LocationsEntityControllerDeleteRequest {
+export interface DeleteSkillRequest {
     id: string;
 }
 
-export interface LocationsEntityControllerFindOneRequest {
+export interface DeleteSkillKeywordRequest {
     id: string;
 }
 
-export interface LocationsEntityControllerUpdateRequest {
-    id: string;
-    locationsUpdateDto: LocationsUpdateDto;
-}
-
-export interface ProfilesEntityControllerCreateRequest {
-    profilesCreateDto: ProfilesCreateDto;
-}
-
-export interface ProfilesEntityControllerDeleteRequest {
+export interface DeleteUserRequest {
     id: string;
 }
 
-export interface ProfilesEntityControllerFindOneRequest {
+export interface DeleteVolunteerRequest {
     id: string;
 }
 
-export interface ProfilesEntityControllerUpdateRequest {
-    id: string;
-    profilesUpdateDto: ProfilesUpdateDto;
-}
-
-export interface ProjectsEntityControllerCreateRequest {
-    projectsCreateDto: ProjectsCreateDto;
-}
-
-export interface ProjectsEntityControllerDeleteRequest {
+export interface DeleteWorkRequest {
     id: string;
 }
 
-export interface ProjectsEntityControllerFindOneRequest {
+export interface FindOneAwardRequest {
     id: string;
 }
 
-export interface ProjectsEntityControllerUpdateRequest {
-    id: string;
-    projectsUpdateDto: ProjectsUpdateDto;
-}
-
-export interface PublicationsEntityControllerCreateRequest {
-    publicationsCreateDto: PublicationsCreateDto;
-}
-
-export interface PublicationsEntityControllerDeleteRequest {
+export interface FindOneBasicRequest {
     id: string;
 }
 
-export interface PublicationsEntityControllerFindOneRequest {
+export interface FindOneEducationRequest {
     id: string;
 }
 
-export interface PublicationsEntityControllerUpdateRequest {
-    id: string;
-    publicationsUpdateDto: PublicationsUpdateDto;
-}
-
-export interface ReferencesEntityControllerCreateRequest {
-    referencesCreateDto: ReferencesCreateDto;
-}
-
-export interface ReferencesEntityControllerDeleteRequest {
+export interface FindOneInterestRequest {
     id: string;
 }
 
-export interface ReferencesEntityControllerFindOneRequest {
+export interface FindOneLanguageRequest {
     id: string;
 }
 
-export interface ReferencesEntityControllerUpdateRequest {
-    id: string;
-    referencesUpdateDto: ReferencesUpdateDto;
-}
-
-export interface SkillkeywordsEntityControllerCreateRequest {
-    skillkeywordsCreateDto: SkillkeywordsCreateDto;
-}
-
-export interface SkillkeywordsEntityControllerDeleteRequest {
+export interface FindOneLocationRequest {
     id: string;
 }
 
-export interface SkillkeywordsEntityControllerFindOneRequest {
+export interface FindOneProfileRequest {
     id: string;
 }
 
-export interface SkillkeywordsEntityControllerUpdateRequest {
+export interface FindOneProjectRequest {
+    id: string;
+}
+
+export interface FindOnePublicationRequest {
+    id: string;
+}
+
+export interface FindOneReferenceRequest {
+    id: string;
+}
+
+export interface FindOneSkillRequest {
+    id: string;
+}
+
+export interface FindOneSkillKeywordRequest {
+    id: string;
+}
+
+export interface FindOneUserRequest {
+    id: string;
+}
+
+export interface FindOneVolunteerRequest {
+    id: string;
+}
+
+export interface FindOneWorkRequest {
+    id: string;
+}
+
+export interface UpdateAwardRequest {
+    id: string;
+    awardUpdateDto: AwardUpdateDto;
+}
+
+export interface UpdateBasicRequest {
+    id: string;
+    basicUpdateDto: BasicUpdateDto;
+}
+
+export interface UpdateEducationRequest {
+    id: string;
+    educationUpdateDto: EducationUpdateDto;
+}
+
+export interface UpdateInterestRequest {
+    id: string;
+    interestUpdateDto: InterestUpdateDto;
+}
+
+export interface UpdateLanguageRequest {
+    id: string;
+    languageUpdateDto: LanguageUpdateDto;
+}
+
+export interface UpdateLocationRequest {
+    id: string;
+    locationUpdateDto: LocationUpdateDto;
+}
+
+export interface UpdateProfileRequest {
+    id: string;
+    profileUpdateDto: ProfileUpdateDto;
+}
+
+export interface UpdateProjectRequest {
+    id: string;
+    projectUpdateDto: ProjectUpdateDto;
+}
+
+export interface UpdatePublicationRequest {
+    id: string;
+    publicationUpdateDto: PublicationUpdateDto;
+}
+
+export interface UpdateReferenceRequest {
+    id: string;
+    referenceUpdateDto: ReferenceUpdateDto;
+}
+
+export interface UpdateSkillRequest {
+    id: string;
+    skillUpdateDto: SkillUpdateDto;
+}
+
+export interface UpdateSkillKeywordRequest {
     id: string;
     body: object;
 }
 
-export interface SkillsEntityControllerCreateRequest {
-    skillsCreateDto: SkillsCreateDto;
-}
-
-export interface SkillsEntityControllerDeleteRequest {
-    id: string;
-}
-
-export interface SkillsEntityControllerFindOneRequest {
-    id: string;
-}
-
-export interface SkillsEntityControllerUpdateRequest {
-    id: string;
-    skillsUpdateDto: SkillsUpdateDto;
-}
-
-export interface UsersEntityControllerCreateRequest {
-    usersCreateDto: UsersCreateDto;
-}
-
-export interface UsersEntityControllerDeleteRequest {
-    id: string;
-}
-
-export interface UsersEntityControllerFindOneRequest {
-    id: string;
-}
-
-export interface UsersEntityControllerUpdateRequest {
+export interface UpdateUserRequest {
     id: string;
     body: object;
 }
 
-export interface VolunteersEntityControllerCreateRequest {
-    volunteersCreateDto: VolunteersCreateDto;
-}
-
-export interface VolunteersEntityControllerDeleteRequest {
+export interface UpdateVolunteerRequest {
     id: string;
+    volunteerUpdateDto: VolunteerUpdateDto;
 }
 
-export interface VolunteersEntityControllerFindOneRequest {
+export interface UpdateWorkRequest {
     id: string;
-}
-
-export interface VolunteersEntityControllerUpdateRequest {
-    id: string;
-    volunteersUpdateDto: VolunteersUpdateDto;
-}
-
-export interface WorksEntityControllerCreateRequest {
-    worksCreateDto: WorksCreateDto;
-}
-
-export interface WorksEntityControllerDeleteRequest {
-    id: string;
-}
-
-export interface WorksEntityControllerFindOneRequest {
-    id: string;
-}
-
-export interface WorksEntityControllerUpdateRequest {
-    id: string;
-    worksUpdateDto: WorksUpdateDto;
+    workUpdateDto: WorkUpdateDto;
 }
 
 /**
@@ -363,9 +363,9 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async awardsEntityControllerCreateRaw(requestParameters: AwardsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.awardsCreateDto === null || requestParameters.awardsCreateDto === undefined) {
-            throw new runtime.RequiredError('awardsCreateDto','Required parameter requestParameters.awardsCreateDto was null or undefined when calling awardsEntityControllerCreate.');
+    async createAwardRaw(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.awardCreateDto === null || requestParameters.awardCreateDto === undefined) {
+            throw new runtime.RequiredError('awardCreateDto','Required parameter requestParameters.awardCreateDto was null or undefined when calling createAward.');
         }
 
         const queryParameters: any = {};
@@ -379,7 +379,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: AwardsCreateDtoToJSON(requestParameters.awardsCreateDto),
+            body: AwardCreateDtoToJSON(requestParameters.awardCreateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -387,126 +387,15 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async awardsEntityControllerCreate(requestParameters: AwardsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.awardsEntityControllerCreateRaw(requestParameters, initOverrides);
+    async createAward(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createAwardRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async awardsEntityControllerDeleteRaw(requestParameters: AwardsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling awardsEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/awards/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async awardsEntityControllerDelete(requestParameters: AwardsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.awardsEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async awardsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/awards`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async awardsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.awardsEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async awardsEntityControllerFindOneRaw(requestParameters: AwardsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling awardsEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/awards/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async awardsEntityControllerFindOne(requestParameters: AwardsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.awardsEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async awardsEntityControllerUpdateRaw(requestParameters: AwardsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling awardsEntityControllerUpdate.');
-        }
-
-        if (requestParameters.awardsUpdateDto === null || requestParameters.awardsUpdateDto === undefined) {
-            throw new runtime.RequiredError('awardsUpdateDto','Required parameter requestParameters.awardsUpdateDto was null or undefined when calling awardsEntityControllerUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/awards/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: AwardsUpdateDtoToJSON(requestParameters.awardsUpdateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async awardsEntityControllerUpdate(requestParameters: AwardsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.awardsEntityControllerUpdateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async basicsEntityControllerCreateRaw(requestParameters: BasicsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.basicsCreateDto === null || requestParameters.basicsCreateDto === undefined) {
-            throw new runtime.RequiredError('basicsCreateDto','Required parameter requestParameters.basicsCreateDto was null or undefined when calling basicsEntityControllerCreate.');
+    async createBasicRaw(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.basicCreateDto === null || requestParameters.basicCreateDto === undefined) {
+            throw new runtime.RequiredError('basicCreateDto','Required parameter requestParameters.basicCreateDto was null or undefined when calling createBasic.');
         }
 
         const queryParameters: any = {};
@@ -520,7 +409,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: BasicsCreateDtoToJSON(requestParameters.basicsCreateDto),
+            body: BasicCreateDtoToJSON(requestParameters.basicCreateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -528,126 +417,15 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async basicsEntityControllerCreate(requestParameters: BasicsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.basicsEntityControllerCreateRaw(requestParameters, initOverrides);
+    async createBasic(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createBasicRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async basicsEntityControllerDeleteRaw(requestParameters: BasicsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling basicsEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/basics/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async basicsEntityControllerDelete(requestParameters: BasicsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.basicsEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async basicsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/basics`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async basicsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.basicsEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async basicsEntityControllerFindOneRaw(requestParameters: BasicsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling basicsEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/basics/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async basicsEntityControllerFindOne(requestParameters: BasicsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.basicsEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async basicsEntityControllerUpdateRaw(requestParameters: BasicsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling basicsEntityControllerUpdate.');
-        }
-
-        if (requestParameters.basicsUpdateDto === null || requestParameters.basicsUpdateDto === undefined) {
-            throw new runtime.RequiredError('basicsUpdateDto','Required parameter requestParameters.basicsUpdateDto was null or undefined when calling basicsEntityControllerUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/basics/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: BasicsUpdateDtoToJSON(requestParameters.basicsUpdateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async basicsEntityControllerUpdate(requestParameters: BasicsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.basicsEntityControllerUpdateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async educationsEntityControllerCreateRaw(requestParameters: EducationsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.educationsCreateDto === null || requestParameters.educationsCreateDto === undefined) {
-            throw new runtime.RequiredError('educationsCreateDto','Required parameter requestParameters.educationsCreateDto was null or undefined when calling educationsEntityControllerCreate.');
+    async createEducationRaw(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.educationCreateDto === null || requestParameters.educationCreateDto === undefined) {
+            throw new runtime.RequiredError('educationCreateDto','Required parameter requestParameters.educationCreateDto was null or undefined when calling createEducation.');
         }
 
         const queryParameters: any = {};
@@ -661,7 +439,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: EducationsCreateDtoToJSON(requestParameters.educationsCreateDto),
+            body: EducationCreateDtoToJSON(requestParameters.educationCreateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -669,126 +447,15 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async educationsEntityControllerCreate(requestParameters: EducationsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.educationsEntityControllerCreateRaw(requestParameters, initOverrides);
+    async createEducation(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createEducationRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async educationsEntityControllerDeleteRaw(requestParameters: EducationsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling educationsEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/educations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async educationsEntityControllerDelete(requestParameters: EducationsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.educationsEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async educationsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/educations`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async educationsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.educationsEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async educationsEntityControllerFindOneRaw(requestParameters: EducationsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling educationsEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/educations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async educationsEntityControllerFindOne(requestParameters: EducationsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.educationsEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async educationsEntityControllerUpdateRaw(requestParameters: EducationsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling educationsEntityControllerUpdate.');
-        }
-
-        if (requestParameters.educationsUpdateDto === null || requestParameters.educationsUpdateDto === undefined) {
-            throw new runtime.RequiredError('educationsUpdateDto','Required parameter requestParameters.educationsUpdateDto was null or undefined when calling educationsEntityControllerUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/educations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: EducationsUpdateDtoToJSON(requestParameters.educationsUpdateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async educationsEntityControllerUpdate(requestParameters: EducationsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.educationsEntityControllerUpdateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async interestsEntityControllerCreateRaw(requestParameters: InterestsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.interestsCreateDto === null || requestParameters.interestsCreateDto === undefined) {
-            throw new runtime.RequiredError('interestsCreateDto','Required parameter requestParameters.interestsCreateDto was null or undefined when calling interestsEntityControllerCreate.');
+    async createInterestRaw(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.interestCreateDto === null || requestParameters.interestCreateDto === undefined) {
+            throw new runtime.RequiredError('interestCreateDto','Required parameter requestParameters.interestCreateDto was null or undefined when calling createInterest.');
         }
 
         const queryParameters: any = {};
@@ -802,7 +469,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: InterestsCreateDtoToJSON(requestParameters.interestsCreateDto),
+            body: InterestCreateDtoToJSON(requestParameters.interestCreateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -810,126 +477,15 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async interestsEntityControllerCreate(requestParameters: InterestsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.interestsEntityControllerCreateRaw(requestParameters, initOverrides);
+    async createInterest(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createInterestRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async interestsEntityControllerDeleteRaw(requestParameters: InterestsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling interestsEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/interests/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async interestsEntityControllerDelete(requestParameters: InterestsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.interestsEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async interestsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/interests`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async interestsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.interestsEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async interestsEntityControllerFindOneRaw(requestParameters: InterestsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling interestsEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/interests/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async interestsEntityControllerFindOne(requestParameters: InterestsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.interestsEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async interestsEntityControllerUpdateRaw(requestParameters: InterestsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling interestsEntityControllerUpdate.');
-        }
-
-        if (requestParameters.interestsUpdateDto === null || requestParameters.interestsUpdateDto === undefined) {
-            throw new runtime.RequiredError('interestsUpdateDto','Required parameter requestParameters.interestsUpdateDto was null or undefined when calling interestsEntityControllerUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/interests/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: InterestsUpdateDtoToJSON(requestParameters.interestsUpdateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async interestsEntityControllerUpdate(requestParameters: InterestsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.interestsEntityControllerUpdateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async languagesEntityControllerCreateRaw(requestParameters: LanguagesEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.languagesCreateDto === null || requestParameters.languagesCreateDto === undefined) {
-            throw new runtime.RequiredError('languagesCreateDto','Required parameter requestParameters.languagesCreateDto was null or undefined when calling languagesEntityControllerCreate.');
+    async createLanguageRaw(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.languageCreateDto === null || requestParameters.languageCreateDto === undefined) {
+            throw new runtime.RequiredError('languageCreateDto','Required parameter requestParameters.languageCreateDto was null or undefined when calling createLanguage.');
         }
 
         const queryParameters: any = {};
@@ -943,7 +499,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: LanguagesCreateDtoToJSON(requestParameters.languagesCreateDto),
+            body: LanguageCreateDtoToJSON(requestParameters.languageCreateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -951,126 +507,15 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async languagesEntityControllerCreate(requestParameters: LanguagesEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.languagesEntityControllerCreateRaw(requestParameters, initOverrides);
+    async createLanguage(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createLanguageRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async languagesEntityControllerDeleteRaw(requestParameters: LanguagesEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling languagesEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/languages/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async languagesEntityControllerDelete(requestParameters: LanguagesEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.languagesEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async languagesEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/languages`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async languagesEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.languagesEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async languagesEntityControllerFindOneRaw(requestParameters: LanguagesEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling languagesEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/languages/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async languagesEntityControllerFindOne(requestParameters: LanguagesEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.languagesEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async languagesEntityControllerUpdateRaw(requestParameters: LanguagesEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling languagesEntityControllerUpdate.');
-        }
-
-        if (requestParameters.languagesUpdateDto === null || requestParameters.languagesUpdateDto === undefined) {
-            throw new runtime.RequiredError('languagesUpdateDto','Required parameter requestParameters.languagesUpdateDto was null or undefined when calling languagesEntityControllerUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/languages/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: LanguagesUpdateDtoToJSON(requestParameters.languagesUpdateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async languagesEntityControllerUpdate(requestParameters: LanguagesEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.languagesEntityControllerUpdateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async locationsEntityControllerCreateRaw(requestParameters: LocationsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.locationsCreateDto === null || requestParameters.locationsCreateDto === undefined) {
-            throw new runtime.RequiredError('locationsCreateDto','Required parameter requestParameters.locationsCreateDto was null or undefined when calling locationsEntityControllerCreate.');
+    async createLocationRaw(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.locationCreateDto === null || requestParameters.locationCreateDto === undefined) {
+            throw new runtime.RequiredError('locationCreateDto','Required parameter requestParameters.locationCreateDto was null or undefined when calling createLocation.');
         }
 
         const queryParameters: any = {};
@@ -1084,7 +529,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: LocationsCreateDtoToJSON(requestParameters.locationsCreateDto),
+            body: LocationCreateDtoToJSON(requestParameters.locationCreateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -1092,126 +537,15 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async locationsEntityControllerCreate(requestParameters: LocationsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.locationsEntityControllerCreateRaw(requestParameters, initOverrides);
+    async createLocation(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createLocationRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async locationsEntityControllerDeleteRaw(requestParameters: LocationsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling locationsEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/locations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async locationsEntityControllerDelete(requestParameters: LocationsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.locationsEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async locationsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/locations`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async locationsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.locationsEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async locationsEntityControllerFindOneRaw(requestParameters: LocationsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling locationsEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/locations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async locationsEntityControllerFindOne(requestParameters: LocationsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.locationsEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async locationsEntityControllerUpdateRaw(requestParameters: LocationsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling locationsEntityControllerUpdate.');
-        }
-
-        if (requestParameters.locationsUpdateDto === null || requestParameters.locationsUpdateDto === undefined) {
-            throw new runtime.RequiredError('locationsUpdateDto','Required parameter requestParameters.locationsUpdateDto was null or undefined when calling locationsEntityControllerUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/locations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: LocationsUpdateDtoToJSON(requestParameters.locationsUpdateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async locationsEntityControllerUpdate(requestParameters: LocationsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.locationsEntityControllerUpdateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async profilesEntityControllerCreateRaw(requestParameters: ProfilesEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.profilesCreateDto === null || requestParameters.profilesCreateDto === undefined) {
-            throw new runtime.RequiredError('profilesCreateDto','Required parameter requestParameters.profilesCreateDto was null or undefined when calling profilesEntityControllerCreate.');
+    async createProfileRaw(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.profileCreateDto === null || requestParameters.profileCreateDto === undefined) {
+            throw new runtime.RequiredError('profileCreateDto','Required parameter requestParameters.profileCreateDto was null or undefined when calling createProfile.');
         }
 
         const queryParameters: any = {};
@@ -1225,7 +559,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ProfilesCreateDtoToJSON(requestParameters.profilesCreateDto),
+            body: ProfileCreateDtoToJSON(requestParameters.profileCreateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -1233,126 +567,15 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async profilesEntityControllerCreate(requestParameters: ProfilesEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.profilesEntityControllerCreateRaw(requestParameters, initOverrides);
+    async createProfile(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createProfileRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async profilesEntityControllerDeleteRaw(requestParameters: ProfilesEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling profilesEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/profiles/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async profilesEntityControllerDelete(requestParameters: ProfilesEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.profilesEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async profilesEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/profiles`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async profilesEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.profilesEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async profilesEntityControllerFindOneRaw(requestParameters: ProfilesEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling profilesEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/profiles/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async profilesEntityControllerFindOne(requestParameters: ProfilesEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.profilesEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async profilesEntityControllerUpdateRaw(requestParameters: ProfilesEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling profilesEntityControllerUpdate.');
-        }
-
-        if (requestParameters.profilesUpdateDto === null || requestParameters.profilesUpdateDto === undefined) {
-            throw new runtime.RequiredError('profilesUpdateDto','Required parameter requestParameters.profilesUpdateDto was null or undefined when calling profilesEntityControllerUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/profiles/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: ProfilesUpdateDtoToJSON(requestParameters.profilesUpdateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async profilesEntityControllerUpdate(requestParameters: ProfilesEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.profilesEntityControllerUpdateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async projectsEntityControllerCreateRaw(requestParameters: ProjectsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.projectsCreateDto === null || requestParameters.projectsCreateDto === undefined) {
-            throw new runtime.RequiredError('projectsCreateDto','Required parameter requestParameters.projectsCreateDto was null or undefined when calling projectsEntityControllerCreate.');
+    async createProjectRaw(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.projectCreateDto === null || requestParameters.projectCreateDto === undefined) {
+            throw new runtime.RequiredError('projectCreateDto','Required parameter requestParameters.projectCreateDto was null or undefined when calling createProject.');
         }
 
         const queryParameters: any = {};
@@ -1366,7 +589,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: ProjectsCreateDtoToJSON(requestParameters.projectsCreateDto),
+            body: ProjectCreateDtoToJSON(requestParameters.projectCreateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -1374,15 +597,414 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async projectsEntityControllerCreate(requestParameters: ProjectsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.projectsEntityControllerCreateRaw(requestParameters, initOverrides);
+    async createProject(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createProjectRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async projectsEntityControllerDeleteRaw(requestParameters: ProjectsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createPublicationRaw(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.publicationCreateDto === null || requestParameters.publicationCreateDto === undefined) {
+            throw new runtime.RequiredError('publicationCreateDto','Required parameter requestParameters.publicationCreateDto was null or undefined when calling createPublication.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/publications`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PublicationCreateDtoToJSON(requestParameters.publicationCreateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createPublication(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createPublicationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async createReferenceRaw(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.referenceCreateDto === null || requestParameters.referenceCreateDto === undefined) {
+            throw new runtime.RequiredError('referenceCreateDto','Required parameter requestParameters.referenceCreateDto was null or undefined when calling createReference.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/references`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ReferenceCreateDtoToJSON(requestParameters.referenceCreateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createReference(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createReferenceRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async createSkillRaw(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.skillCreateDto === null || requestParameters.skillCreateDto === undefined) {
+            throw new runtime.RequiredError('skillCreateDto','Required parameter requestParameters.skillCreateDto was null or undefined when calling createSkill.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/skills`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SkillCreateDtoToJSON(requestParameters.skillCreateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createSkill(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createSkillRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async createSkillKeywordRaw(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.skillKeywordCreateDto === null || requestParameters.skillKeywordCreateDto === undefined) {
+            throw new runtime.RequiredError('skillKeywordCreateDto','Required parameter requestParameters.skillKeywordCreateDto was null or undefined when calling createSkillKeyword.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/skillKeywords`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SkillKeywordCreateDtoToJSON(requestParameters.skillKeywordCreateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createSkillKeyword(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createSkillKeywordRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async createUserRaw(requestParameters: CreateUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.userCreateDto === null || requestParameters.userCreateDto === undefined) {
+            throw new runtime.RequiredError('userCreateDto','Required parameter requestParameters.userCreateDto was null or undefined when calling createUser.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/users`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UserCreateDtoToJSON(requestParameters.userCreateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createUser(requestParameters: CreateUserRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createUserRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async createVolunteerRaw(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.volunteerCreateDto === null || requestParameters.volunteerCreateDto === undefined) {
+            throw new runtime.RequiredError('volunteerCreateDto','Required parameter requestParameters.volunteerCreateDto was null or undefined when calling createVolunteer.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/volunteers`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: VolunteerCreateDtoToJSON(requestParameters.volunteerCreateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createVolunteer(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createVolunteerRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async createWorkRaw(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.workCreateDto === null || requestParameters.workCreateDto === undefined) {
+            throw new runtime.RequiredError('workCreateDto','Required parameter requestParameters.workCreateDto was null or undefined when calling createWork.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/works`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: WorkCreateDtoToJSON(requestParameters.workCreateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createWork(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.createWorkRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteAwardRaw(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsEntityControllerDelete.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteAward.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/awards/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteAward(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteAwardRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteBasicRaw(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteBasic.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/basics/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteBasic(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteBasicRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteEducationRaw(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteEducation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/educations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteEducation(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteEducationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteInterestRaw(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteInterest.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/interests/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteInterest(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteInterestRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteLanguageRaw(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteLanguage.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/languages/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteLanguage(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteLanguageRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteLocationRaw(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteLocation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/locations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteLocation(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteLocationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteProfileRaw(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteProfile.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/profiles/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteProfile(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteProfileRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteProjectRaw(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteProject.');
         }
 
         const queryParameters: any = {};
@@ -1401,13 +1023,363 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async projectsEntityControllerDelete(requestParameters: ProjectsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.projectsEntityControllerDeleteRaw(requestParameters, initOverrides);
+    async deleteProject(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteProjectRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async projectsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deletePublicationRaw(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deletePublication.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/publications/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deletePublication(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deletePublicationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteReferenceRaw(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteReference.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/references/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteReference(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteReferenceRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteSkillRaw(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteSkill.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/skills/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteSkill(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteSkillRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteSkillKeywordRaw(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteSkillKeyword.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/skillKeywords/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteSkillKeyword(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteSkillKeywordRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteUserRaw(requestParameters: DeleteUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteUser.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/users/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteUser(requestParameters: DeleteUserRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteUserRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteVolunteerRaw(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVolunteer.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/volunteers/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteVolunteer(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteVolunteerRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async deleteWorkRaw(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteWork.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/works/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async deleteWork(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.deleteWorkRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findManyAwardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/awards`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyAward(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyAwardRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyBasicRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/basics`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyBasic(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyBasicRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyEducationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/educations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyEducation(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyEducationRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyInterestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/interests`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyInterest(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyInterestRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyLanguageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/languages`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyLanguage(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyLanguageRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyLocationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/locations`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyLocation(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyLocationRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/profiles`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyProfile(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyProfileRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyProjectRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1424,15 +1396,365 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async projectsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.projectsEntityControllerFindManyRaw(initOverrides);
+    async findManyProject(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyProjectRaw(initOverrides);
     }
 
     /**
      */
-    async projectsEntityControllerFindOneRaw(requestParameters: ProjectsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyPublicationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/publications`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyPublication(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyPublicationRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyReferenceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/references`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyReference(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyReferenceRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManySkillRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/skills`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManySkill(initOverrides?: RequestInit): Promise<void> {
+        await this.findManySkillRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManySkillKeywordRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/skillKeywords`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManySkillKeyword(initOverrides?: RequestInit): Promise<void> {
+        await this.findManySkillKeywordRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyUserRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/users`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyUser(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyUserRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyVolunteerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/volunteers`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyVolunteer(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyVolunteerRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findManyWorkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/works`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findManyWork(initOverrides?: RequestInit): Promise<void> {
+        await this.findManyWorkRaw(initOverrides);
+    }
+
+    /**
+     */
+    async findOneAwardRaw(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsEntityControllerFindOne.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneAward.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/awards/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneAward(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneAwardRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneBasicRaw(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneBasic.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/basics/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneBasic(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneBasicRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneEducationRaw(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneEducation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/educations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneEducation(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneEducationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneInterestRaw(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneInterest.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/interests/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneInterest(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneInterestRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneLanguageRaw(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneLanguage.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/languages/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneLanguage(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneLanguageRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneLocationRaw(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneLocation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/locations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneLocation(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneLocationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneProfileRaw(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneProfile.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/profiles/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneProfile(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneProfileRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneProjectRaw(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneProject.');
         }
 
         const queryParameters: any = {};
@@ -1451,19 +1773,446 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async projectsEntityControllerFindOne(requestParameters: ProjectsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.projectsEntityControllerFindOneRaw(requestParameters, initOverrides);
+    async findOneProject(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneProjectRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async projectsEntityControllerUpdateRaw(requestParameters: ProjectsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOnePublicationRaw(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling projectsEntityControllerUpdate.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOnePublication.');
         }
 
-        if (requestParameters.projectsUpdateDto === null || requestParameters.projectsUpdateDto === undefined) {
-            throw new runtime.RequiredError('projectsUpdateDto','Required parameter requestParameters.projectsUpdateDto was null or undefined when calling projectsEntityControllerUpdate.');
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/publications/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOnePublication(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOnePublicationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneReferenceRaw(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneReference.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/references/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneReference(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneReferenceRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneSkillRaw(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneSkill.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/skills/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneSkill(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneSkillRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneSkillKeywordRaw(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneSkillKeyword.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/skillKeywords/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneSkillKeyword(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneSkillKeywordRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneUserRaw(requestParameters: FindOneUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneUser.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/users/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneUser(requestParameters: FindOneUserRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneUserRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneVolunteerRaw(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneVolunteer.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/volunteers/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneVolunteer(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneVolunteerRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async findOneWorkRaw(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneWork.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/works/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async findOneWork(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.findOneWorkRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateAwardRaw(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateAward.');
+        }
+
+        if (requestParameters.awardUpdateDto === null || requestParameters.awardUpdateDto === undefined) {
+            throw new runtime.RequiredError('awardUpdateDto','Required parameter requestParameters.awardUpdateDto was null or undefined when calling updateAward.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/awards/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: AwardUpdateDtoToJSON(requestParameters.awardUpdateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateAward(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateAwardRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateBasicRaw(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBasic.');
+        }
+
+        if (requestParameters.basicUpdateDto === null || requestParameters.basicUpdateDto === undefined) {
+            throw new runtime.RequiredError('basicUpdateDto','Required parameter requestParameters.basicUpdateDto was null or undefined when calling updateBasic.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/basics/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: BasicUpdateDtoToJSON(requestParameters.basicUpdateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateBasic(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateBasicRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateEducationRaw(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateEducation.');
+        }
+
+        if (requestParameters.educationUpdateDto === null || requestParameters.educationUpdateDto === undefined) {
+            throw new runtime.RequiredError('educationUpdateDto','Required parameter requestParameters.educationUpdateDto was null or undefined when calling updateEducation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/educations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: EducationUpdateDtoToJSON(requestParameters.educationUpdateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateEducation(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateEducationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateInterestRaw(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateInterest.');
+        }
+
+        if (requestParameters.interestUpdateDto === null || requestParameters.interestUpdateDto === undefined) {
+            throw new runtime.RequiredError('interestUpdateDto','Required parameter requestParameters.interestUpdateDto was null or undefined when calling updateInterest.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/interests/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: InterestUpdateDtoToJSON(requestParameters.interestUpdateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateInterest(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateInterestRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateLanguageRaw(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLanguage.');
+        }
+
+        if (requestParameters.languageUpdateDto === null || requestParameters.languageUpdateDto === undefined) {
+            throw new runtime.RequiredError('languageUpdateDto','Required parameter requestParameters.languageUpdateDto was null or undefined when calling updateLanguage.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/languages/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: LanguageUpdateDtoToJSON(requestParameters.languageUpdateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateLanguage(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateLanguageRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateLocationRaw(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLocation.');
+        }
+
+        if (requestParameters.locationUpdateDto === null || requestParameters.locationUpdateDto === undefined) {
+            throw new runtime.RequiredError('locationUpdateDto','Required parameter requestParameters.locationUpdateDto was null or undefined when calling updateLocation.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/locations/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: LocationUpdateDtoToJSON(requestParameters.locationUpdateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateLocation(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateLocationRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateProfileRaw(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProfile.');
+        }
+
+        if (requestParameters.profileUpdateDto === null || requestParameters.profileUpdateDto === undefined) {
+            throw new runtime.RequiredError('profileUpdateDto','Required parameter requestParameters.profileUpdateDto was null or undefined when calling updateProfile.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/profiles/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ProfileUpdateDtoToJSON(requestParameters.profileUpdateDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async updateProfile(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateProfileRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async updateProjectRaw(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProject.');
+        }
+
+        if (requestParameters.projectUpdateDto === null || requestParameters.projectUpdateDto === undefined) {
+            throw new runtime.RequiredError('projectUpdateDto','Required parameter requestParameters.projectUpdateDto was null or undefined when calling updateProject.');
         }
 
         const queryParameters: any = {};
@@ -1477,7 +2226,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: ProjectsUpdateDtoToJSON(requestParameters.projectsUpdateDto),
+            body: ProjectUpdateDtoToJSON(requestParameters.projectUpdateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -1485,126 +2234,19 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async projectsEntityControllerUpdate(requestParameters: ProjectsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.projectsEntityControllerUpdateRaw(requestParameters, initOverrides);
+    async updateProject(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateProjectRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async publicationsEntityControllerCreateRaw(requestParameters: PublicationsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.publicationsCreateDto === null || requestParameters.publicationsCreateDto === undefined) {
-            throw new runtime.RequiredError('publicationsCreateDto','Required parameter requestParameters.publicationsCreateDto was null or undefined when calling publicationsEntityControllerCreate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/publications`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PublicationsCreateDtoToJSON(requestParameters.publicationsCreateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async publicationsEntityControllerCreate(requestParameters: PublicationsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.publicationsEntityControllerCreateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async publicationsEntityControllerDeleteRaw(requestParameters: PublicationsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updatePublicationRaw(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling publicationsEntityControllerDelete.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePublication.');
         }
 
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/publications/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async publicationsEntityControllerDelete(requestParameters: PublicationsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.publicationsEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async publicationsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/publications`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async publicationsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.publicationsEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async publicationsEntityControllerFindOneRaw(requestParameters: PublicationsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling publicationsEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/publications/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async publicationsEntityControllerFindOne(requestParameters: PublicationsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.publicationsEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async publicationsEntityControllerUpdateRaw(requestParameters: PublicationsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling publicationsEntityControllerUpdate.');
-        }
-
-        if (requestParameters.publicationsUpdateDto === null || requestParameters.publicationsUpdateDto === undefined) {
-            throw new runtime.RequiredError('publicationsUpdateDto','Required parameter requestParameters.publicationsUpdateDto was null or undefined when calling publicationsEntityControllerUpdate.');
+        if (requestParameters.publicationUpdateDto === null || requestParameters.publicationUpdateDto === undefined) {
+            throw new runtime.RequiredError('publicationUpdateDto','Required parameter requestParameters.publicationUpdateDto was null or undefined when calling updatePublication.');
         }
 
         const queryParameters: any = {};
@@ -1618,7 +2260,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: PublicationsUpdateDtoToJSON(requestParameters.publicationsUpdateDto),
+            body: PublicationUpdateDtoToJSON(requestParameters.publicationUpdateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -1626,126 +2268,19 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async publicationsEntityControllerUpdate(requestParameters: PublicationsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.publicationsEntityControllerUpdateRaw(requestParameters, initOverrides);
+    async updatePublication(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updatePublicationRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async referencesEntityControllerCreateRaw(requestParameters: ReferencesEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.referencesCreateDto === null || requestParameters.referencesCreateDto === undefined) {
-            throw new runtime.RequiredError('referencesCreateDto','Required parameter requestParameters.referencesCreateDto was null or undefined when calling referencesEntityControllerCreate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/references`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: ReferencesCreateDtoToJSON(requestParameters.referencesCreateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async referencesEntityControllerCreate(requestParameters: ReferencesEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.referencesEntityControllerCreateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async referencesEntityControllerDeleteRaw(requestParameters: ReferencesEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateReferenceRaw(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling referencesEntityControllerDelete.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateReference.');
         }
 
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/references/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async referencesEntityControllerDelete(requestParameters: ReferencesEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.referencesEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async referencesEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/references`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async referencesEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.referencesEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async referencesEntityControllerFindOneRaw(requestParameters: ReferencesEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling referencesEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/references/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async referencesEntityControllerFindOne(requestParameters: ReferencesEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.referencesEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async referencesEntityControllerUpdateRaw(requestParameters: ReferencesEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling referencesEntityControllerUpdate.');
-        }
-
-        if (requestParameters.referencesUpdateDto === null || requestParameters.referencesUpdateDto === undefined) {
-            throw new runtime.RequiredError('referencesUpdateDto','Required parameter requestParameters.referencesUpdateDto was null or undefined when calling referencesEntityControllerUpdate.');
+        if (requestParameters.referenceUpdateDto === null || requestParameters.referenceUpdateDto === undefined) {
+            throw new runtime.RequiredError('referenceUpdateDto','Required parameter requestParameters.referenceUpdateDto was null or undefined when calling updateReference.');
         }
 
         const queryParameters: any = {};
@@ -1759,7 +2294,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: ReferencesUpdateDtoToJSON(requestParameters.referencesUpdateDto),
+            body: ReferenceUpdateDtoToJSON(requestParameters.referenceUpdateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -1767,15 +2302,19 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async referencesEntityControllerUpdate(requestParameters: ReferencesEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.referencesEntityControllerUpdateRaw(requestParameters, initOverrides);
+    async updateReference(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateReferenceRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async skillkeywordsEntityControllerCreateRaw(requestParameters: SkillkeywordsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.skillkeywordsCreateDto === null || requestParameters.skillkeywordsCreateDto === undefined) {
-            throw new runtime.RequiredError('skillkeywordsCreateDto','Required parameter requestParameters.skillkeywordsCreateDto was null or undefined when calling skillkeywordsEntityControllerCreate.');
+    async updateSkillRaw(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSkill.');
+        }
+
+        if (requestParameters.skillUpdateDto === null || requestParameters.skillUpdateDto === undefined) {
+            throw new runtime.RequiredError('skillUpdateDto','Required parameter requestParameters.skillUpdateDto was null or undefined when calling updateSkill.');
         }
 
         const queryParameters: any = {};
@@ -1785,11 +2324,11 @@ export class PrismaApi extends runtime.BaseAPI {
         headerParameters['Content-Type'] = 'application/json';
 
         const response = await this.request({
-            path: `/skillkeywords`,
-            method: 'POST',
+            path: `/skills/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: SkillkeywordsCreateDtoToJSON(requestParameters.skillkeywordsCreateDto),
+            body: SkillUpdateDtoToJSON(requestParameters.skillUpdateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -1797,96 +2336,19 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async skillkeywordsEntityControllerCreate(requestParameters: SkillkeywordsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.skillkeywordsEntityControllerCreateRaw(requestParameters, initOverrides);
+    async updateSkill(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateSkillRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async skillkeywordsEntityControllerDeleteRaw(requestParameters: SkillkeywordsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateSkillKeywordRaw(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling skillkeywordsEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/skillkeywords/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async skillkeywordsEntityControllerDelete(requestParameters: SkillkeywordsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.skillkeywordsEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async skillkeywordsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/skillkeywords`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async skillkeywordsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.skillkeywordsEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async skillkeywordsEntityControllerFindOneRaw(requestParameters: SkillkeywordsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling skillkeywordsEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/skillkeywords/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async skillkeywordsEntityControllerFindOne(requestParameters: SkillkeywordsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.skillkeywordsEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async skillkeywordsEntityControllerUpdateRaw(requestParameters: SkillkeywordsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling skillkeywordsEntityControllerUpdate.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSkillKeyword.');
         }
 
         if (requestParameters.body === null || requestParameters.body === undefined) {
-            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling skillkeywordsEntityControllerUpdate.');
+            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling updateSkillKeyword.');
         }
 
         const queryParameters: any = {};
@@ -1896,7 +2358,7 @@ export class PrismaApi extends runtime.BaseAPI {
         headerParameters['Content-Type'] = 'application/json';
 
         const response = await this.request({
-            path: `/skillkeywords/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/skillKeywords/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
@@ -1908,267 +2370,19 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async skillkeywordsEntityControllerUpdate(requestParameters: SkillkeywordsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.skillkeywordsEntityControllerUpdateRaw(requestParameters, initOverrides);
+    async updateSkillKeyword(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateSkillKeywordRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async skillsEntityControllerCreateRaw(requestParameters: SkillsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.skillsCreateDto === null || requestParameters.skillsCreateDto === undefined) {
-            throw new runtime.RequiredError('skillsCreateDto','Required parameter requestParameters.skillsCreateDto was null or undefined when calling skillsEntityControllerCreate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/skills`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: SkillsCreateDtoToJSON(requestParameters.skillsCreateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async skillsEntityControllerCreate(requestParameters: SkillsEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.skillsEntityControllerCreateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async skillsEntityControllerDeleteRaw(requestParameters: SkillsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateUserRaw(requestParameters: UpdateUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling skillsEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/skills/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async skillsEntityControllerDelete(requestParameters: SkillsEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.skillsEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async skillsEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/skills`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async skillsEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.skillsEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async skillsEntityControllerFindOneRaw(requestParameters: SkillsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling skillsEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/skills/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async skillsEntityControllerFindOne(requestParameters: SkillsEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.skillsEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async skillsEntityControllerUpdateRaw(requestParameters: SkillsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling skillsEntityControllerUpdate.');
-        }
-
-        if (requestParameters.skillsUpdateDto === null || requestParameters.skillsUpdateDto === undefined) {
-            throw new runtime.RequiredError('skillsUpdateDto','Required parameter requestParameters.skillsUpdateDto was null or undefined when calling skillsEntityControllerUpdate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/skills/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PATCH',
-            headers: headerParameters,
-            query: queryParameters,
-            body: SkillsUpdateDtoToJSON(requestParameters.skillsUpdateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async skillsEntityControllerUpdate(requestParameters: SkillsEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.skillsEntityControllerUpdateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async usersEntityControllerCreateRaw(requestParameters: UsersEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.usersCreateDto === null || requestParameters.usersCreateDto === undefined) {
-            throw new runtime.RequiredError('usersCreateDto','Required parameter requestParameters.usersCreateDto was null or undefined when calling usersEntityControllerCreate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/users`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: UsersCreateDtoToJSON(requestParameters.usersCreateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async usersEntityControllerCreate(requestParameters: UsersEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.usersEntityControllerCreateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async usersEntityControllerDeleteRaw(requestParameters: UsersEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling usersEntityControllerDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/users/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async usersEntityControllerDelete(requestParameters: UsersEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.usersEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async usersEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/users`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async usersEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.usersEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async usersEntityControllerFindOneRaw(requestParameters: UsersEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling usersEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/users/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async usersEntityControllerFindOne(requestParameters: UsersEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.usersEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async usersEntityControllerUpdateRaw(requestParameters: UsersEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling usersEntityControllerUpdate.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateUser.');
         }
 
         if (requestParameters.body === null || requestParameters.body === undefined) {
-            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling usersEntityControllerUpdate.');
+            throw new runtime.RequiredError('body','Required parameter requestParameters.body was null or undefined when calling updateUser.');
         }
 
         const queryParameters: any = {};
@@ -2190,126 +2404,19 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async usersEntityControllerUpdate(requestParameters: UsersEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.usersEntityControllerUpdateRaw(requestParameters, initOverrides);
+    async updateUser(requestParameters: UpdateUserRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateUserRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async volunteersEntityControllerCreateRaw(requestParameters: VolunteersEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.volunteersCreateDto === null || requestParameters.volunteersCreateDto === undefined) {
-            throw new runtime.RequiredError('volunteersCreateDto','Required parameter requestParameters.volunteersCreateDto was null or undefined when calling volunteersEntityControllerCreate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/volunteers`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: VolunteersCreateDtoToJSON(requestParameters.volunteersCreateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async volunteersEntityControllerCreate(requestParameters: VolunteersEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.volunteersEntityControllerCreateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async volunteersEntityControllerDeleteRaw(requestParameters: VolunteersEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateVolunteerRaw(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling volunteersEntityControllerDelete.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateVolunteer.');
         }
 
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/volunteers/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async volunteersEntityControllerDelete(requestParameters: VolunteersEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.volunteersEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async volunteersEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/volunteers`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async volunteersEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.volunteersEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async volunteersEntityControllerFindOneRaw(requestParameters: VolunteersEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling volunteersEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/volunteers/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async volunteersEntityControllerFindOne(requestParameters: VolunteersEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.volunteersEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async volunteersEntityControllerUpdateRaw(requestParameters: VolunteersEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling volunteersEntityControllerUpdate.');
-        }
-
-        if (requestParameters.volunteersUpdateDto === null || requestParameters.volunteersUpdateDto === undefined) {
-            throw new runtime.RequiredError('volunteersUpdateDto','Required parameter requestParameters.volunteersUpdateDto was null or undefined when calling volunteersEntityControllerUpdate.');
+        if (requestParameters.volunteerUpdateDto === null || requestParameters.volunteerUpdateDto === undefined) {
+            throw new runtime.RequiredError('volunteerUpdateDto','Required parameter requestParameters.volunteerUpdateDto was null or undefined when calling updateVolunteer.');
         }
 
         const queryParameters: any = {};
@@ -2323,7 +2430,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: VolunteersUpdateDtoToJSON(requestParameters.volunteersUpdateDto),
+            body: VolunteerUpdateDtoToJSON(requestParameters.volunteerUpdateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -2331,126 +2438,19 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async volunteersEntityControllerUpdate(requestParameters: VolunteersEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.volunteersEntityControllerUpdateRaw(requestParameters, initOverrides);
+    async updateVolunteer(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateVolunteerRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async worksEntityControllerCreateRaw(requestParameters: WorksEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.worksCreateDto === null || requestParameters.worksCreateDto === undefined) {
-            throw new runtime.RequiredError('worksCreateDto','Required parameter requestParameters.worksCreateDto was null or undefined when calling worksEntityControllerCreate.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json';
-
-        const response = await this.request({
-            path: `/works`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: WorksCreateDtoToJSON(requestParameters.worksCreateDto),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async worksEntityControllerCreate(requestParameters: WorksEntityControllerCreateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.worksEntityControllerCreateRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async worksEntityControllerDeleteRaw(requestParameters: WorksEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateWorkRaw(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling worksEntityControllerDelete.');
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWork.');
         }
 
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/works/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async worksEntityControllerDelete(requestParameters: WorksEntityControllerDeleteRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.worksEntityControllerDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async worksEntityControllerFindManyRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/works`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async worksEntityControllerFindMany(initOverrides?: RequestInit): Promise<void> {
-        await this.worksEntityControllerFindManyRaw(initOverrides);
-    }
-
-    /**
-     */
-    async worksEntityControllerFindOneRaw(requestParameters: WorksEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling worksEntityControllerFindOne.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/works/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async worksEntityControllerFindOne(requestParameters: WorksEntityControllerFindOneRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.worksEntityControllerFindOneRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async worksEntityControllerUpdateRaw(requestParameters: WorksEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling worksEntityControllerUpdate.');
-        }
-
-        if (requestParameters.worksUpdateDto === null || requestParameters.worksUpdateDto === undefined) {
-            throw new runtime.RequiredError('worksUpdateDto','Required parameter requestParameters.worksUpdateDto was null or undefined when calling worksEntityControllerUpdate.');
+        if (requestParameters.workUpdateDto === null || requestParameters.workUpdateDto === undefined) {
+            throw new runtime.RequiredError('workUpdateDto','Required parameter requestParameters.workUpdateDto was null or undefined when calling updateWork.');
         }
 
         const queryParameters: any = {};
@@ -2464,7 +2464,7 @@ export class PrismaApi extends runtime.BaseAPI {
             method: 'PATCH',
             headers: headerParameters,
             query: queryParameters,
-            body: WorksUpdateDtoToJSON(requestParameters.worksUpdateDto),
+            body: WorkUpdateDtoToJSON(requestParameters.workUpdateDto),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -2472,8 +2472,8 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async worksEntityControllerUpdate(requestParameters: WorksEntityControllerUpdateRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.worksEntityControllerUpdateRaw(requestParameters, initOverrides);
+    async updateWork(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<void> {
+        await this.updateWorkRaw(requestParameters, initOverrides);
     }
 
 }
