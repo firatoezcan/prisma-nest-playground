@@ -1,7 +1,13 @@
 @tailwind base;
 
 /* Write your own custom base styles here */
-
+html {
+  height: -webkit-fill-available;
+}
+body,
+#__next {
+  @apply h-full;
+}
 /* Start purging... */
 @tailwind components;
 /* Stop purging. */

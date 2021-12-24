@@ -1,3 +1,4 @@
+import { Prisma } from ".prisma/client";
 import { Controller, Get } from "@nestjs/common";
 import { AppService } from "./app.service";
 
@@ -8,5 +9,9 @@ export class AppController {
   @Get("/health")
   health(): string {
     return this.appService.health();
+  }
+  @Get("/dmmf")
+  dmmf(): Prisma.DMMF.Document {
+    return Prisma.dmmf;
   }
 }

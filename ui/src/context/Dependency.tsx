@@ -1,4 +1,5 @@
-import { Locale } from 'date-fns'
+import { Locale } from "date-fns";
+import type { ParsedUrlQuery } from "querystring";
 import React, { createContext, FC, useContext } from "react";
 import { UrlObject } from "url";
 
@@ -16,10 +17,22 @@ export type LinkProps = {
   className?: string;
 };
 
+export type Router = {
+  route: string;
+  pathname: string;
+  query: ParsedUrlQuery;
+  asPath: string;
+  basePath: string;
+  locale?: string;
+  locales?: string[];
+  defaultLocale?: string;
+};
+
 export type DependencyContextType = {
   Link: React.FC<LinkProps>;
   t: (key: string) => string;
   dateLocale: Locale;
+  router: Router;
 };
 
 const DependencyContext = createContext<DependencyContextType | undefined>(undefined);

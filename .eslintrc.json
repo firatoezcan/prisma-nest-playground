@@ -115,6 +115,7 @@
     "react/static-property-placement": "off",
     // Lol
     "import/extensions": "off",
+    "import/namespace": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error"
   }
