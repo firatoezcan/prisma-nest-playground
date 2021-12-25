@@ -1,6 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
 import { ApiResponse } from "@nestjs/swagger";
-import { AppService, DMMF } from "./app.service";
+import { AppService, DMMF, World } from "./app.service";
 
 @Controller()
 export class AppController {
@@ -12,8 +12,14 @@ export class AppController {
   }
 
   @Get("/dmmf")
-  @ApiResponse({ status: 200, type: DMMF, description: "The Prisma DMMF that I cannot get Swagger response working for because im bad" })
-  dmmf() {
+  @ApiResponse({ status: 200, type: DMMF, description: "Unfinished response type" })
+  dmmf(): DMMF {
     return this.appService.dmmf();
+  }
+
+  @Get("/world")
+  @ApiResponse({ status: 200, type: World, description: "Hello world" })
+  world() {
+    return this.appService.world();
   }
 }
