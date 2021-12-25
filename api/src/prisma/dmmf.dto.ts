@@ -1,5 +1,4 @@
 import { Prisma } from ".prisma/client";
-import { Injectable } from "@nestjs/common";
 import { ApiExtraModels, ApiProperty, getSchemaPath } from "@nestjs/swagger";
 
 type ArgType = string | InputType | SchemaEnum;
@@ -103,6 +102,7 @@ class SchemaField implements Prisma.DMMF.SchemaField {
   isNullable?: boolean;
 
   @ApiProperty({
+    type: "object",
     properties: {
       // This has a circular reference so we (sadly) need to pass in the string manually
       type: { oneOf: [{ type: "string" }, { $ref: getSchemaPath("OutputType") }, { $ref: getSchemaPath(SchemaEnum) }] },
@@ -110,6 +110,8 @@ class SchemaField implements Prisma.DMMF.SchemaField {
       location: { type: "string", enum: ["scalar", "inputObjectTypes", "outputObjectTypes", "enumTypes"] },
       namespace: { type: "string", enum: ["model", "prisma"] },
     },
+    // @ts-expect-error An Array is fine here since we are `type: object`
+    required: ["type", "isList", "location"],
   })
   outputType: {
     type: string | OutputType | SchemaEnum;
@@ -254,10 +256,13 @@ class InputType implements Prisma.DMMF.InputType {
   name: string;
 
   @ApiProperty({
+    type: "object",
     properties: {
       maxNumFields: { type: "number", nullable: true },
       minNumFields: { type: "number", nullable: true },
     },
+    // @ts-expect-error An Array is fine here since we are `type: object`
+    required: ["maxNumFields", "minNumFields"],
   })
   constraints: {
     maxNumFields: number | null;
@@ -279,6 +284,9 @@ class InputType implements Prisma.DMMF.InputType {
   fieldMap?: Record<string, SchemaArg>;
 }
 
+// Since we dont use InputType via `type: InputType` we need to give an additional hint to OpenAPI
+// Same goes for OutputType and SchemaEnum
+@ApiExtraModels(InputType, OutputType, SchemaEnum)
 class Schema implements Prisma.DMMF.Schema {
   @ApiProperty({ required: false, nullable: true })
   rootQueryType?: string;
@@ -287,26 +295,35 @@ class Schema implements Prisma.DMMF.Schema {
   rootMutationType?: string;
 
   @ApiProperty({
+    type: "object",
     properties: {
       model: { items: { $ref: getSchemaPath(InputType) } },
       prisma: { items: { $ref: getSchemaPath(InputType) } },
     },
+    // @ts-expect-error An Array is fine here since we are `type: object`
+    required: ["prisma"],
   })
   inputObjectTypes: { model?: InputType[]; prisma: InputType[] };
 
   @ApiProperty({
+    type: "object",
     properties: {
       model: { items: { $ref: getSchemaPath(OutputType) } },
       prisma: { items: { $ref: getSchemaPath(OutputType) } },
     },
+    // @ts-expect-error An Array is fine here since we are `type: object`
+    required: ["model", "prisma"],
   })
   outputObjectTypes: { model: OutputType[]; prisma: OutputType[] };
 
   @ApiProperty({
+    type: "object",
     properties: {
       model: { items: { $ref: getSchemaPath(SchemaEnum) } },
       prisma: { items: { $ref: getSchemaPath(SchemaEnum) } },
     },
+    // @ts-expect-error An Array is fine here since we are `type: object`
+    required: ["prisma"],
   })
   enumTypes: { model?: SchemaEnum[]; prisma: SchemaEnum[] };
 }
@@ -366,10 +383,13 @@ class Mappings implements Prisma.DMMF.Mappings {
   modelOperations: ModelMapping[];
 
   @ApiProperty({
+    type: "object",
     properties: {
       read: { items: { type: "string" } },
       write: { items: { type: "string" } },
     },
+    // @ts-expect-error An Array is fine here since we are `type: object`
+    required: ["read", "write"],
   })
   otherOperations: { read: string[]; write: string[] };
 }
