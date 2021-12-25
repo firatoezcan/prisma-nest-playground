@@ -18,6 +18,9 @@ import {
     EducationCreateDto,
     EducationCreateDtoFromJSON,
     EducationCreateDtoToJSON,
+    EducationEntity,
+    EducationEntityFromJSON,
+    EducationEntityToJSON,
     EducationUpdateDto,
     EducationUpdateDtoFromJSON,
     EducationUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class EducationApi extends runtime.BaseAPI {
 
     /**
      */
-    async createEducationRaw(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createEducationRaw(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EducationEntity>> {
         if (requestParameters.educationCreateDto === null || requestParameters.educationCreateDto === undefined) {
             throw new runtime.RequiredError('educationCreateDto','Required parameter requestParameters.educationCreateDto was null or undefined when calling createEducation.');
         }
@@ -66,18 +69,19 @@ export class EducationApi extends runtime.BaseAPI {
             body: EducationCreateDtoToJSON(requestParameters.educationCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => EducationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createEducation(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createEducationRaw(requestParameters, initOverrides);
+    async createEducation(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<EducationEntity> {
+        const response = await this.createEducationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteEducationRaw(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteEducationRaw(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EducationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteEducation.');
         }
@@ -93,18 +97,19 @@ export class EducationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => EducationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteEducation(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteEducationRaw(requestParameters, initOverrides);
+    async deleteEducation(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<EducationEntity> {
+        const response = await this.deleteEducationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyEducationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyEducationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<EducationEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class EducationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(EducationEntityFromJSON));
     }
 
     /**
      */
-    async findManyEducation(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyEducationRaw(initOverrides);
+    async findManyEducation(initOverrides?: RequestInit): Promise<Array<EducationEntity>> {
+        const response = await this.findManyEducationRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneEducationRaw(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneEducationRaw(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EducationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneEducation.');
         }
@@ -143,18 +149,19 @@ export class EducationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => EducationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneEducation(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneEducationRaw(requestParameters, initOverrides);
+    async findOneEducation(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<EducationEntity> {
+        const response = await this.findOneEducationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateEducationRaw(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateEducationRaw(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EducationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateEducation.');
         }
@@ -177,13 +184,14 @@ export class EducationApi extends runtime.BaseAPI {
             body: EducationUpdateDtoToJSON(requestParameters.educationUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => EducationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateEducation(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateEducationRaw(requestParameters, initOverrides);
+    async updateEducation(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<EducationEntity> {
+        const response = await this.updateEducationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

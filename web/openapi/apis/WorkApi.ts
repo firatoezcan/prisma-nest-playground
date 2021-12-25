@@ -18,6 +18,9 @@ import {
     WorkCreateDto,
     WorkCreateDtoFromJSON,
     WorkCreateDtoToJSON,
+    WorkEntity,
+    WorkEntityFromJSON,
+    WorkEntityToJSON,
     WorkUpdateDto,
     WorkUpdateDtoFromJSON,
     WorkUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class WorkApi extends runtime.BaseAPI {
 
     /**
      */
-    async createWorkRaw(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createWorkRaw(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkEntity>> {
         if (requestParameters.workCreateDto === null || requestParameters.workCreateDto === undefined) {
             throw new runtime.RequiredError('workCreateDto','Required parameter requestParameters.workCreateDto was null or undefined when calling createWork.');
         }
@@ -66,18 +69,19 @@ export class WorkApi extends runtime.BaseAPI {
             body: WorkCreateDtoToJSON(requestParameters.workCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createWork(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createWorkRaw(requestParameters, initOverrides);
+    async createWork(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<WorkEntity> {
+        const response = await this.createWorkRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteWorkRaw(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteWorkRaw(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteWork.');
         }
@@ -93,18 +97,19 @@ export class WorkApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteWork(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteWorkRaw(requestParameters, initOverrides);
+    async deleteWork(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<WorkEntity> {
+        const response = await this.deleteWorkRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyWorkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyWorkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<WorkEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class WorkApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(WorkEntityFromJSON));
     }
 
     /**
      */
-    async findManyWork(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyWorkRaw(initOverrides);
+    async findManyWork(initOverrides?: RequestInit): Promise<Array<WorkEntity>> {
+        const response = await this.findManyWorkRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneWorkRaw(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneWorkRaw(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneWork.');
         }
@@ -143,18 +149,19 @@ export class WorkApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneWork(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneWorkRaw(requestParameters, initOverrides);
+    async findOneWork(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<WorkEntity> {
+        const response = await this.findOneWorkRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateWorkRaw(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateWorkRaw(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWork.');
         }
@@ -177,13 +184,14 @@ export class WorkApi extends runtime.BaseAPI {
             body: WorkUpdateDtoToJSON(requestParameters.workUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateWork(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateWorkRaw(requestParameters, initOverrides);
+    async updateWork(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<WorkEntity> {
+        const response = await this.updateWorkRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

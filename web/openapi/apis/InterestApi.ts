@@ -18,6 +18,9 @@ import {
     InterestCreateDto,
     InterestCreateDtoFromJSON,
     InterestCreateDtoToJSON,
+    InterestEntity,
+    InterestEntityFromJSON,
+    InterestEntityToJSON,
     InterestUpdateDto,
     InterestUpdateDtoFromJSON,
     InterestUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class InterestApi extends runtime.BaseAPI {
 
     /**
      */
-    async createInterestRaw(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createInterestRaw(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InterestEntity>> {
         if (requestParameters.interestCreateDto === null || requestParameters.interestCreateDto === undefined) {
             throw new runtime.RequiredError('interestCreateDto','Required parameter requestParameters.interestCreateDto was null or undefined when calling createInterest.');
         }
@@ -66,18 +69,19 @@ export class InterestApi extends runtime.BaseAPI {
             body: InterestCreateDtoToJSON(requestParameters.interestCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterestEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createInterest(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createInterestRaw(requestParameters, initOverrides);
+    async createInterest(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<InterestEntity> {
+        const response = await this.createInterestRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteInterestRaw(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteInterestRaw(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InterestEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteInterest.');
         }
@@ -93,18 +97,19 @@ export class InterestApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterestEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteInterest(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteInterestRaw(requestParameters, initOverrides);
+    async deleteInterest(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<InterestEntity> {
+        const response = await this.deleteInterestRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyInterestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyInterestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InterestEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class InterestApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(InterestEntityFromJSON));
     }
 
     /**
      */
-    async findManyInterest(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyInterestRaw(initOverrides);
+    async findManyInterest(initOverrides?: RequestInit): Promise<Array<InterestEntity>> {
+        const response = await this.findManyInterestRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneInterestRaw(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneInterestRaw(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InterestEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneInterest.');
         }
@@ -143,18 +149,19 @@ export class InterestApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterestEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneInterest(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneInterestRaw(requestParameters, initOverrides);
+    async findOneInterest(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<InterestEntity> {
+        const response = await this.findOneInterestRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateInterestRaw(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateInterestRaw(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InterestEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateInterest.');
         }
@@ -177,13 +184,14 @@ export class InterestApi extends runtime.BaseAPI {
             body: InterestUpdateDtoToJSON(requestParameters.interestUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterestEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateInterest(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateInterestRaw(requestParameters, initOverrides);
+    async updateInterest(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<InterestEntity> {
+        const response = await this.updateInterestRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

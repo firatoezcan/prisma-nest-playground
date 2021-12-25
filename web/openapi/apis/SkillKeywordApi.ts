@@ -18,6 +18,9 @@ import {
     SkillKeywordCreateDto,
     SkillKeywordCreateDtoFromJSON,
     SkillKeywordCreateDtoToJSON,
+    SkillKeywordEntity,
+    SkillKeywordEntityFromJSON,
+    SkillKeywordEntityToJSON,
 } from '../models';
 
 export interface CreateSkillKeywordRequest {
@@ -44,7 +47,7 @@ export class SkillKeywordApi extends runtime.BaseAPI {
 
     /**
      */
-    async createSkillKeywordRaw(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createSkillKeywordRaw(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillKeywordEntity>> {
         if (requestParameters.skillKeywordCreateDto === null || requestParameters.skillKeywordCreateDto === undefined) {
             throw new runtime.RequiredError('skillKeywordCreateDto','Required parameter requestParameters.skillKeywordCreateDto was null or undefined when calling createSkillKeyword.');
         }
@@ -63,18 +66,19 @@ export class SkillKeywordApi extends runtime.BaseAPI {
             body: SkillKeywordCreateDtoToJSON(requestParameters.skillKeywordCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillKeywordEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createSkillKeyword(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createSkillKeywordRaw(requestParameters, initOverrides);
+    async createSkillKeyword(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<SkillKeywordEntity> {
+        const response = await this.createSkillKeywordRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteSkillKeywordRaw(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteSkillKeywordRaw(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillKeywordEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteSkillKeyword.');
         }
@@ -90,18 +94,19 @@ export class SkillKeywordApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillKeywordEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteSkillKeyword(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteSkillKeywordRaw(requestParameters, initOverrides);
+    async deleteSkillKeyword(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<SkillKeywordEntity> {
+        const response = await this.deleteSkillKeywordRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManySkillKeywordRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManySkillKeywordRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<SkillKeywordEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -113,18 +118,19 @@ export class SkillKeywordApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(SkillKeywordEntityFromJSON));
     }
 
     /**
      */
-    async findManySkillKeyword(initOverrides?: RequestInit): Promise<void> {
-        await this.findManySkillKeywordRaw(initOverrides);
+    async findManySkillKeyword(initOverrides?: RequestInit): Promise<Array<SkillKeywordEntity>> {
+        const response = await this.findManySkillKeywordRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneSkillKeywordRaw(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneSkillKeywordRaw(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillKeywordEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneSkillKeyword.');
         }
@@ -140,18 +146,19 @@ export class SkillKeywordApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillKeywordEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneSkillKeyword(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneSkillKeywordRaw(requestParameters, initOverrides);
+    async findOneSkillKeyword(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<SkillKeywordEntity> {
+        const response = await this.findOneSkillKeywordRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateSkillKeywordRaw(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateSkillKeywordRaw(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillKeywordEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSkillKeyword.');
         }
@@ -174,13 +181,14 @@ export class SkillKeywordApi extends runtime.BaseAPI {
             body: requestParameters.body as any,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillKeywordEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateSkillKeyword(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateSkillKeywordRaw(requestParameters, initOverrides);
+    async updateSkillKeyword(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<SkillKeywordEntity> {
+        const response = await this.updateSkillKeywordRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

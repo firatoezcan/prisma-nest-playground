@@ -18,6 +18,9 @@ import {
     AwardCreateDto,
     AwardCreateDtoFromJSON,
     AwardCreateDtoToJSON,
+    AwardEntity,
+    AwardEntityFromJSON,
+    AwardEntityToJSON,
     AwardUpdateDto,
     AwardUpdateDtoFromJSON,
     AwardUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class AwardApi extends runtime.BaseAPI {
 
     /**
      */
-    async createAwardRaw(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createAwardRaw(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AwardEntity>> {
         if (requestParameters.awardCreateDto === null || requestParameters.awardCreateDto === undefined) {
             throw new runtime.RequiredError('awardCreateDto','Required parameter requestParameters.awardCreateDto was null or undefined when calling createAward.');
         }
@@ -66,18 +69,19 @@ export class AwardApi extends runtime.BaseAPI {
             body: AwardCreateDtoToJSON(requestParameters.awardCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AwardEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createAward(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createAwardRaw(requestParameters, initOverrides);
+    async createAward(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<AwardEntity> {
+        const response = await this.createAwardRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteAwardRaw(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteAwardRaw(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AwardEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteAward.');
         }
@@ -93,18 +97,19 @@ export class AwardApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AwardEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteAward(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteAwardRaw(requestParameters, initOverrides);
+    async deleteAward(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<AwardEntity> {
+        const response = await this.deleteAwardRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyAwardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyAwardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<AwardEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class AwardApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AwardEntityFromJSON));
     }
 
     /**
      */
-    async findManyAward(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyAwardRaw(initOverrides);
+    async findManyAward(initOverrides?: RequestInit): Promise<Array<AwardEntity>> {
+        const response = await this.findManyAwardRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneAwardRaw(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneAwardRaw(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AwardEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneAward.');
         }
@@ -143,18 +149,19 @@ export class AwardApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AwardEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneAward(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneAwardRaw(requestParameters, initOverrides);
+    async findOneAward(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<AwardEntity> {
+        const response = await this.findOneAwardRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateAwardRaw(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateAwardRaw(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AwardEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateAward.');
         }
@@ -177,13 +184,14 @@ export class AwardApi extends runtime.BaseAPI {
             body: AwardUpdateDtoToJSON(requestParameters.awardUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AwardEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateAward(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateAwardRaw(requestParameters, initOverrides);
+    async updateAward(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<AwardEntity> {
+        const response = await this.updateAwardRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

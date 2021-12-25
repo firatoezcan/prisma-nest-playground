@@ -18,6 +18,9 @@ import {
     SkillCreateDto,
     SkillCreateDtoFromJSON,
     SkillCreateDtoToJSON,
+    SkillEntity,
+    SkillEntityFromJSON,
+    SkillEntityToJSON,
     SkillUpdateDto,
     SkillUpdateDtoFromJSON,
     SkillUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class SkillApi extends runtime.BaseAPI {
 
     /**
      */
-    async createSkillRaw(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createSkillRaw(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillEntity>> {
         if (requestParameters.skillCreateDto === null || requestParameters.skillCreateDto === undefined) {
             throw new runtime.RequiredError('skillCreateDto','Required parameter requestParameters.skillCreateDto was null or undefined when calling createSkill.');
         }
@@ -66,18 +69,19 @@ export class SkillApi extends runtime.BaseAPI {
             body: SkillCreateDtoToJSON(requestParameters.skillCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createSkill(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createSkillRaw(requestParameters, initOverrides);
+    async createSkill(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<SkillEntity> {
+        const response = await this.createSkillRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteSkillRaw(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteSkillRaw(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteSkill.');
         }
@@ -93,18 +97,19 @@ export class SkillApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteSkill(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteSkillRaw(requestParameters, initOverrides);
+    async deleteSkill(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<SkillEntity> {
+        const response = await this.deleteSkillRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManySkillRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManySkillRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<SkillEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class SkillApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(SkillEntityFromJSON));
     }
 
     /**
      */
-    async findManySkill(initOverrides?: RequestInit): Promise<void> {
-        await this.findManySkillRaw(initOverrides);
+    async findManySkill(initOverrides?: RequestInit): Promise<Array<SkillEntity>> {
+        const response = await this.findManySkillRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneSkillRaw(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneSkillRaw(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneSkill.');
         }
@@ -143,18 +149,19 @@ export class SkillApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneSkill(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneSkillRaw(requestParameters, initOverrides);
+    async findOneSkill(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<SkillEntity> {
+        const response = await this.findOneSkillRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateSkillRaw(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateSkillRaw(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSkill.');
         }
@@ -177,13 +184,14 @@ export class SkillApi extends runtime.BaseAPI {
             body: SkillUpdateDtoToJSON(requestParameters.skillUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateSkill(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateSkillRaw(requestParameters, initOverrides);
+    async updateSkill(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<SkillEntity> {
+        const response = await this.updateSkillRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

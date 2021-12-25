@@ -18,6 +18,9 @@ import {
     LanguageCreateDto,
     LanguageCreateDtoFromJSON,
     LanguageCreateDtoToJSON,
+    LanguageEntity,
+    LanguageEntityFromJSON,
+    LanguageEntityToJSON,
     LanguageUpdateDto,
     LanguageUpdateDtoFromJSON,
     LanguageUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class LanguageApi extends runtime.BaseAPI {
 
     /**
      */
-    async createLanguageRaw(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createLanguageRaw(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LanguageEntity>> {
         if (requestParameters.languageCreateDto === null || requestParameters.languageCreateDto === undefined) {
             throw new runtime.RequiredError('languageCreateDto','Required parameter requestParameters.languageCreateDto was null or undefined when calling createLanguage.');
         }
@@ -66,18 +69,19 @@ export class LanguageApi extends runtime.BaseAPI {
             body: LanguageCreateDtoToJSON(requestParameters.languageCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LanguageEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createLanguage(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createLanguageRaw(requestParameters, initOverrides);
+    async createLanguage(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<LanguageEntity> {
+        const response = await this.createLanguageRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteLanguageRaw(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteLanguageRaw(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LanguageEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteLanguage.');
         }
@@ -93,18 +97,19 @@ export class LanguageApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LanguageEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteLanguage(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteLanguageRaw(requestParameters, initOverrides);
+    async deleteLanguage(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<LanguageEntity> {
+        const response = await this.deleteLanguageRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyLanguageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyLanguageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<LanguageEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class LanguageApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LanguageEntityFromJSON));
     }
 
     /**
      */
-    async findManyLanguage(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyLanguageRaw(initOverrides);
+    async findManyLanguage(initOverrides?: RequestInit): Promise<Array<LanguageEntity>> {
+        const response = await this.findManyLanguageRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneLanguageRaw(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneLanguageRaw(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LanguageEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneLanguage.');
         }
@@ -143,18 +149,19 @@ export class LanguageApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LanguageEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneLanguage(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneLanguageRaw(requestParameters, initOverrides);
+    async findOneLanguage(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<LanguageEntity> {
+        const response = await this.findOneLanguageRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateLanguageRaw(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateLanguageRaw(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LanguageEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLanguage.');
         }
@@ -177,13 +184,14 @@ export class LanguageApi extends runtime.BaseAPI {
             body: LanguageUpdateDtoToJSON(requestParameters.languageUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LanguageEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateLanguage(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateLanguageRaw(requestParameters, initOverrides);
+    async updateLanguage(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<LanguageEntity> {
+        const response = await this.updateLanguageRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

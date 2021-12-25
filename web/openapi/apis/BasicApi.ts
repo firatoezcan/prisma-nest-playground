@@ -18,6 +18,9 @@ import {
     BasicCreateDto,
     BasicCreateDtoFromJSON,
     BasicCreateDtoToJSON,
+    BasicEntity,
+    BasicEntityFromJSON,
+    BasicEntityToJSON,
     BasicUpdateDto,
     BasicUpdateDtoFromJSON,
     BasicUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class BasicApi extends runtime.BaseAPI {
 
     /**
      */
-    async createBasicRaw(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createBasicRaw(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BasicEntity>> {
         if (requestParameters.basicCreateDto === null || requestParameters.basicCreateDto === undefined) {
             throw new runtime.RequiredError('basicCreateDto','Required parameter requestParameters.basicCreateDto was null or undefined when calling createBasic.');
         }
@@ -66,18 +69,19 @@ export class BasicApi extends runtime.BaseAPI {
             body: BasicCreateDtoToJSON(requestParameters.basicCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BasicEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createBasic(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createBasicRaw(requestParameters, initOverrides);
+    async createBasic(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<BasicEntity> {
+        const response = await this.createBasicRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteBasicRaw(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteBasicRaw(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BasicEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteBasic.');
         }
@@ -93,18 +97,19 @@ export class BasicApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BasicEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteBasic(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteBasicRaw(requestParameters, initOverrides);
+    async deleteBasic(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<BasicEntity> {
+        const response = await this.deleteBasicRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyBasicRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyBasicRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<BasicEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class BasicApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BasicEntityFromJSON));
     }
 
     /**
      */
-    async findManyBasic(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyBasicRaw(initOverrides);
+    async findManyBasic(initOverrides?: RequestInit): Promise<Array<BasicEntity>> {
+        const response = await this.findManyBasicRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneBasicRaw(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneBasicRaw(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BasicEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneBasic.');
         }
@@ -143,18 +149,19 @@ export class BasicApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BasicEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneBasic(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneBasicRaw(requestParameters, initOverrides);
+    async findOneBasic(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<BasicEntity> {
+        const response = await this.findOneBasicRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateBasicRaw(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateBasicRaw(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BasicEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBasic.');
         }
@@ -177,13 +184,14 @@ export class BasicApi extends runtime.BaseAPI {
             body: BasicUpdateDtoToJSON(requestParameters.basicUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BasicEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateBasic(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateBasicRaw(requestParameters, initOverrides);
+    async updateBasic(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<BasicEntity> {
+        const response = await this.updateBasicRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

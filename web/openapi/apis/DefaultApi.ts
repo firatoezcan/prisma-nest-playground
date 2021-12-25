@@ -14,6 +14,11 @@
 
 
 import * as runtime from '../runtime';
+import {
+    DMMF,
+    DMMFFromJSON,
+    DMMFToJSON,
+} from '../models';
 
 /**
  * 
@@ -22,7 +27,7 @@ export class DefaultApi extends runtime.BaseAPI {
 
     /**
      */
-    async dmmfAppControllerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<object>> {
+    async dmmfAppControllerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<DMMF>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -34,12 +39,12 @@ export class DefaultApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse<any>(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => DMMFFromJSON(jsonValue));
     }
 
     /**
      */
-    async dmmfAppController(initOverrides?: RequestInit): Promise<object> {
+    async dmmfAppController(initOverrides?: RequestInit): Promise<DMMF> {
         const response = await this.dmmfAppControllerRaw(initOverrides);
         return await response.value();
     }
@@ -65,6 +70,30 @@ export class DefaultApi extends runtime.BaseAPI {
      */
     async healthAppController(initOverrides?: RequestInit): Promise<string> {
         const response = await this.healthAppControllerRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async worldAppControllerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<object>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/world`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse<any>(response);
+    }
+
+    /**
+     */
+    async worldAppController(initOverrides?: RequestInit): Promise<object> {
+        const response = await this.worldAppControllerRaw(initOverrides);
         return await response.value();
     }
 

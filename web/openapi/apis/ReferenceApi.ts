@@ -18,6 +18,9 @@ import {
     ReferenceCreateDto,
     ReferenceCreateDtoFromJSON,
     ReferenceCreateDtoToJSON,
+    ReferenceEntity,
+    ReferenceEntityFromJSON,
+    ReferenceEntityToJSON,
     ReferenceUpdateDto,
     ReferenceUpdateDtoFromJSON,
     ReferenceUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class ReferenceApi extends runtime.BaseAPI {
 
     /**
      */
-    async createReferenceRaw(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createReferenceRaw(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ReferenceEntity>> {
         if (requestParameters.referenceCreateDto === null || requestParameters.referenceCreateDto === undefined) {
             throw new runtime.RequiredError('referenceCreateDto','Required parameter requestParameters.referenceCreateDto was null or undefined when calling createReference.');
         }
@@ -66,18 +69,19 @@ export class ReferenceApi extends runtime.BaseAPI {
             body: ReferenceCreateDtoToJSON(requestParameters.referenceCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReferenceEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createReference(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createReferenceRaw(requestParameters, initOverrides);
+    async createReference(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<ReferenceEntity> {
+        const response = await this.createReferenceRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteReferenceRaw(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteReferenceRaw(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ReferenceEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteReference.');
         }
@@ -93,18 +97,19 @@ export class ReferenceApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReferenceEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteReference(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteReferenceRaw(requestParameters, initOverrides);
+    async deleteReference(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<ReferenceEntity> {
+        const response = await this.deleteReferenceRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyReferenceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyReferenceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<ReferenceEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class ReferenceApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ReferenceEntityFromJSON));
     }
 
     /**
      */
-    async findManyReference(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyReferenceRaw(initOverrides);
+    async findManyReference(initOverrides?: RequestInit): Promise<Array<ReferenceEntity>> {
+        const response = await this.findManyReferenceRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneReferenceRaw(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneReferenceRaw(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ReferenceEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneReference.');
         }
@@ -143,18 +149,19 @@ export class ReferenceApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReferenceEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneReference(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneReferenceRaw(requestParameters, initOverrides);
+    async findOneReference(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<ReferenceEntity> {
+        const response = await this.findOneReferenceRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateReferenceRaw(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateReferenceRaw(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ReferenceEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateReference.');
         }
@@ -177,13 +184,14 @@ export class ReferenceApi extends runtime.BaseAPI {
             body: ReferenceUpdateDtoToJSON(requestParameters.referenceUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReferenceEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateReference(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateReferenceRaw(requestParameters, initOverrides);
+    async updateReference(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<ReferenceEntity> {
+        const response = await this.updateReferenceRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

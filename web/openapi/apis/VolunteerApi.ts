@@ -18,6 +18,9 @@ import {
     VolunteerCreateDto,
     VolunteerCreateDtoFromJSON,
     VolunteerCreateDtoToJSON,
+    VolunteerEntity,
+    VolunteerEntityFromJSON,
+    VolunteerEntityToJSON,
     VolunteerUpdateDto,
     VolunteerUpdateDtoFromJSON,
     VolunteerUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class VolunteerApi extends runtime.BaseAPI {
 
     /**
      */
-    async createVolunteerRaw(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createVolunteerRaw(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<VolunteerEntity>> {
         if (requestParameters.volunteerCreateDto === null || requestParameters.volunteerCreateDto === undefined) {
             throw new runtime.RequiredError('volunteerCreateDto','Required parameter requestParameters.volunteerCreateDto was null or undefined when calling createVolunteer.');
         }
@@ -66,18 +69,19 @@ export class VolunteerApi extends runtime.BaseAPI {
             body: VolunteerCreateDtoToJSON(requestParameters.volunteerCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VolunteerEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createVolunteer(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createVolunteerRaw(requestParameters, initOverrides);
+    async createVolunteer(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<VolunteerEntity> {
+        const response = await this.createVolunteerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteVolunteerRaw(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteVolunteerRaw(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<VolunteerEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVolunteer.');
         }
@@ -93,18 +97,19 @@ export class VolunteerApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VolunteerEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteVolunteer(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteVolunteerRaw(requestParameters, initOverrides);
+    async deleteVolunteer(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<VolunteerEntity> {
+        const response = await this.deleteVolunteerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyVolunteerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyVolunteerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<VolunteerEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class VolunteerApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(VolunteerEntityFromJSON));
     }
 
     /**
      */
-    async findManyVolunteer(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyVolunteerRaw(initOverrides);
+    async findManyVolunteer(initOverrides?: RequestInit): Promise<Array<VolunteerEntity>> {
+        const response = await this.findManyVolunteerRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneVolunteerRaw(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneVolunteerRaw(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<VolunteerEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneVolunteer.');
         }
@@ -143,18 +149,19 @@ export class VolunteerApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VolunteerEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneVolunteer(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneVolunteerRaw(requestParameters, initOverrides);
+    async findOneVolunteer(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<VolunteerEntity> {
+        const response = await this.findOneVolunteerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateVolunteerRaw(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateVolunteerRaw(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<VolunteerEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateVolunteer.');
         }
@@ -177,13 +184,14 @@ export class VolunteerApi extends runtime.BaseAPI {
             body: VolunteerUpdateDtoToJSON(requestParameters.volunteerUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VolunteerEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateVolunteer(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateVolunteerRaw(requestParameters, initOverrides);
+    async updateVolunteer(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<VolunteerEntity> {
+        const response = await this.updateVolunteerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

@@ -18,6 +18,9 @@ import {
     LocationCreateDto,
     LocationCreateDtoFromJSON,
     LocationCreateDtoToJSON,
+    LocationEntity,
+    LocationEntityFromJSON,
+    LocationEntityToJSON,
     LocationUpdateDto,
     LocationUpdateDtoFromJSON,
     LocationUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class LocationApi extends runtime.BaseAPI {
 
     /**
      */
-    async createLocationRaw(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createLocationRaw(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LocationEntity>> {
         if (requestParameters.locationCreateDto === null || requestParameters.locationCreateDto === undefined) {
             throw new runtime.RequiredError('locationCreateDto','Required parameter requestParameters.locationCreateDto was null or undefined when calling createLocation.');
         }
@@ -66,18 +69,19 @@ export class LocationApi extends runtime.BaseAPI {
             body: LocationCreateDtoToJSON(requestParameters.locationCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createLocation(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createLocationRaw(requestParameters, initOverrides);
+    async createLocation(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<LocationEntity> {
+        const response = await this.createLocationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteLocationRaw(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteLocationRaw(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LocationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteLocation.');
         }
@@ -93,18 +97,19 @@ export class LocationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteLocation(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteLocationRaw(requestParameters, initOverrides);
+    async deleteLocation(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<LocationEntity> {
+        const response = await this.deleteLocationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyLocationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyLocationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<LocationEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class LocationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LocationEntityFromJSON));
     }
 
     /**
      */
-    async findManyLocation(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyLocationRaw(initOverrides);
+    async findManyLocation(initOverrides?: RequestInit): Promise<Array<LocationEntity>> {
+        const response = await this.findManyLocationRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneLocationRaw(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneLocationRaw(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LocationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneLocation.');
         }
@@ -143,18 +149,19 @@ export class LocationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneLocation(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneLocationRaw(requestParameters, initOverrides);
+    async findOneLocation(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<LocationEntity> {
+        const response = await this.findOneLocationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateLocationRaw(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateLocationRaw(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LocationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLocation.');
         }
@@ -177,13 +184,14 @@ export class LocationApi extends runtime.BaseAPI {
             body: LocationUpdateDtoToJSON(requestParameters.locationUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateLocation(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateLocationRaw(requestParameters, initOverrides);
+    async updateLocation(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<LocationEntity> {
+        const response = await this.updateLocationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

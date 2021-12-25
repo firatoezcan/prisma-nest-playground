@@ -18,84 +18,129 @@ import {
     AwardCreateDto,
     AwardCreateDtoFromJSON,
     AwardCreateDtoToJSON,
+    AwardEntity,
+    AwardEntityFromJSON,
+    AwardEntityToJSON,
     AwardUpdateDto,
     AwardUpdateDtoFromJSON,
     AwardUpdateDtoToJSON,
     BasicCreateDto,
     BasicCreateDtoFromJSON,
     BasicCreateDtoToJSON,
+    BasicEntity,
+    BasicEntityFromJSON,
+    BasicEntityToJSON,
     BasicUpdateDto,
     BasicUpdateDtoFromJSON,
     BasicUpdateDtoToJSON,
     EducationCreateDto,
     EducationCreateDtoFromJSON,
     EducationCreateDtoToJSON,
+    EducationEntity,
+    EducationEntityFromJSON,
+    EducationEntityToJSON,
     EducationUpdateDto,
     EducationUpdateDtoFromJSON,
     EducationUpdateDtoToJSON,
     InterestCreateDto,
     InterestCreateDtoFromJSON,
     InterestCreateDtoToJSON,
+    InterestEntity,
+    InterestEntityFromJSON,
+    InterestEntityToJSON,
     InterestUpdateDto,
     InterestUpdateDtoFromJSON,
     InterestUpdateDtoToJSON,
     LanguageCreateDto,
     LanguageCreateDtoFromJSON,
     LanguageCreateDtoToJSON,
+    LanguageEntity,
+    LanguageEntityFromJSON,
+    LanguageEntityToJSON,
     LanguageUpdateDto,
     LanguageUpdateDtoFromJSON,
     LanguageUpdateDtoToJSON,
     LocationCreateDto,
     LocationCreateDtoFromJSON,
     LocationCreateDtoToJSON,
+    LocationEntity,
+    LocationEntityFromJSON,
+    LocationEntityToJSON,
     LocationUpdateDto,
     LocationUpdateDtoFromJSON,
     LocationUpdateDtoToJSON,
     ProfileCreateDto,
     ProfileCreateDtoFromJSON,
     ProfileCreateDtoToJSON,
+    ProfileEntity,
+    ProfileEntityFromJSON,
+    ProfileEntityToJSON,
     ProfileUpdateDto,
     ProfileUpdateDtoFromJSON,
     ProfileUpdateDtoToJSON,
     ProjectCreateDto,
     ProjectCreateDtoFromJSON,
     ProjectCreateDtoToJSON,
+    ProjectEntity,
+    ProjectEntityFromJSON,
+    ProjectEntityToJSON,
     ProjectUpdateDto,
     ProjectUpdateDtoFromJSON,
     ProjectUpdateDtoToJSON,
     PublicationCreateDto,
     PublicationCreateDtoFromJSON,
     PublicationCreateDtoToJSON,
+    PublicationEntity,
+    PublicationEntityFromJSON,
+    PublicationEntityToJSON,
     PublicationUpdateDto,
     PublicationUpdateDtoFromJSON,
     PublicationUpdateDtoToJSON,
     ReferenceCreateDto,
     ReferenceCreateDtoFromJSON,
     ReferenceCreateDtoToJSON,
+    ReferenceEntity,
+    ReferenceEntityFromJSON,
+    ReferenceEntityToJSON,
     ReferenceUpdateDto,
     ReferenceUpdateDtoFromJSON,
     ReferenceUpdateDtoToJSON,
     SkillCreateDto,
     SkillCreateDtoFromJSON,
     SkillCreateDtoToJSON,
+    SkillEntity,
+    SkillEntityFromJSON,
+    SkillEntityToJSON,
     SkillKeywordCreateDto,
     SkillKeywordCreateDtoFromJSON,
     SkillKeywordCreateDtoToJSON,
+    SkillKeywordEntity,
+    SkillKeywordEntityFromJSON,
+    SkillKeywordEntityToJSON,
     SkillUpdateDto,
     SkillUpdateDtoFromJSON,
     SkillUpdateDtoToJSON,
     UserCreateDto,
     UserCreateDtoFromJSON,
     UserCreateDtoToJSON,
+    UserEntity,
+    UserEntityFromJSON,
+    UserEntityToJSON,
     VolunteerCreateDto,
     VolunteerCreateDtoFromJSON,
     VolunteerCreateDtoToJSON,
+    VolunteerEntity,
+    VolunteerEntityFromJSON,
+    VolunteerEntityToJSON,
     VolunteerUpdateDto,
     VolunteerUpdateDtoFromJSON,
     VolunteerUpdateDtoToJSON,
     WorkCreateDto,
     WorkCreateDtoFromJSON,
     WorkCreateDtoToJSON,
+    WorkEntity,
+    WorkEntityFromJSON,
+    WorkEntityToJSON,
     WorkUpdateDto,
     WorkUpdateDtoFromJSON,
     WorkUpdateDtoToJSON,
@@ -363,7 +408,7 @@ export class PrismaApi extends runtime.BaseAPI {
 
     /**
      */
-    async createAwardRaw(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createAwardRaw(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AwardEntity>> {
         if (requestParameters.awardCreateDto === null || requestParameters.awardCreateDto === undefined) {
             throw new runtime.RequiredError('awardCreateDto','Required parameter requestParameters.awardCreateDto was null or undefined when calling createAward.');
         }
@@ -382,18 +427,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: AwardCreateDtoToJSON(requestParameters.awardCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AwardEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createAward(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createAwardRaw(requestParameters, initOverrides);
+    async createAward(requestParameters: CreateAwardRequest, initOverrides?: RequestInit): Promise<AwardEntity> {
+        const response = await this.createAwardRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createBasicRaw(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createBasicRaw(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BasicEntity>> {
         if (requestParameters.basicCreateDto === null || requestParameters.basicCreateDto === undefined) {
             throw new runtime.RequiredError('basicCreateDto','Required parameter requestParameters.basicCreateDto was null or undefined when calling createBasic.');
         }
@@ -412,18 +458,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: BasicCreateDtoToJSON(requestParameters.basicCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BasicEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createBasic(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createBasicRaw(requestParameters, initOverrides);
+    async createBasic(requestParameters: CreateBasicRequest, initOverrides?: RequestInit): Promise<BasicEntity> {
+        const response = await this.createBasicRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createEducationRaw(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createEducationRaw(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EducationEntity>> {
         if (requestParameters.educationCreateDto === null || requestParameters.educationCreateDto === undefined) {
             throw new runtime.RequiredError('educationCreateDto','Required parameter requestParameters.educationCreateDto was null or undefined when calling createEducation.');
         }
@@ -442,18 +489,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: EducationCreateDtoToJSON(requestParameters.educationCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => EducationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createEducation(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createEducationRaw(requestParameters, initOverrides);
+    async createEducation(requestParameters: CreateEducationRequest, initOverrides?: RequestInit): Promise<EducationEntity> {
+        const response = await this.createEducationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createInterestRaw(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createInterestRaw(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InterestEntity>> {
         if (requestParameters.interestCreateDto === null || requestParameters.interestCreateDto === undefined) {
             throw new runtime.RequiredError('interestCreateDto','Required parameter requestParameters.interestCreateDto was null or undefined when calling createInterest.');
         }
@@ -472,18 +520,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: InterestCreateDtoToJSON(requestParameters.interestCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterestEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createInterest(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createInterestRaw(requestParameters, initOverrides);
+    async createInterest(requestParameters: CreateInterestRequest, initOverrides?: RequestInit): Promise<InterestEntity> {
+        const response = await this.createInterestRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createLanguageRaw(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createLanguageRaw(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LanguageEntity>> {
         if (requestParameters.languageCreateDto === null || requestParameters.languageCreateDto === undefined) {
             throw new runtime.RequiredError('languageCreateDto','Required parameter requestParameters.languageCreateDto was null or undefined when calling createLanguage.');
         }
@@ -502,18 +551,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: LanguageCreateDtoToJSON(requestParameters.languageCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LanguageEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createLanguage(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createLanguageRaw(requestParameters, initOverrides);
+    async createLanguage(requestParameters: CreateLanguageRequest, initOverrides?: RequestInit): Promise<LanguageEntity> {
+        const response = await this.createLanguageRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createLocationRaw(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createLocationRaw(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LocationEntity>> {
         if (requestParameters.locationCreateDto === null || requestParameters.locationCreateDto === undefined) {
             throw new runtime.RequiredError('locationCreateDto','Required parameter requestParameters.locationCreateDto was null or undefined when calling createLocation.');
         }
@@ -532,18 +582,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: LocationCreateDtoToJSON(requestParameters.locationCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createLocation(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createLocationRaw(requestParameters, initOverrides);
+    async createLocation(requestParameters: CreateLocationRequest, initOverrides?: RequestInit): Promise<LocationEntity> {
+        const response = await this.createLocationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createProfileRaw(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createProfileRaw(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProfileEntity>> {
         if (requestParameters.profileCreateDto === null || requestParameters.profileCreateDto === undefined) {
             throw new runtime.RequiredError('profileCreateDto','Required parameter requestParameters.profileCreateDto was null or undefined when calling createProfile.');
         }
@@ -562,18 +613,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: ProfileCreateDtoToJSON(requestParameters.profileCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createProfile(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createProfileRaw(requestParameters, initOverrides);
+    async createProfile(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<ProfileEntity> {
+        const response = await this.createProfileRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createProjectRaw(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createProjectRaw(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectEntity>> {
         if (requestParameters.projectCreateDto === null || requestParameters.projectCreateDto === undefined) {
             throw new runtime.RequiredError('projectCreateDto','Required parameter requestParameters.projectCreateDto was null or undefined when calling createProject.');
         }
@@ -592,18 +644,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: ProjectCreateDtoToJSON(requestParameters.projectCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createProject(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createProjectRaw(requestParameters, initOverrides);
+    async createProject(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<ProjectEntity> {
+        const response = await this.createProjectRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createPublicationRaw(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createPublicationRaw(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PublicationEntity>> {
         if (requestParameters.publicationCreateDto === null || requestParameters.publicationCreateDto === undefined) {
             throw new runtime.RequiredError('publicationCreateDto','Required parameter requestParameters.publicationCreateDto was null or undefined when calling createPublication.');
         }
@@ -622,18 +675,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: PublicationCreateDtoToJSON(requestParameters.publicationCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createPublication(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createPublicationRaw(requestParameters, initOverrides);
+    async createPublication(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<PublicationEntity> {
+        const response = await this.createPublicationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createReferenceRaw(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createReferenceRaw(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ReferenceEntity>> {
         if (requestParameters.referenceCreateDto === null || requestParameters.referenceCreateDto === undefined) {
             throw new runtime.RequiredError('referenceCreateDto','Required parameter requestParameters.referenceCreateDto was null or undefined when calling createReference.');
         }
@@ -652,18 +706,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: ReferenceCreateDtoToJSON(requestParameters.referenceCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReferenceEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createReference(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createReferenceRaw(requestParameters, initOverrides);
+    async createReference(requestParameters: CreateReferenceRequest, initOverrides?: RequestInit): Promise<ReferenceEntity> {
+        const response = await this.createReferenceRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createSkillRaw(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createSkillRaw(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillEntity>> {
         if (requestParameters.skillCreateDto === null || requestParameters.skillCreateDto === undefined) {
             throw new runtime.RequiredError('skillCreateDto','Required parameter requestParameters.skillCreateDto was null or undefined when calling createSkill.');
         }
@@ -682,18 +737,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: SkillCreateDtoToJSON(requestParameters.skillCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createSkill(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createSkillRaw(requestParameters, initOverrides);
+    async createSkill(requestParameters: CreateSkillRequest, initOverrides?: RequestInit): Promise<SkillEntity> {
+        const response = await this.createSkillRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createSkillKeywordRaw(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createSkillKeywordRaw(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillKeywordEntity>> {
         if (requestParameters.skillKeywordCreateDto === null || requestParameters.skillKeywordCreateDto === undefined) {
             throw new runtime.RequiredError('skillKeywordCreateDto','Required parameter requestParameters.skillKeywordCreateDto was null or undefined when calling createSkillKeyword.');
         }
@@ -712,18 +768,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: SkillKeywordCreateDtoToJSON(requestParameters.skillKeywordCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillKeywordEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createSkillKeyword(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createSkillKeywordRaw(requestParameters, initOverrides);
+    async createSkillKeyword(requestParameters: CreateSkillKeywordRequest, initOverrides?: RequestInit): Promise<SkillKeywordEntity> {
+        const response = await this.createSkillKeywordRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createUserRaw(requestParameters: CreateUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createUserRaw(requestParameters: CreateUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UserEntity>> {
         if (requestParameters.userCreateDto === null || requestParameters.userCreateDto === undefined) {
             throw new runtime.RequiredError('userCreateDto','Required parameter requestParameters.userCreateDto was null or undefined when calling createUser.');
         }
@@ -742,18 +799,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: UserCreateDtoToJSON(requestParameters.userCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createUser(requestParameters: CreateUserRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createUserRaw(requestParameters, initOverrides);
+    async createUser(requestParameters: CreateUserRequest, initOverrides?: RequestInit): Promise<UserEntity> {
+        const response = await this.createUserRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createVolunteerRaw(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createVolunteerRaw(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<VolunteerEntity>> {
         if (requestParameters.volunteerCreateDto === null || requestParameters.volunteerCreateDto === undefined) {
             throw new runtime.RequiredError('volunteerCreateDto','Required parameter requestParameters.volunteerCreateDto was null or undefined when calling createVolunteer.');
         }
@@ -772,18 +830,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: VolunteerCreateDtoToJSON(requestParameters.volunteerCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VolunteerEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createVolunteer(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createVolunteerRaw(requestParameters, initOverrides);
+    async createVolunteer(requestParameters: CreateVolunteerRequest, initOverrides?: RequestInit): Promise<VolunteerEntity> {
+        const response = await this.createVolunteerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async createWorkRaw(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createWorkRaw(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkEntity>> {
         if (requestParameters.workCreateDto === null || requestParameters.workCreateDto === undefined) {
             throw new runtime.RequiredError('workCreateDto','Required parameter requestParameters.workCreateDto was null or undefined when calling createWork.');
         }
@@ -802,18 +861,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: WorkCreateDtoToJSON(requestParameters.workCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createWork(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createWorkRaw(requestParameters, initOverrides);
+    async createWork(requestParameters: CreateWorkRequest, initOverrides?: RequestInit): Promise<WorkEntity> {
+        const response = await this.createWorkRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteAwardRaw(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteAwardRaw(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AwardEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteAward.');
         }
@@ -829,18 +889,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AwardEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteAward(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteAwardRaw(requestParameters, initOverrides);
+    async deleteAward(requestParameters: DeleteAwardRequest, initOverrides?: RequestInit): Promise<AwardEntity> {
+        const response = await this.deleteAwardRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteBasicRaw(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteBasicRaw(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BasicEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteBasic.');
         }
@@ -856,18 +917,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BasicEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteBasic(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteBasicRaw(requestParameters, initOverrides);
+    async deleteBasic(requestParameters: DeleteBasicRequest, initOverrides?: RequestInit): Promise<BasicEntity> {
+        const response = await this.deleteBasicRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteEducationRaw(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteEducationRaw(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EducationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteEducation.');
         }
@@ -883,18 +945,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => EducationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteEducation(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteEducationRaw(requestParameters, initOverrides);
+    async deleteEducation(requestParameters: DeleteEducationRequest, initOverrides?: RequestInit): Promise<EducationEntity> {
+        const response = await this.deleteEducationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteInterestRaw(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteInterestRaw(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InterestEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteInterest.');
         }
@@ -910,18 +973,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterestEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteInterest(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteInterestRaw(requestParameters, initOverrides);
+    async deleteInterest(requestParameters: DeleteInterestRequest, initOverrides?: RequestInit): Promise<InterestEntity> {
+        const response = await this.deleteInterestRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteLanguageRaw(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteLanguageRaw(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LanguageEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteLanguage.');
         }
@@ -937,18 +1001,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LanguageEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteLanguage(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteLanguageRaw(requestParameters, initOverrides);
+    async deleteLanguage(requestParameters: DeleteLanguageRequest, initOverrides?: RequestInit): Promise<LanguageEntity> {
+        const response = await this.deleteLanguageRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteLocationRaw(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteLocationRaw(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LocationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteLocation.');
         }
@@ -964,18 +1029,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteLocation(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteLocationRaw(requestParameters, initOverrides);
+    async deleteLocation(requestParameters: DeleteLocationRequest, initOverrides?: RequestInit): Promise<LocationEntity> {
+        const response = await this.deleteLocationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteProfileRaw(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteProfileRaw(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProfileEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteProfile.');
         }
@@ -991,18 +1057,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteProfile(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteProfileRaw(requestParameters, initOverrides);
+    async deleteProfile(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<ProfileEntity> {
+        const response = await this.deleteProfileRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteProjectRaw(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteProjectRaw(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteProject.');
         }
@@ -1018,18 +1085,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteProject(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteProjectRaw(requestParameters, initOverrides);
+    async deleteProject(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<ProjectEntity> {
+        const response = await this.deleteProjectRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deletePublicationRaw(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deletePublicationRaw(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PublicationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deletePublication.');
         }
@@ -1045,18 +1113,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deletePublication(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deletePublicationRaw(requestParameters, initOverrides);
+    async deletePublication(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<PublicationEntity> {
+        const response = await this.deletePublicationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteReferenceRaw(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteReferenceRaw(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ReferenceEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteReference.');
         }
@@ -1072,18 +1141,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReferenceEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteReference(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteReferenceRaw(requestParameters, initOverrides);
+    async deleteReference(requestParameters: DeleteReferenceRequest, initOverrides?: RequestInit): Promise<ReferenceEntity> {
+        const response = await this.deleteReferenceRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteSkillRaw(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteSkillRaw(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteSkill.');
         }
@@ -1099,18 +1169,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteSkill(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteSkillRaw(requestParameters, initOverrides);
+    async deleteSkill(requestParameters: DeleteSkillRequest, initOverrides?: RequestInit): Promise<SkillEntity> {
+        const response = await this.deleteSkillRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteSkillKeywordRaw(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteSkillKeywordRaw(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillKeywordEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteSkillKeyword.');
         }
@@ -1126,18 +1197,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillKeywordEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteSkillKeyword(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteSkillKeywordRaw(requestParameters, initOverrides);
+    async deleteSkillKeyword(requestParameters: DeleteSkillKeywordRequest, initOverrides?: RequestInit): Promise<SkillKeywordEntity> {
+        const response = await this.deleteSkillKeywordRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteUserRaw(requestParameters: DeleteUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteUserRaw(requestParameters: DeleteUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UserEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteUser.');
         }
@@ -1153,18 +1225,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteUser(requestParameters: DeleteUserRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteUserRaw(requestParameters, initOverrides);
+    async deleteUser(requestParameters: DeleteUserRequest, initOverrides?: RequestInit): Promise<UserEntity> {
+        const response = await this.deleteUserRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteVolunteerRaw(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteVolunteerRaw(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<VolunteerEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVolunteer.');
         }
@@ -1180,18 +1253,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VolunteerEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteVolunteer(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteVolunteerRaw(requestParameters, initOverrides);
+    async deleteVolunteer(requestParameters: DeleteVolunteerRequest, initOverrides?: RequestInit): Promise<VolunteerEntity> {
+        const response = await this.deleteVolunteerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteWorkRaw(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteWorkRaw(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteWork.');
         }
@@ -1207,18 +1281,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteWork(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteWorkRaw(requestParameters, initOverrides);
+    async deleteWork(requestParameters: DeleteWorkRequest, initOverrides?: RequestInit): Promise<WorkEntity> {
+        const response = await this.deleteWorkRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyAwardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyAwardRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<AwardEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1230,18 +1305,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AwardEntityFromJSON));
     }
 
     /**
      */
-    async findManyAward(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyAwardRaw(initOverrides);
+    async findManyAward(initOverrides?: RequestInit): Promise<Array<AwardEntity>> {
+        const response = await this.findManyAwardRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyBasicRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyBasicRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<BasicEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1253,18 +1329,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BasicEntityFromJSON));
     }
 
     /**
      */
-    async findManyBasic(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyBasicRaw(initOverrides);
+    async findManyBasic(initOverrides?: RequestInit): Promise<Array<BasicEntity>> {
+        const response = await this.findManyBasicRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyEducationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyEducationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<EducationEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1276,18 +1353,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(EducationEntityFromJSON));
     }
 
     /**
      */
-    async findManyEducation(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyEducationRaw(initOverrides);
+    async findManyEducation(initOverrides?: RequestInit): Promise<Array<EducationEntity>> {
+        const response = await this.findManyEducationRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyInterestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyInterestRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<InterestEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1299,18 +1377,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(InterestEntityFromJSON));
     }
 
     /**
      */
-    async findManyInterest(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyInterestRaw(initOverrides);
+    async findManyInterest(initOverrides?: RequestInit): Promise<Array<InterestEntity>> {
+        const response = await this.findManyInterestRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyLanguageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyLanguageRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<LanguageEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1322,18 +1401,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LanguageEntityFromJSON));
     }
 
     /**
      */
-    async findManyLanguage(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyLanguageRaw(initOverrides);
+    async findManyLanguage(initOverrides?: RequestInit): Promise<Array<LanguageEntity>> {
+        const response = await this.findManyLanguageRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyLocationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyLocationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<LocationEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1345,18 +1425,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LocationEntityFromJSON));
     }
 
     /**
      */
-    async findManyLocation(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyLocationRaw(initOverrides);
+    async findManyLocation(initOverrides?: RequestInit): Promise<Array<LocationEntity>> {
+        const response = await this.findManyLocationRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<ProfileEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1368,18 +1449,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProfileEntityFromJSON));
     }
 
     /**
      */
-    async findManyProfile(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyProfileRaw(initOverrides);
+    async findManyProfile(initOverrides?: RequestInit): Promise<Array<ProfileEntity>> {
+        const response = await this.findManyProfileRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyProjectRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyProjectRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<ProjectEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1391,18 +1473,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProjectEntityFromJSON));
     }
 
     /**
      */
-    async findManyProject(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyProjectRaw(initOverrides);
+    async findManyProject(initOverrides?: RequestInit): Promise<Array<ProjectEntity>> {
+        const response = await this.findManyProjectRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyPublicationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyPublicationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<PublicationEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1414,18 +1497,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PublicationEntityFromJSON));
     }
 
     /**
      */
-    async findManyPublication(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyPublicationRaw(initOverrides);
+    async findManyPublication(initOverrides?: RequestInit): Promise<Array<PublicationEntity>> {
+        const response = await this.findManyPublicationRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyReferenceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyReferenceRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<ReferenceEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1437,18 +1521,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ReferenceEntityFromJSON));
     }
 
     /**
      */
-    async findManyReference(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyReferenceRaw(initOverrides);
+    async findManyReference(initOverrides?: RequestInit): Promise<Array<ReferenceEntity>> {
+        const response = await this.findManyReferenceRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManySkillRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManySkillRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<SkillEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1460,18 +1545,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(SkillEntityFromJSON));
     }
 
     /**
      */
-    async findManySkill(initOverrides?: RequestInit): Promise<void> {
-        await this.findManySkillRaw(initOverrides);
+    async findManySkill(initOverrides?: RequestInit): Promise<Array<SkillEntity>> {
+        const response = await this.findManySkillRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManySkillKeywordRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManySkillKeywordRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<SkillKeywordEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1483,18 +1569,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(SkillKeywordEntityFromJSON));
     }
 
     /**
      */
-    async findManySkillKeyword(initOverrides?: RequestInit): Promise<void> {
-        await this.findManySkillKeywordRaw(initOverrides);
+    async findManySkillKeyword(initOverrides?: RequestInit): Promise<Array<SkillKeywordEntity>> {
+        const response = await this.findManySkillKeywordRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyUserRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyUserRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<UserEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1506,18 +1593,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(UserEntityFromJSON));
     }
 
     /**
      */
-    async findManyUser(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyUserRaw(initOverrides);
+    async findManyUser(initOverrides?: RequestInit): Promise<Array<UserEntity>> {
+        const response = await this.findManyUserRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyVolunteerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyVolunteerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<VolunteerEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1529,18 +1617,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(VolunteerEntityFromJSON));
     }
 
     /**
      */
-    async findManyVolunteer(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyVolunteerRaw(initOverrides);
+    async findManyVolunteer(initOverrides?: RequestInit): Promise<Array<VolunteerEntity>> {
+        const response = await this.findManyVolunteerRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyWorkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyWorkRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<WorkEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1552,18 +1641,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(WorkEntityFromJSON));
     }
 
     /**
      */
-    async findManyWork(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyWorkRaw(initOverrides);
+    async findManyWork(initOverrides?: RequestInit): Promise<Array<WorkEntity>> {
+        const response = await this.findManyWorkRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneAwardRaw(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneAwardRaw(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AwardEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneAward.');
         }
@@ -1579,18 +1669,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AwardEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneAward(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneAwardRaw(requestParameters, initOverrides);
+    async findOneAward(requestParameters: FindOneAwardRequest, initOverrides?: RequestInit): Promise<AwardEntity> {
+        const response = await this.findOneAwardRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneBasicRaw(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneBasicRaw(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BasicEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneBasic.');
         }
@@ -1606,18 +1697,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BasicEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneBasic(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneBasicRaw(requestParameters, initOverrides);
+    async findOneBasic(requestParameters: FindOneBasicRequest, initOverrides?: RequestInit): Promise<BasicEntity> {
+        const response = await this.findOneBasicRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneEducationRaw(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneEducationRaw(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EducationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneEducation.');
         }
@@ -1633,18 +1725,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => EducationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneEducation(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneEducationRaw(requestParameters, initOverrides);
+    async findOneEducation(requestParameters: FindOneEducationRequest, initOverrides?: RequestInit): Promise<EducationEntity> {
+        const response = await this.findOneEducationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneInterestRaw(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneInterestRaw(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InterestEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneInterest.');
         }
@@ -1660,18 +1753,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterestEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneInterest(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneInterestRaw(requestParameters, initOverrides);
+    async findOneInterest(requestParameters: FindOneInterestRequest, initOverrides?: RequestInit): Promise<InterestEntity> {
+        const response = await this.findOneInterestRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneLanguageRaw(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneLanguageRaw(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LanguageEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneLanguage.');
         }
@@ -1687,18 +1781,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LanguageEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneLanguage(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneLanguageRaw(requestParameters, initOverrides);
+    async findOneLanguage(requestParameters: FindOneLanguageRequest, initOverrides?: RequestInit): Promise<LanguageEntity> {
+        const response = await this.findOneLanguageRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneLocationRaw(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneLocationRaw(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LocationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneLocation.');
         }
@@ -1714,18 +1809,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneLocation(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneLocationRaw(requestParameters, initOverrides);
+    async findOneLocation(requestParameters: FindOneLocationRequest, initOverrides?: RequestInit): Promise<LocationEntity> {
+        const response = await this.findOneLocationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneProfileRaw(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneProfileRaw(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProfileEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneProfile.');
         }
@@ -1741,18 +1837,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneProfile(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneProfileRaw(requestParameters, initOverrides);
+    async findOneProfile(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<ProfileEntity> {
+        const response = await this.findOneProfileRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneProjectRaw(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneProjectRaw(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneProject.');
         }
@@ -1768,18 +1865,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneProject(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneProjectRaw(requestParameters, initOverrides);
+    async findOneProject(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<ProjectEntity> {
+        const response = await this.findOneProjectRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOnePublicationRaw(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOnePublicationRaw(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PublicationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOnePublication.');
         }
@@ -1795,18 +1893,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOnePublication(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOnePublicationRaw(requestParameters, initOverrides);
+    async findOnePublication(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<PublicationEntity> {
+        const response = await this.findOnePublicationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneReferenceRaw(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneReferenceRaw(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ReferenceEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneReference.');
         }
@@ -1822,18 +1921,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReferenceEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneReference(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneReferenceRaw(requestParameters, initOverrides);
+    async findOneReference(requestParameters: FindOneReferenceRequest, initOverrides?: RequestInit): Promise<ReferenceEntity> {
+        const response = await this.findOneReferenceRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneSkillRaw(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneSkillRaw(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneSkill.');
         }
@@ -1849,18 +1949,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneSkill(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneSkillRaw(requestParameters, initOverrides);
+    async findOneSkill(requestParameters: FindOneSkillRequest, initOverrides?: RequestInit): Promise<SkillEntity> {
+        const response = await this.findOneSkillRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneSkillKeywordRaw(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneSkillKeywordRaw(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillKeywordEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneSkillKeyword.');
         }
@@ -1876,18 +1977,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillKeywordEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneSkillKeyword(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneSkillKeywordRaw(requestParameters, initOverrides);
+    async findOneSkillKeyword(requestParameters: FindOneSkillKeywordRequest, initOverrides?: RequestInit): Promise<SkillKeywordEntity> {
+        const response = await this.findOneSkillKeywordRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneUserRaw(requestParameters: FindOneUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneUserRaw(requestParameters: FindOneUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UserEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneUser.');
         }
@@ -1903,18 +2005,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneUser(requestParameters: FindOneUserRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneUserRaw(requestParameters, initOverrides);
+    async findOneUser(requestParameters: FindOneUserRequest, initOverrides?: RequestInit): Promise<UserEntity> {
+        const response = await this.findOneUserRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneVolunteerRaw(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneVolunteerRaw(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<VolunteerEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneVolunteer.');
         }
@@ -1930,18 +2033,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VolunteerEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneVolunteer(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneVolunteerRaw(requestParameters, initOverrides);
+    async findOneVolunteer(requestParameters: FindOneVolunteerRequest, initOverrides?: RequestInit): Promise<VolunteerEntity> {
+        const response = await this.findOneVolunteerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneWorkRaw(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneWorkRaw(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneWork.');
         }
@@ -1957,18 +2061,19 @@ export class PrismaApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneWork(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneWorkRaw(requestParameters, initOverrides);
+    async findOneWork(requestParameters: FindOneWorkRequest, initOverrides?: RequestInit): Promise<WorkEntity> {
+        const response = await this.findOneWorkRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateAwardRaw(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateAwardRaw(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<AwardEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateAward.');
         }
@@ -1991,18 +2096,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: AwardUpdateDtoToJSON(requestParameters.awardUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => AwardEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateAward(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateAwardRaw(requestParameters, initOverrides);
+    async updateAward(requestParameters: UpdateAwardRequest, initOverrides?: RequestInit): Promise<AwardEntity> {
+        const response = await this.updateAwardRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateBasicRaw(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateBasicRaw(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BasicEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateBasic.');
         }
@@ -2025,18 +2131,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: BasicUpdateDtoToJSON(requestParameters.basicUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => BasicEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateBasic(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateBasicRaw(requestParameters, initOverrides);
+    async updateBasic(requestParameters: UpdateBasicRequest, initOverrides?: RequestInit): Promise<BasicEntity> {
+        const response = await this.updateBasicRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateEducationRaw(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateEducationRaw(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<EducationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateEducation.');
         }
@@ -2059,18 +2166,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: EducationUpdateDtoToJSON(requestParameters.educationUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => EducationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateEducation(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateEducationRaw(requestParameters, initOverrides);
+    async updateEducation(requestParameters: UpdateEducationRequest, initOverrides?: RequestInit): Promise<EducationEntity> {
+        const response = await this.updateEducationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateInterestRaw(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateInterestRaw(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<InterestEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateInterest.');
         }
@@ -2093,18 +2201,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: InterestUpdateDtoToJSON(requestParameters.interestUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => InterestEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateInterest(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateInterestRaw(requestParameters, initOverrides);
+    async updateInterest(requestParameters: UpdateInterestRequest, initOverrides?: RequestInit): Promise<InterestEntity> {
+        const response = await this.updateInterestRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateLanguageRaw(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateLanguageRaw(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LanguageEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLanguage.');
         }
@@ -2127,18 +2236,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: LanguageUpdateDtoToJSON(requestParameters.languageUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LanguageEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateLanguage(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateLanguageRaw(requestParameters, initOverrides);
+    async updateLanguage(requestParameters: UpdateLanguageRequest, initOverrides?: RequestInit): Promise<LanguageEntity> {
+        const response = await this.updateLanguageRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateLocationRaw(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateLocationRaw(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<LocationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateLocation.');
         }
@@ -2161,18 +2271,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: LocationUpdateDtoToJSON(requestParameters.locationUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => LocationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateLocation(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateLocationRaw(requestParameters, initOverrides);
+    async updateLocation(requestParameters: UpdateLocationRequest, initOverrides?: RequestInit): Promise<LocationEntity> {
+        const response = await this.updateLocationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateProfileRaw(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateProfileRaw(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProfileEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProfile.');
         }
@@ -2195,18 +2306,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: ProfileUpdateDtoToJSON(requestParameters.profileUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateProfile(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateProfileRaw(requestParameters, initOverrides);
+    async updateProfile(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<ProfileEntity> {
+        const response = await this.updateProfileRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateProjectRaw(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateProjectRaw(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProject.');
         }
@@ -2229,18 +2341,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: ProjectUpdateDtoToJSON(requestParameters.projectUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateProject(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateProjectRaw(requestParameters, initOverrides);
+    async updateProject(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<ProjectEntity> {
+        const response = await this.updateProjectRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updatePublicationRaw(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updatePublicationRaw(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PublicationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePublication.');
         }
@@ -2263,18 +2376,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: PublicationUpdateDtoToJSON(requestParameters.publicationUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updatePublication(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updatePublicationRaw(requestParameters, initOverrides);
+    async updatePublication(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<PublicationEntity> {
+        const response = await this.updatePublicationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateReferenceRaw(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateReferenceRaw(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ReferenceEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateReference.');
         }
@@ -2297,18 +2411,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: ReferenceUpdateDtoToJSON(requestParameters.referenceUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReferenceEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateReference(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateReferenceRaw(requestParameters, initOverrides);
+    async updateReference(requestParameters: UpdateReferenceRequest, initOverrides?: RequestInit): Promise<ReferenceEntity> {
+        const response = await this.updateReferenceRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateSkillRaw(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateSkillRaw(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSkill.');
         }
@@ -2331,18 +2446,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: SkillUpdateDtoToJSON(requestParameters.skillUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateSkill(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateSkillRaw(requestParameters, initOverrides);
+    async updateSkill(requestParameters: UpdateSkillRequest, initOverrides?: RequestInit): Promise<SkillEntity> {
+        const response = await this.updateSkillRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateSkillKeywordRaw(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateSkillKeywordRaw(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<SkillKeywordEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateSkillKeyword.');
         }
@@ -2365,18 +2481,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: requestParameters.body as any,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => SkillKeywordEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateSkillKeyword(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateSkillKeywordRaw(requestParameters, initOverrides);
+    async updateSkillKeyword(requestParameters: UpdateSkillKeywordRequest, initOverrides?: RequestInit): Promise<SkillKeywordEntity> {
+        const response = await this.updateSkillKeywordRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateUserRaw(requestParameters: UpdateUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateUserRaw(requestParameters: UpdateUserRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<UserEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateUser.');
         }
@@ -2399,18 +2516,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: requestParameters.body as any,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateUser(requestParameters: UpdateUserRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateUserRaw(requestParameters, initOverrides);
+    async updateUser(requestParameters: UpdateUserRequest, initOverrides?: RequestInit): Promise<UserEntity> {
+        const response = await this.updateUserRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateVolunteerRaw(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateVolunteerRaw(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<VolunteerEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateVolunteer.');
         }
@@ -2433,18 +2551,19 @@ export class PrismaApi extends runtime.BaseAPI {
             body: VolunteerUpdateDtoToJSON(requestParameters.volunteerUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => VolunteerEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateVolunteer(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateVolunteerRaw(requestParameters, initOverrides);
+    async updateVolunteer(requestParameters: UpdateVolunteerRequest, initOverrides?: RequestInit): Promise<VolunteerEntity> {
+        const response = await this.updateVolunteerRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateWorkRaw(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateWorkRaw(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<WorkEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateWork.');
         }
@@ -2467,13 +2586,14 @@ export class PrismaApi extends runtime.BaseAPI {
             body: WorkUpdateDtoToJSON(requestParameters.workUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => WorkEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateWork(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateWorkRaw(requestParameters, initOverrides);
+    async updateWork(requestParameters: UpdateWorkRequest, initOverrides?: RequestInit): Promise<WorkEntity> {
+        const response = await this.updateWorkRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

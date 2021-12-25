@@ -18,6 +18,9 @@ import {
     ProfileCreateDto,
     ProfileCreateDtoFromJSON,
     ProfileCreateDtoToJSON,
+    ProfileEntity,
+    ProfileEntityFromJSON,
+    ProfileEntityToJSON,
     ProfileUpdateDto,
     ProfileUpdateDtoFromJSON,
     ProfileUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class ProfileApi extends runtime.BaseAPI {
 
     /**
      */
-    async createProfileRaw(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createProfileRaw(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProfileEntity>> {
         if (requestParameters.profileCreateDto === null || requestParameters.profileCreateDto === undefined) {
             throw new runtime.RequiredError('profileCreateDto','Required parameter requestParameters.profileCreateDto was null or undefined when calling createProfile.');
         }
@@ -66,18 +69,19 @@ export class ProfileApi extends runtime.BaseAPI {
             body: ProfileCreateDtoToJSON(requestParameters.profileCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createProfile(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createProfileRaw(requestParameters, initOverrides);
+    async createProfile(requestParameters: CreateProfileRequest, initOverrides?: RequestInit): Promise<ProfileEntity> {
+        const response = await this.createProfileRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteProfileRaw(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteProfileRaw(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProfileEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteProfile.');
         }
@@ -93,18 +97,19 @@ export class ProfileApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteProfile(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteProfileRaw(requestParameters, initOverrides);
+    async deleteProfile(requestParameters: DeleteProfileRequest, initOverrides?: RequestInit): Promise<ProfileEntity> {
+        const response = await this.deleteProfileRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyProfileRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<ProfileEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class ProfileApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProfileEntityFromJSON));
     }
 
     /**
      */
-    async findManyProfile(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyProfileRaw(initOverrides);
+    async findManyProfile(initOverrides?: RequestInit): Promise<Array<ProfileEntity>> {
+        const response = await this.findManyProfileRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneProfileRaw(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneProfileRaw(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProfileEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneProfile.');
         }
@@ -143,18 +149,19 @@ export class ProfileApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneProfile(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneProfileRaw(requestParameters, initOverrides);
+    async findOneProfile(requestParameters: FindOneProfileRequest, initOverrides?: RequestInit): Promise<ProfileEntity> {
+        const response = await this.findOneProfileRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateProfileRaw(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateProfileRaw(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProfileEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProfile.');
         }
@@ -177,13 +184,14 @@ export class ProfileApi extends runtime.BaseAPI {
             body: ProfileUpdateDtoToJSON(requestParameters.profileUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateProfile(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateProfileRaw(requestParameters, initOverrides);
+    async updateProfile(requestParameters: UpdateProfileRequest, initOverrides?: RequestInit): Promise<ProfileEntity> {
+        const response = await this.updateProfileRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

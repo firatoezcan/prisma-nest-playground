@@ -18,6 +18,9 @@ import {
     PublicationCreateDto,
     PublicationCreateDtoFromJSON,
     PublicationCreateDtoToJSON,
+    PublicationEntity,
+    PublicationEntityFromJSON,
+    PublicationEntityToJSON,
     PublicationUpdateDto,
     PublicationUpdateDtoFromJSON,
     PublicationUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class PublicationApi extends runtime.BaseAPI {
 
     /**
      */
-    async createPublicationRaw(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createPublicationRaw(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PublicationEntity>> {
         if (requestParameters.publicationCreateDto === null || requestParameters.publicationCreateDto === undefined) {
             throw new runtime.RequiredError('publicationCreateDto','Required parameter requestParameters.publicationCreateDto was null or undefined when calling createPublication.');
         }
@@ -66,18 +69,19 @@ export class PublicationApi extends runtime.BaseAPI {
             body: PublicationCreateDtoToJSON(requestParameters.publicationCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createPublication(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createPublicationRaw(requestParameters, initOverrides);
+    async createPublication(requestParameters: CreatePublicationRequest, initOverrides?: RequestInit): Promise<PublicationEntity> {
+        const response = await this.createPublicationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deletePublicationRaw(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deletePublicationRaw(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PublicationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deletePublication.');
         }
@@ -93,18 +97,19 @@ export class PublicationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deletePublication(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deletePublicationRaw(requestParameters, initOverrides);
+    async deletePublication(requestParameters: DeletePublicationRequest, initOverrides?: RequestInit): Promise<PublicationEntity> {
+        const response = await this.deletePublicationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyPublicationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyPublicationRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<PublicationEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class PublicationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PublicationEntityFromJSON));
     }
 
     /**
      */
-    async findManyPublication(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyPublicationRaw(initOverrides);
+    async findManyPublication(initOverrides?: RequestInit): Promise<Array<PublicationEntity>> {
+        const response = await this.findManyPublicationRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOnePublicationRaw(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOnePublicationRaw(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PublicationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOnePublication.');
         }
@@ -143,18 +149,19 @@ export class PublicationApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOnePublication(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOnePublicationRaw(requestParameters, initOverrides);
+    async findOnePublication(requestParameters: FindOnePublicationRequest, initOverrides?: RequestInit): Promise<PublicationEntity> {
+        const response = await this.findOnePublicationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updatePublicationRaw(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updatePublicationRaw(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<PublicationEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updatePublication.');
         }
@@ -177,13 +184,14 @@ export class PublicationApi extends runtime.BaseAPI {
             body: PublicationUpdateDtoToJSON(requestParameters.publicationUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublicationEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updatePublication(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updatePublicationRaw(requestParameters, initOverrides);
+    async updatePublication(requestParameters: UpdatePublicationRequest, initOverrides?: RequestInit): Promise<PublicationEntity> {
+        const response = await this.updatePublicationRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

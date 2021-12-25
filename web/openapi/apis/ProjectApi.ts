@@ -18,6 +18,9 @@ import {
     ProjectCreateDto,
     ProjectCreateDtoFromJSON,
     ProjectCreateDtoToJSON,
+    ProjectEntity,
+    ProjectEntityFromJSON,
+    ProjectEntityToJSON,
     ProjectUpdateDto,
     ProjectUpdateDtoFromJSON,
     ProjectUpdateDtoToJSON,
@@ -47,7 +50,7 @@ export class ProjectApi extends runtime.BaseAPI {
 
     /**
      */
-    async createProjectRaw(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async createProjectRaw(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectEntity>> {
         if (requestParameters.projectCreateDto === null || requestParameters.projectCreateDto === undefined) {
             throw new runtime.RequiredError('projectCreateDto','Required parameter requestParameters.projectCreateDto was null or undefined when calling createProject.');
         }
@@ -66,18 +69,19 @@ export class ProjectApi extends runtime.BaseAPI {
             body: ProjectCreateDtoToJSON(requestParameters.projectCreateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async createProject(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.createProjectRaw(requestParameters, initOverrides);
+    async createProject(requestParameters: CreateProjectRequest, initOverrides?: RequestInit): Promise<ProjectEntity> {
+        const response = await this.createProjectRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async deleteProjectRaw(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async deleteProjectRaw(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteProject.');
         }
@@ -93,18 +97,19 @@ export class ProjectApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async deleteProject(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.deleteProjectRaw(requestParameters, initOverrides);
+    async deleteProject(requestParameters: DeleteProjectRequest, initOverrides?: RequestInit): Promise<ProjectEntity> {
+        const response = await this.deleteProjectRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findManyProjectRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findManyProjectRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<Array<ProjectEntity>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -116,18 +121,19 @@ export class ProjectApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ProjectEntityFromJSON));
     }
 
     /**
      */
-    async findManyProject(initOverrides?: RequestInit): Promise<void> {
-        await this.findManyProjectRaw(initOverrides);
+    async findManyProject(initOverrides?: RequestInit): Promise<Array<ProjectEntity>> {
+        const response = await this.findManyProjectRaw(initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async findOneProjectRaw(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async findOneProjectRaw(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling findOneProject.');
         }
@@ -143,18 +149,19 @@ export class ProjectApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async findOneProject(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.findOneProjectRaw(requestParameters, initOverrides);
+    async findOneProject(requestParameters: FindOneProjectRequest, initOverrides?: RequestInit): Promise<ProjectEntity> {
+        const response = await this.findOneProjectRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
      */
-    async updateProjectRaw(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async updateProjectRaw(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<ProjectEntity>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling updateProject.');
         }
@@ -177,13 +184,14 @@ export class ProjectApi extends runtime.BaseAPI {
             body: ProjectUpdateDtoToJSON(requestParameters.projectUpdateDto),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectEntityFromJSON(jsonValue));
     }
 
     /**
      */
-    async updateProject(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<void> {
-        await this.updateProjectRaw(requestParameters, initOverrides);
+    async updateProject(requestParameters: UpdateProjectRequest, initOverrides?: RequestInit): Promise<ProjectEntity> {
+        const response = await this.updateProjectRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }
