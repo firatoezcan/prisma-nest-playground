@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
+export * from './AppApi';
 export * from './AwardApi';
 export * from './BasicApi';
-export * from './DefaultApi';
 export * from './EducationApi';
 export * from './InterestApi';
 export * from './LanguageApi';

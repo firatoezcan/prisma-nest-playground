@@ -23,7 +23,7 @@ import {
 /**
  * 
  */
-export class DefaultApi extends runtime.BaseAPI {
+export class AppApi extends runtime.BaseAPI {
 
     /**
      */

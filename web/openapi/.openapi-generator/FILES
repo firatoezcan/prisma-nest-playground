@@ -1,6 +1,6 @@
+apis/AppApi.ts
 apis/AwardApi.ts
 apis/BasicApi.ts
-apis/DefaultApi.ts
 apis/EducationApi.ts
 apis/InterestApi.ts
 apis/LanguageApi.ts
