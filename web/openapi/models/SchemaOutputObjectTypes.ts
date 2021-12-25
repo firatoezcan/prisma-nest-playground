@@ -31,13 +31,13 @@ export interface SchemaOutputObjectTypes {
      * @type {Array<OutputType>}
      * @memberof SchemaOutputObjectTypes
      */
-    model?: Array<OutputType>;
+    model: Array<OutputType>;
     /**
      * 
      * @type {Array<OutputType>}
      * @memberof SchemaOutputObjectTypes
      */
-    prisma?: Array<OutputType>;
+    prisma: Array<OutputType>;
 }
 
 export function SchemaOutputObjectTypesFromJSON(json: any): SchemaOutputObjectTypes {
@@ -50,8 +50,8 @@ export function SchemaOutputObjectTypesFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'model': !exists(json, 'model') ? undefined : ((json['model'] as Array<any>).map(OutputTypeFromJSON)),
-        'prisma': !exists(json, 'prisma') ? undefined : ((json['prisma'] as Array<any>).map(OutputTypeFromJSON)),
+        'model': ((json['model'] as Array<any>).map(OutputTypeFromJSON)),
+        'prisma': ((json['prisma'] as Array<any>).map(OutputTypeFromJSON)),
     };
 }
 
@@ -64,8 +64,8 @@ export function SchemaOutputObjectTypesToJSON(value?: SchemaOutputObjectTypes | 
     }
     return {
         
-        'model': value.model === undefined ? undefined : ((value.model as Array<any>).map(OutputTypeToJSON)),
-        'prisma': value.prisma === undefined ? undefined : ((value.prisma as Array<any>).map(OutputTypeToJSON)),
+        'model': ((value.model as Array<any>).map(OutputTypeToJSON)),
+        'prisma': ((value.prisma as Array<any>).map(OutputTypeToJSON)),
     };
 }
 

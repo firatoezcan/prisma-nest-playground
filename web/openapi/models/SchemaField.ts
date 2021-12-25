@@ -14,6 +14,18 @@
 
 import { exists, mapValues } from '../runtime';
 import {
+    Deprecation,
+    DeprecationFromJSON,
+    DeprecationFromJSONTyped,
+    DeprecationToJSON,
+} from './Deprecation';
+import {
+    SchemaArg,
+    SchemaArgFromJSON,
+    SchemaArgFromJSONTyped,
+    SchemaArgToJSON,
+} from './SchemaArg';
+import {
     SchemaFieldOutputType,
     SchemaFieldOutputTypeFromJSON,
     SchemaFieldOutputTypeFromJSONTyped,
@@ -46,16 +58,16 @@ export interface SchemaField {
     outputType: SchemaFieldOutputType;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<SchemaArg>}
      * @memberof SchemaField
      */
-    args: Array<object>;
+    args: Array<SchemaArg>;
     /**
      * 
-     * @type {object}
+     * @type {Deprecation}
      * @memberof SchemaField
      */
-    deprecation?: object;
+    deprecation?: Deprecation;
     /**
      * 
      * @type {string}
@@ -77,8 +89,8 @@ export function SchemaFieldFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'name': json['name'],
         'isNullable': !exists(json, 'isNullable') ? undefined : json['isNullable'],
         'outputType': SchemaFieldOutputTypeFromJSON(json['outputType']),
-        'args': json['args'],
-        'deprecation': !exists(json, 'deprecation') ? undefined : json['deprecation'],
+        'args': ((json['args'] as Array<any>).map(SchemaArgFromJSON)),
+        'deprecation': !exists(json, 'deprecation') ? undefined : DeprecationFromJSON(json['deprecation']),
         'documentation': !exists(json, 'documentation') ? undefined : json['documentation'],
     };
 }
@@ -95,8 +107,8 @@ export function SchemaFieldToJSON(value?: SchemaField | null): any {
         'name': value.name,
         'isNullable': value.isNullable,
         'outputType': SchemaFieldOutputTypeToJSON(value.outputType),
-        'args': value.args,
-        'deprecation': value.deprecation,
+        'args': ((value.args as Array<any>).map(SchemaArgToJSON)),
+        'deprecation': DeprecationToJSON(value.deprecation),
         'documentation': value.documentation,
     };
 }

@@ -13,6 +13,25 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    Field,
+    FieldFromJSON,
+    FieldFromJSONTyped,
+    FieldToJSON,
+} from './Field';
+import {
+    PrimaryKey,
+    PrimaryKeyFromJSON,
+    PrimaryKeyFromJSONTyped,
+    PrimaryKeyToJSON,
+} from './PrimaryKey';
+import {
+    UniqueIndex,
+    UniqueIndexFromJSON,
+    UniqueIndexFromJSONTyped,
+    UniqueIndexToJSON,
+} from './UniqueIndex';
+
 /**
  * 
  * @export
@@ -25,6 +44,48 @@ export interface Model {
      * @memberof Model
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Model
+     */
+    dbName: string | null;
+    /**
+     * 
+     * @type {Array<Field>}
+     * @memberof Model
+     */
+    fields: Array<Field>;
+    /**
+     * 
+     * @type {{ [key: string]: Field; }}
+     * @memberof Model
+     */
+    fieldMap?: { [key: string]: Field; };
+    /**
+     * 
+     * @type {Array<Array<string>>}
+     * @memberof Model
+     */
+    uniqueFields: Array<Array<string>>;
+    /**
+     * 
+     * @type {Array<UniqueIndex>}
+     * @memberof Model
+     */
+    uniqueIndexes: Array<UniqueIndex>;
+    /**
+     * 
+     * @type {string}
+     * @memberof Model
+     */
+    documentation: string;
+    /**
+     * 
+     * @type {PrimaryKey}
+     * @memberof Model
+     */
+    primaryKey: PrimaryKey | null;
 }
 
 export function ModelFromJSON(json: any): Model {
@@ -38,6 +99,13 @@ export function ModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Mod
     return {
         
         'name': json['name'],
+        'dbName': json['dbName'],
+        'fields': ((json['fields'] as Array<any>).map(FieldFromJSON)),
+        'fieldMap': !exists(json, 'fieldMap') ? undefined : (mapValues(json['fieldMap'], FieldFromJSON)),
+        'uniqueFields': json['uniqueFields'],
+        'uniqueIndexes': ((json['uniqueIndexes'] as Array<any>).map(UniqueIndexFromJSON)),
+        'documentation': json['documentation'],
+        'primaryKey': PrimaryKeyFromJSON(json['primaryKey']),
     };
 }
 
@@ -51,6 +119,13 @@ export function ModelToJSON(value?: Model | null): any {
     return {
         
         'name': value.name,
+        'dbName': value.dbName,
+        'fields': ((value.fields as Array<any>).map(FieldToJSON)),
+        'fieldMap': value.fieldMap === undefined ? undefined : (mapValues(value.fieldMap, FieldToJSON)),
+        'uniqueFields': value.uniqueFields,
+        'uniqueIndexes': ((value.uniqueIndexes as Array<any>).map(UniqueIndexToJSON)),
+        'documentation': value.documentation,
+        'primaryKey': PrimaryKeyToJSON(value.primaryKey),
     };
 }
 

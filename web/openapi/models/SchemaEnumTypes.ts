@@ -37,7 +37,7 @@ export interface SchemaEnumTypes {
      * @type {Array<SchemaEnum>}
      * @memberof SchemaEnumTypes
      */
-    prisma?: Array<SchemaEnum>;
+    prisma: Array<SchemaEnum>;
 }
 
 export function SchemaEnumTypesFromJSON(json: any): SchemaEnumTypes {
@@ -51,7 +51,7 @@ export function SchemaEnumTypesFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'model': !exists(json, 'model') ? undefined : ((json['model'] as Array<any>).map(SchemaEnumFromJSON)),
-        'prisma': !exists(json, 'prisma') ? undefined : ((json['prisma'] as Array<any>).map(SchemaEnumFromJSON)),
+        'prisma': ((json['prisma'] as Array<any>).map(SchemaEnumFromJSON)),
     };
 }
 
@@ -65,7 +65,7 @@ export function SchemaEnumTypesToJSON(value?: SchemaEnumTypes | null): any {
     return {
         
         'model': value.model === undefined ? undefined : ((value.model as Array<any>).map(SchemaEnumToJSON)),
-        'prisma': value.prisma === undefined ? undefined : ((value.prisma as Array<any>).map(SchemaEnumToJSON)),
+        'prisma': ((value.prisma as Array<any>).map(SchemaEnumToJSON)),
     };
 }
 

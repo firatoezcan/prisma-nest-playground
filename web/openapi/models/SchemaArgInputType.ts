@@ -55,7 +55,7 @@ export interface SchemaArgInputType {
      * @type {string}
      * @memberof SchemaArgInputType
      */
-    namespace: SchemaArgInputTypeNamespaceEnum;
+    namespace?: SchemaArgInputTypeNamespaceEnum;
 }
 
 /**
@@ -87,9 +87,9 @@ export function SchemaArgInputTypeFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'isList': json['isList'],
-        'type': string | InputType | OutputTypeFromJSON(json['type']),
+        'type':(json['type']),
         'location': json['location'],
-        'namespace': json['namespace'],
+        'namespace': !exists(json, 'namespace') ? undefined : json['namespace'],
     };
 }
 
@@ -103,7 +103,7 @@ export function SchemaArgInputTypeToJSON(value?: SchemaArgInputType | null): any
     return {
         
         'isList': value.isList,
-        'type': string | InputType | OutputTypeToJSON(value.type),
+        'type':(value.type),
         'location': value.location,
         'namespace': value.namespace,
     };

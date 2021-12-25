@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 apis/AwardApi.ts
 apis/BasicApi.ts
 apis/DefaultApi.ts
@@ -5,7 +6,6 @@ apis/EducationApi.ts
 apis/InterestApi.ts
 apis/LanguageApi.ts
 apis/LocationApi.ts
-apis/PrismaApi.ts
 apis/ProfileApi.ts
 apis/ProjectApi.ts
 apis/PublicationApi.ts
@@ -64,13 +64,17 @@ models/CreateVolunteerDto.ts
 models/CreateVolunteerUserRelationInputDto.ts
 models/CreateWorkDto.ts
 models/CreateWorkUserRelationInputDto.ts
-models/DMMF.ts
+models/DMMFDto.ts
 models/Datamodel.ts
 models/DatamodelEnum.ts
+models/Deprecation.ts
 models/Education.ts
 models/EducationCreateDto.ts
 models/EducationEntity.ts
 models/EducationUpdateDto.ts
+models/EnumValue.ts
+models/Field.ts
+models/FieldDefault.ts
 models/InputType.ts
 models/InputTypeConstraints.ts
 models/Interest.ts
@@ -90,6 +94,7 @@ models/MappingsOtherOperations.ts
 models/Model.ts
 models/ModelMapping.ts
 models/OutputType.ts
+models/PrimaryKey.ts
 models/Profile.ts
 models/ProfileCreateDto.ts
 models/ProfileEntity.ts
@@ -107,6 +112,7 @@ models/ReferenceCreateDto.ts
 models/ReferenceEntity.ts
 models/ReferenceUpdateDto.ts
 models/Schema.ts
+models/SchemaArg.ts
 models/SchemaArgInputType.ts
 models/SchemaEnum.ts
 models/SchemaEnumTypes.ts
@@ -121,6 +127,7 @@ models/SkillKeyword.ts
 models/SkillKeywordCreateDto.ts
 models/SkillKeywordEntity.ts
 models/SkillUpdateDto.ts
+models/UniqueIndex.ts
 models/User.ts
 models/UserCreateDto.ts
 models/UserEntity.ts

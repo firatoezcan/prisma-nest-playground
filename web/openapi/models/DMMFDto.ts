@@ -35,34 +35,34 @@ import {
 /**
  * 
  * @export
- * @interface DMMF
+ * @interface DMMFDto
  */
-export interface DMMF {
+export interface DMMFDto {
     /**
      * 
      * @type {Datamodel}
-     * @memberof DMMF
+     * @memberof DMMFDto
      */
     datamodel: Datamodel;
     /**
      * 
      * @type {Schema}
-     * @memberof DMMF
+     * @memberof DMMFDto
      */
     schema: Schema;
     /**
      * 
      * @type {Mappings}
-     * @memberof DMMF
+     * @memberof DMMFDto
      */
     mappings: Mappings;
 }
 
-export function DMMFFromJSON(json: any): DMMF {
-    return DMMFFromJSONTyped(json, false);
+export function DMMFDtoFromJSON(json: any): DMMFDto {
+    return DMMFDtoFromJSONTyped(json, false);
 }
 
-export function DMMFFromJSONTyped(json: any, ignoreDiscriminator: boolean): DMMF {
+export function DMMFDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): DMMFDto {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -74,7 +74,7 @@ export function DMMFFromJSONTyped(json: any, ignoreDiscriminator: boolean): DMMF
     };
 }
 
-export function DMMFToJSON(value?: DMMF | null): any {
+export function DMMFDtoToJSON(value?: DMMFDto | null): any {
     if (value === undefined) {
         return undefined;
     }

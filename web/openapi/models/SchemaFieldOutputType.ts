@@ -37,19 +37,19 @@ export interface SchemaFieldOutputType {
      * @type {string | OutputType | SchemaEnum}
      * @memberof SchemaFieldOutputType
      */
-    type?: string | OutputType | SchemaEnum | null;
+    type: string | OutputType | SchemaEnum | null;
     /**
      * 
      * @type {boolean}
      * @memberof SchemaFieldOutputType
      */
-    isList?: boolean;
+    isList: boolean;
     /**
      * 
      * @type {string}
      * @memberof SchemaFieldOutputType
      */
-    location?: SchemaFieldOutputTypeLocationEnum;
+    location: SchemaFieldOutputTypeLocationEnum;
     /**
      * 
      * @type {string}
@@ -86,9 +86,9 @@ export function SchemaFieldOutputTypeFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'type': !exists(json, 'type') ? undefined : string | OutputType | SchemaEnumFromJSON(json['type']),
-        'isList': !exists(json, 'isList') ? undefined : json['isList'],
-        'location': !exists(json, 'location') ? undefined : json['location'],
+        'type':(json['type']),
+        'isList': json['isList'],
+        'location': json['location'],
         'namespace': !exists(json, 'namespace') ? undefined : json['namespace'],
     };
 }
@@ -102,7 +102,7 @@ export function SchemaFieldOutputTypeToJSON(value?: SchemaFieldOutputType | null
     }
     return {
         
-        'type': string | OutputType | SchemaEnumToJSON(value.type),
+        'type':(value.type),
         'isList': value.isList,
         'location': value.location,
         'namespace': value.namespace,

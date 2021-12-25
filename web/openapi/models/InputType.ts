@@ -19,6 +19,12 @@ import {
     InputTypeConstraintsFromJSONTyped,
     InputTypeConstraintsToJSON,
 } from './InputTypeConstraints';
+import {
+    SchemaArg,
+    SchemaArgFromJSON,
+    SchemaArgFromJSONTyped,
+    SchemaArgToJSON,
+} from './SchemaArg';
 
 /**
  * 
@@ -40,16 +46,16 @@ export interface InputType {
     constraints: InputTypeConstraints;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<SchemaArg>}
      * @memberof InputType
      */
-    fields: Array<object>;
+    fields: Array<SchemaArg>;
     /**
      * 
-     * @type {{ [key: string]: object; }}
+     * @type {{ [key: string]: SchemaArg; }}
      * @memberof InputType
      */
-    fieldMap: { [key: string]: object; };
+    fieldMap?: { [key: string]: SchemaArg; };
 }
 
 export function InputTypeFromJSON(json: any): InputType {
@@ -64,8 +70,8 @@ export function InputTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         
         'name': json['name'],
         'constraints': InputTypeConstraintsFromJSON(json['constraints']),
-        'fields': json['fields'],
-        'fieldMap': json['fieldMap'],
+        'fields': ((json['fields'] as Array<any>).map(SchemaArgFromJSON)),
+        'fieldMap': !exists(json, 'fieldMap') ? undefined : (mapValues(json['fieldMap'], SchemaArgFromJSON)),
     };
 }
 
@@ -80,8 +86,8 @@ export function InputTypeToJSON(value?: InputType | null): any {
         
         'name': value.name,
         'constraints': InputTypeConstraintsToJSON(value.constraints),
-        'fields': value.fields,
-        'fieldMap': value.fieldMap,
+        'fields': ((value.fields as Array<any>).map(SchemaArgToJSON)),
+        'fieldMap': value.fieldMap === undefined ? undefined : (mapValues(value.fieldMap, SchemaArgToJSON)),
     };
 }
 

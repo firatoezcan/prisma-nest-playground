@@ -24,13 +24,13 @@ export interface InputTypeConstraints {
      * @type {number}
      * @memberof InputTypeConstraints
      */
-    maxNumFields?: number | null;
+    maxNumFields: number | null;
     /**
      * 
      * @type {number}
      * @memberof InputTypeConstraints
      */
-    minNumFields?: number | null;
+    minNumFields: number | null;
 }
 
 export function InputTypeConstraintsFromJSON(json: any): InputTypeConstraints {
@@ -43,8 +43,8 @@ export function InputTypeConstraintsFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'maxNumFields': !exists(json, 'maxNumFields') ? undefined : json['maxNumFields'],
-        'minNumFields': !exists(json, 'minNumFields') ? undefined : json['minNumFields'],
+        'maxNumFields': json['maxNumFields'],
+        'minNumFields': json['minNumFields'],
     };
 }
 

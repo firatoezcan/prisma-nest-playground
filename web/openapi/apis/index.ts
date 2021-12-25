@@ -7,7 +7,6 @@ export * from './EducationApi';
 export * from './InterestApi';
 export * from './LanguageApi';
 export * from './LocationApi';
-export * from './PrismaApi';
 export * from './ProfileApi';
 export * from './ProjectApi';
 export * from './PublicationApi';

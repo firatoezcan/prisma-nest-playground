@@ -43,7 +43,7 @@ export interface OutputType {
      * @type {{ [key: string]: SchemaField; }}
      * @memberof OutputType
      */
-    fieldMap: { [key: string]: SchemaField; };
+    fieldMap?: { [key: string]: SchemaField; };
 }
 
 export function OutputTypeFromJSON(json: any): OutputType {
@@ -58,7 +58,7 @@ export function OutputTypeFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         
         'name': json['name'],
         'fields': ((json['fields'] as Array<any>).map(SchemaFieldFromJSON)),
-        'fieldMap': (mapValues(json['fieldMap'], SchemaFieldFromJSON)),
+        'fieldMap': !exists(json, 'fieldMap') ? undefined : (mapValues(json['fieldMap'], SchemaFieldFromJSON)),
     };
 }
 
@@ -73,7 +73,7 @@ export function OutputTypeToJSON(value?: OutputType | null): any {
         
         'name': value.name,
         'fields': ((value.fields as Array<any>).map(SchemaFieldToJSON)),
-        'fieldMap': (mapValues(value.fieldMap, SchemaFieldToJSON)),
+        'fieldMap': value.fieldMap === undefined ? undefined : (mapValues(value.fieldMap, SchemaFieldToJSON)),
     };
 }
 

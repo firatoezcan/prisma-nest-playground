@@ -37,7 +37,7 @@ export interface SchemaInputObjectTypes {
      * @type {Array<InputType>}
      * @memberof SchemaInputObjectTypes
      */
-    prisma?: Array<InputType>;
+    prisma: Array<InputType>;
 }
 
 export function SchemaInputObjectTypesFromJSON(json: any): SchemaInputObjectTypes {
@@ -51,7 +51,7 @@ export function SchemaInputObjectTypesFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'model': !exists(json, 'model') ? undefined : ((json['model'] as Array<any>).map(InputTypeFromJSON)),
-        'prisma': !exists(json, 'prisma') ? undefined : ((json['prisma'] as Array<any>).map(InputTypeFromJSON)),
+        'prisma': ((json['prisma'] as Array<any>).map(InputTypeFromJSON)),
     };
 }
 
@@ -65,7 +65,7 @@ export function SchemaInputObjectTypesToJSON(value?: SchemaInputObjectTypes | nu
     return {
         
         'model': value.model === undefined ? undefined : ((value.model as Array<any>).map(InputTypeToJSON)),
-        'prisma': value.prisma === undefined ? undefined : ((value.prisma as Array<any>).map(InputTypeToJSON)),
+        'prisma': ((value.prisma as Array<any>).map(InputTypeToJSON)),
     };
 }
 

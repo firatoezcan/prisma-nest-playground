@@ -24,13 +24,13 @@ export interface MappingsOtherOperations {
      * @type {Array<string>}
      * @memberof MappingsOtherOperations
      */
-    read?: Array<string>;
+    read: Array<string>;
     /**
      * 
      * @type {Array<string>}
      * @memberof MappingsOtherOperations
      */
-    write?: Array<string>;
+    write: Array<string>;
 }
 
 export function MappingsOtherOperationsFromJSON(json: any): MappingsOtherOperations {
@@ -43,8 +43,8 @@ export function MappingsOtherOperationsFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'read': !exists(json, 'read') ? undefined : json['read'],
-        'write': !exists(json, 'write') ? undefined : json['write'],
+        'read': json['read'],
+        'write': json['write'],
     };
 }
 

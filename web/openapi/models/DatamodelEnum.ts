@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import {
+    EnumValue,
+    EnumValueFromJSON,
+    EnumValueFromJSONTyped,
+    EnumValueToJSON,
+} from './EnumValue';
+
 /**
  * 
  * @export
@@ -27,22 +34,22 @@ export interface DatamodelEnum {
     name: string;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<EnumValue>}
      * @memberof DatamodelEnum
      */
-    values: Array<object>;
+    values: Array<EnumValue>;
     /**
      * 
      * @type {string}
      * @memberof DatamodelEnum
      */
-    dbName: string;
+    dbName?: string | null;
     /**
      * 
      * @type {string}
      * @memberof DatamodelEnum
      */
-    documentation: string;
+    documentation?: string;
 }
 
 export function DatamodelEnumFromJSON(json: any): DatamodelEnum {
@@ -56,9 +63,9 @@ export function DatamodelEnumFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'name': json['name'],
-        'values': json['values'],
-        'dbName': json['dbName'],
-        'documentation': json['documentation'],
+        'values': ((json['values'] as Array<any>).map(EnumValueFromJSON)),
+        'dbName': !exists(json, 'dbName') ? undefined : json['dbName'],
+        'documentation': !exists(json, 'documentation') ? undefined : json['documentation'],
     };
 }
 
@@ -72,7 +79,7 @@ export function DatamodelEnumToJSON(value?: DatamodelEnum | null): any {
     return {
         
         'name': value.name,
-        'values': value.values,
+        'values': ((value.values as Array<any>).map(EnumValueToJSON)),
         'dbName': value.dbName,
         'documentation': value.documentation,
     };
