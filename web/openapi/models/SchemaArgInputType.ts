@@ -14,11 +14,17 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    ComponentsSchemasOutputType,
-    ComponentsSchemasOutputTypeFromJSON,
-    ComponentsSchemasOutputTypeFromJSONTyped,
-    ComponentsSchemasOutputTypeToJSON,
-} from './ComponentsSchemasOutputType';
+    InputType,
+    InputTypeFromJSON,
+    InputTypeFromJSONTyped,
+    InputTypeToJSON,
+} from './InputType';
+import {
+    OutputType,
+    OutputTypeFromJSON,
+    OutputTypeFromJSONTyped,
+    OutputTypeToJSON,
+} from './OutputType';
 
 /**
  * 
@@ -28,10 +34,46 @@ import {
 export interface SchemaArgInputType {
     /**
      * 
-     * @type {string | object | ComponentsSchemasOutputType}
+     * @type {boolean}
      * @memberof SchemaArgInputType
      */
-    type: string | object | ComponentsSchemasOutputType | null;
+    isList: boolean;
+    /**
+     * 
+     * @type {string | InputType | OutputType}
+     * @memberof SchemaArgInputType
+     */
+    type: string | InputType | OutputType | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof SchemaArgInputType
+     */
+    location: SchemaArgInputTypeLocationEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof SchemaArgInputType
+     */
+    namespace: SchemaArgInputTypeNamespaceEnum;
+}
+
+/**
+* @export
+* @enum {string}
+*/
+export enum SchemaArgInputTypeLocationEnum {
+    Scalar = 'scalar',
+    InputObjectTypes = 'inputObjectTypes',
+    OutputObjectTypes = 'outputObjectTypes',
+    EnumTypes = 'enumTypes'
+}/**
+* @export
+* @enum {string}
+*/
+export enum SchemaArgInputTypeNamespaceEnum {
+    Model = 'model',
+    Prisma = 'prisma'
 }
 
 export function SchemaArgInputTypeFromJSON(json: any): SchemaArgInputType {
@@ -44,7 +86,10 @@ export function SchemaArgInputTypeFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
-        'type': string | object | ComponentsSchemasOutputTypeFromJSON(json['type']),
+        'isList': json['isList'],
+        'type': string | InputType | OutputTypeFromJSON(json['type']),
+        'location': json['location'],
+        'namespace': json['namespace'],
     };
 }
 
@@ -57,7 +102,10 @@ export function SchemaArgInputTypeToJSON(value?: SchemaArgInputType | null): any
     }
     return {
         
-        'type': string | object | ComponentsSchemasOutputTypeToJSON(value.type),
+        'isList': value.isList,
+        'type': string | InputType | OutputTypeToJSON(value.type),
+        'location': value.location,
+        'namespace': value.namespace,
     };
 }
 

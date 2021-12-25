@@ -71,6 +71,8 @@ models/Education.ts
 models/EducationCreateDto.ts
 models/EducationEntity.ts
 models/EducationUpdateDto.ts
+models/InputType.ts
+models/InputTypeConstraints.ts
 models/Interest.ts
 models/InterestCreateDto.ts
 models/InterestEntity.ts
@@ -87,6 +89,7 @@ models/Mappings.ts
 models/MappingsOtherOperations.ts
 models/Model.ts
 models/ModelMapping.ts
+models/OutputType.ts
 models/Profile.ts
 models/ProfileCreateDto.ts
 models/ProfileEntity.ts
@@ -103,7 +106,14 @@ models/Reference.ts
 models/ReferenceCreateDto.ts
 models/ReferenceEntity.ts
 models/ReferenceUpdateDto.ts
+models/Schema.ts
 models/SchemaArgInputType.ts
+models/SchemaEnum.ts
+models/SchemaEnumTypes.ts
+models/SchemaField.ts
+models/SchemaFieldOutputType.ts
+models/SchemaInputObjectTypes.ts
+models/SchemaOutputObjectTypes.ts
 models/Skill.ts
 models/SkillCreateDto.ts
 models/SkillEntity.ts

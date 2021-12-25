@@ -36,79 +36,79 @@ export interface ModelMapping {
      * @type {string}
      * @memberof ModelMapping
      */
-    findUnique: string | null;
+    findUnique?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    findFirst: string | null;
+    findFirst?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    findMany: string | null;
+    findMany?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    create: string | null;
+    create?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    createMany: string | null;
+    createMany?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    update: string | null;
+    update?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    updateMany: string | null;
+    updateMany?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    upsert: string | null;
+    upsert?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    _delete: string | null;
+    _delete?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    deleteMany: string | null;
+    deleteMany?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    aggregate: string | null;
+    aggregate?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    groupBy: string | null;
+    groupBy?: string | null;
     /**
      * 
      * @type {string}
      * @memberof ModelMapping
      */
-    count: string | null;
+    count?: string | null;
 }
 
 export function ModelMappingFromJSON(json: any): ModelMapping {
@@ -123,19 +123,19 @@ export function ModelMappingFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'model': json['model'],
         'plural': json['plural'],
-        'findUnique': json['findUnique'],
-        'findFirst': json['findFirst'],
-        'findMany': json['findMany'],
-        'create': json['create'],
-        'createMany': json['createMany'],
-        'update': json['update'],
-        'updateMany': json['updateMany'],
-        'upsert': json['upsert'],
-        '_delete': json['delete'],
-        'deleteMany': json['deleteMany'],
-        'aggregate': json['aggregate'],
-        'groupBy': json['groupBy'],
-        'count': json['count'],
+        'findUnique': !exists(json, 'findUnique') ? undefined : json['findUnique'],
+        'findFirst': !exists(json, 'findFirst') ? undefined : json['findFirst'],
+        'findMany': !exists(json, 'findMany') ? undefined : json['findMany'],
+        'create': !exists(json, 'create') ? undefined : json['create'],
+        'createMany': !exists(json, 'createMany') ? undefined : json['createMany'],
+        'update': !exists(json, 'update') ? undefined : json['update'],
+        'updateMany': !exists(json, 'updateMany') ? undefined : json['updateMany'],
+        'upsert': !exists(json, 'upsert') ? undefined : json['upsert'],
+        '_delete': !exists(json, 'delete') ? undefined : json['delete'],
+        'deleteMany': !exists(json, 'deleteMany') ? undefined : json['deleteMany'],
+        'aggregate': !exists(json, 'aggregate') ? undefined : json['aggregate'],
+        'groupBy': !exists(json, 'groupBy') ? undefined : json['groupBy'],
+        'count': !exists(json, 'count') ? undefined : json['count'],
     };
 }
 

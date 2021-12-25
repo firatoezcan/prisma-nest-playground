@@ -25,6 +25,12 @@ import {
     MappingsFromJSONTyped,
     MappingsToJSON,
 } from './Mappings';
+import {
+    Schema,
+    SchemaFromJSON,
+    SchemaFromJSONTyped,
+    SchemaToJSON,
+} from './Schema';
 
 /**
  * 
@@ -40,10 +46,10 @@ export interface DMMF {
     datamodel: Datamodel;
     /**
      * 
-     * @type {object}
+     * @type {Schema}
      * @memberof DMMF
      */
-    schema: object;
+    schema: Schema;
     /**
      * 
      * @type {Mappings}
@@ -63,7 +69,7 @@ export function DMMFFromJSONTyped(json: any, ignoreDiscriminator: boolean): DMMF
     return {
         
         'datamodel': DatamodelFromJSON(json['datamodel']),
-        'schema': json['schema'],
+        'schema': SchemaFromJSON(json['schema']),
         'mappings': MappingsFromJSON(json['mappings']),
     };
 }
@@ -78,7 +84,7 @@ export function DMMFToJSON(value?: DMMF | null): any {
     return {
         
         'datamodel': DatamodelToJSON(value.datamodel),
-        'schema': value.schema,
+        'schema': SchemaToJSON(value.schema),
         'mappings': MappingsToJSON(value.mappings),
     };
 }

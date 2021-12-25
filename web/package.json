@@ -12,7 +12,7 @@
     "test:ci": "jest --ci --reporters=default --reporters=jest-junit --collectCoverage --passWithNoTests",
     "lint": "next lint && eslint --ext .ts,.tsx --cache --fix .",
     "tslint": "tsc --noEmit --incremental",
-    "codegen": "yarn run openapi-generator-cli generate -i http://localhost:3001/swagger/json -g typescript-fetch -o ./openapi"
+    "codegen": "yarn run openapi-generator-cli generate -i http://localhost:3001/swagger/json -g typescript-fetch -o ./openapi "
   },
   "dependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.15.4",
