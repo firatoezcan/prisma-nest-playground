@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 
 import { DependencyContextType, DependencyProvider } from "@/ui/context/Dependency";
 import { AppConfig } from "@/web/appConfig";
+import { ApiProvider } from "@/web/contexts/ApiContext";
 
 const localeMap: Record<string, Locale> = {
   de,
@@ -40,9 +41,11 @@ const App: React.FC<NextAppProps> = (props) => {
       <Head>
         <title>{AppConfig.applicationName}</title>
       </Head>
-      <DependencyProvider Link={NextLink} t={(key) => key} dateLocale={dateLocale} router={router}>
-        <Component {...pageProps} />
-      </DependencyProvider>
+      <ApiProvider basePath="http://localhost:3001">
+        <DependencyProvider Link={NextLink} t={(key) => key} dateLocale={dateLocale} router={router}>
+          <Component {...pageProps} />
+        </DependencyProvider>
+      </ApiProvider>
     </>
   );
 };
