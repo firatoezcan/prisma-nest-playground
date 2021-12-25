@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { DefaultApi } from "web/openapi";
+import { Configuration, DefaultApi, DMMFDto } from "web/openapi";
 
 import { Sidebar } from "@/ui";
-
-const api = new DefaultApi();
-api.dmmfAppController().then((res) => console.log(res));
+const api = new DefaultApi(new Configuration({ basePath: "http://localhost:3001" }));
 
 const Homepage = () => {
-  // const [users, setUsers] = useState({});
+  const [users, setUsers] = useState<DMMFDto | null>();
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/dmmf")
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setUsers(res);
-  //     });
-  // }, []);
+  useEffect(() => {
+    api.dmmfAppController().then((res) => setUsers(res));
+  }, []);
 
   return (
     <div className="grid grid-cols-[16rem,1fr] h-full">
       <Sidebar navigationConfig={[]} />
-      <div></div>
+      <div>
+        <pre>{users && JSON.stringify(users, null, 2)}</pre>
+      </div>
     </div>
   );
 };
