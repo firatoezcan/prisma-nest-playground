@@ -94,6 +94,18 @@ class SchemaArg implements Prisma.DMMF.SchemaArg {
   deprecation?: Deprecation;
 }
 
+// Custom component because nested objects are not well supported
+class SchemaFieldOutputType {
+  @ApiProperty({ oneOf: [{ type: "string" }, { $ref: getSchemaPath("OutputType") }, { $ref: getSchemaPath(SchemaEnum) }] })
+  type: string | OutputType | SchemaEnum;
+  @ApiProperty({ type: "boolean" })
+  isList: boolean;
+  @ApiProperty({ type: "string", enum: ["scalar", "inputObjectTypes", "outputObjectTypes", "enumTypes"] })
+  location: FieldLocation;
+  @ApiProperty({ type: "string", enum: ["model", "prisma"], required: false })
+  namespace?: FieldNamespace;
+}
+
 class SchemaField implements Prisma.DMMF.SchemaField {
   @ApiProperty()
   name: string;
@@ -102,23 +114,9 @@ class SchemaField implements Prisma.DMMF.SchemaField {
   isNullable?: boolean;
 
   @ApiProperty({
-    type: "object",
-    properties: {
-      // This has a circular reference so we (sadly) need to pass in the string manually
-      type: { oneOf: [{ type: "string" }, { $ref: getSchemaPath("OutputType") }, { $ref: getSchemaPath(SchemaEnum) }] },
-      isList: { type: "boolean" },
-      location: { type: "string", enum: ["scalar", "inputObjectTypes", "outputObjectTypes", "enumTypes"] },
-      namespace: { type: "string", enum: ["model", "prisma"] },
-    },
-    // @ts-expect-error An Array is fine here since we are `type: object`
-    required: ["type", "isList", "location"],
+    type: SchemaFieldOutputType,
   })
-  outputType: {
-    type: string | OutputType | SchemaEnum;
-    isList: boolean;
-    location: FieldLocation;
-    namespace?: FieldNamespace;
-  };
+  outputType: SchemaFieldOutputType;
 
   @ApiProperty({ type: SchemaArg, isArray: true })
   args: SchemaArg[];
@@ -180,7 +178,7 @@ class Field implements Prisma.DMMF.Field {
   @ApiProperty()
   hasDefaultValue: boolean;
 
-  @ApiProperty({ oneOf: [{ type: "string" }, { type: "boolean" }, { type: "number" }, { $ref: getSchemaPath(FieldDefault) }], required: false })
+  @ApiProperty({ name: "default", oneOf: [{ type: "string" }, { type: "boolean" }, { type: "number" }, { $ref: getSchemaPath(FieldDefault) }], required: false })
   default?: FieldDefault | string | boolean | number;
 
   // We actually know that this will be an array of strings
@@ -251,23 +249,22 @@ class Datamodel implements Prisma.DMMF.Datamodel {
   enums: DatamodelEnum[];
 }
 
+// Custom component because nested objects are not well supported
+class InputTypeConstraints {
+  @ApiProperty({ nullable: true })
+  maxNumFields: number | null;
+  @ApiProperty({ nullable: true })
+  minNumFields: number | null;
+}
+
 class InputType implements Prisma.DMMF.InputType {
   @ApiProperty()
   name: string;
 
   @ApiProperty({
-    type: "object",
-    properties: {
-      maxNumFields: { type: "number", nullable: true },
-      minNumFields: { type: "number", nullable: true },
-    },
-    // @ts-expect-error An Array is fine here since we are `type: object`
-    required: ["maxNumFields", "minNumFields"],
+    type: InputTypeConstraints,
   })
-  constraints: {
-    maxNumFields: number | null;
-    minNumFields: number | null;
-  };
+  constraints: InputTypeConstraints;
 
   @ApiProperty({
     type: SchemaArg,
@@ -284,9 +281,30 @@ class InputType implements Prisma.DMMF.InputType {
   fieldMap?: Record<string, SchemaArg>;
 }
 
-// Since we dont use InputType via `type: InputType` we need to give an additional hint to OpenAPI
-// Same goes for OutputType and SchemaEnum
-@ApiExtraModels(InputType, OutputType, SchemaEnum)
+// Custom component because nested objects are not well supported
+class SchemaInputObjectTypes {
+  @ApiProperty({ type: InputType, isArray: true, required: false })
+  model?: InputType[];
+  @ApiProperty({ type: InputType, isArray: true })
+  prisma: InputType[];
+}
+
+// Custom component because nested objects are not well supported
+class SchemaOutputObjectTypes {
+  @ApiProperty({ type: OutputType, isArray: true })
+  model: OutputType[];
+  @ApiProperty({ type: OutputType, isArray: true })
+  prisma: OutputType[];
+}
+
+// Custom component because nested objects are not well supported
+class SchemaEnumTypes {
+  @ApiProperty({ type: SchemaEnum, isArray: true, required: false })
+  model?: SchemaEnum[];
+  @ApiProperty({ type: SchemaEnum, isArray: true })
+  prisma: SchemaEnum[];
+}
+
 class Schema implements Prisma.DMMF.Schema {
   @ApiProperty({ required: false, nullable: true })
   rootQueryType?: string;
@@ -295,37 +313,19 @@ class Schema implements Prisma.DMMF.Schema {
   rootMutationType?: string;
 
   @ApiProperty({
-    type: "object",
-    properties: {
-      model: { items: { $ref: getSchemaPath(InputType) } },
-      prisma: { items: { $ref: getSchemaPath(InputType) } },
-    },
-    // @ts-expect-error An Array is fine here since we are `type: object`
-    required: ["prisma"],
+    type: SchemaInputObjectTypes,
   })
-  inputObjectTypes: { model?: InputType[]; prisma: InputType[] };
+  inputObjectTypes: SchemaInputObjectTypes;
 
   @ApiProperty({
-    type: "object",
-    properties: {
-      model: { items: { $ref: getSchemaPath(OutputType) } },
-      prisma: { items: { $ref: getSchemaPath(OutputType) } },
-    },
-    // @ts-expect-error An Array is fine here since we are `type: object`
-    required: ["model", "prisma"],
+    type: SchemaOutputObjectTypes,
   })
-  outputObjectTypes: { model: OutputType[]; prisma: OutputType[] };
+  outputObjectTypes: SchemaOutputObjectTypes;
 
   @ApiProperty({
-    type: "object",
-    properties: {
-      model: { items: { $ref: getSchemaPath(SchemaEnum) } },
-      prisma: { items: { $ref: getSchemaPath(SchemaEnum) } },
-    },
-    // @ts-expect-error An Array is fine here since we are `type: object`
-    required: ["prisma"],
+    type: SchemaEnumTypes,
   })
-  enumTypes: { model?: SchemaEnum[]; prisma: SchemaEnum[] };
+  enumTypes: SchemaEnumTypes;
 }
 
 class ModelMapping implements Prisma.DMMF.ModelMapping {
@@ -375,6 +375,20 @@ class ModelMapping implements Prisma.DMMF.ModelMapping {
   count?: string | null;
 }
 
+// Custom component because nested objects are not well supported
+class MappingsOtherOperations {
+  @ApiProperty({
+    type: "string",
+    isArray: true,
+  })
+  read: string[];
+  @ApiProperty({
+    type: "string",
+    isArray: true,
+  })
+  write: string[];
+}
+
 class Mappings implements Prisma.DMMF.Mappings {
   @ApiProperty({
     type: ModelMapping,
@@ -383,17 +397,38 @@ class Mappings implements Prisma.DMMF.Mappings {
   modelOperations: ModelMapping[];
 
   @ApiProperty({
-    type: "object",
-    properties: {
-      read: { items: { type: "string" } },
-      write: { items: { type: "string" } },
-    },
-    // @ts-expect-error An Array is fine here since we are `type: object`
-    required: ["read", "write"],
+    type: MappingsOtherOperations,
   })
-  otherOperations: { read: string[]; write: string[] };
+  otherOperations: MappingsOtherOperations;
 }
 
+// Just list all the classes here so OpenAPI generated the component schema for it because I am lazy
+@ApiExtraModels(
+  uniqueIndex,
+  PrimaryKey,
+  EnumValue,
+  FieldDefault,
+  SchemaEnum,
+  Deprecation,
+  SchemaArgInputType,
+  SchemaArg,
+  SchemaFieldOutputType,
+  SchemaField,
+  OutputType,
+  Field,
+  Model,
+  DatamodelEnum,
+  Datamodel,
+  InputTypeConstraints,
+  InputType,
+  SchemaInputObjectTypes,
+  SchemaOutputObjectTypes,
+  SchemaEnumTypes,
+  Schema,
+  ModelMapping,
+  MappingsOtherOperations,
+  Mappings
+)
 export class DMMFDto implements Prisma.DMMF.Document {
   @ApiProperty({
     type: Datamodel,
