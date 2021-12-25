@@ -1,16 +1,17 @@
 import { Prisma } from ".prisma/client";
 import { PrismaService } from "@/api/services/Prisma.service";
 import { BadRequestException, Body, Controller, Delete, Get, Injectable, Module, Param, Patch, Post, Query } from "@nestjs/common";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiResponse, ApiTags } from "@nestjs/swagger";
 import { CommonDelegateType, PrismaCrudClasses, PrismaModulesType } from "../generated/crud/prismaModuleTypes";
 
 const createModule = <ModuleName extends keyof PrismaModulesType>(module: PrismaModulesType[ModuleName]) => {
   const { name } = module;
 
   type Module = PrismaModulesType[ModuleName];
-  type Entity = Module["entity"];
   type FindManyType = Module["findManyType"];
 
+  class Entity extends module.entity {}
+  Object.defineProperty(Entity, "name", { value: `${name}Entity` });
   class ConnectDto extends module.connectDto {}
   Object.defineProperty(ConnectDto, "name", { value: `${name}ConnectDto` });
   class CreateDto extends module.createDto {}
@@ -69,16 +70,19 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
     }
 
     @Post()
+    @ApiResponse({ status: 200, type: Entity, description: `create(${name})` })
     create(@Body() createEntityDto: CreateDto) {
       return this.service.create(createEntityDto);
     }
 
     @Get()
+    @ApiResponse({ status: 200, type: Entity, isArray: true, description: `findMany(${name})` })
     findMany(@Query() params?: FindManyType) {
       return this.service.findMany(params);
     }
 
     @Get(":id")
+    @ApiResponse({ status: 200, type: Entity, description: `findOne(${name})` })
     findOne(@Param("id") id: string) {
       const idNum = Number.parseInt(id);
       if (isNaN(idNum)) {
@@ -88,6 +92,7 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
     }
 
     @Patch(":id")
+    @ApiResponse({ status: 200, type: Entity, description: `update(${name})` })
     update(@Param("id") id: string, @Body() data: UpdateDto) {
       const idNum = Number.parseInt(id);
       if (isNaN(idNum)) {
@@ -97,6 +102,7 @@ const createModule = <ModuleName extends keyof PrismaModulesType>(module: Prisma
     }
 
     @Delete(":id")
+    @ApiResponse({ status: 200, type: Entity, description: `delete(${name})` })
     delete(@Param("id") id: string) {
       const idNum = Number.parseInt(id);
       if (isNaN(idNum)) {

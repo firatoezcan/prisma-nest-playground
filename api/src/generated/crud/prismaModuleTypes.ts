@@ -1,23 +1,6 @@
 import { PrismaClientOptions } from "@prisma/client/runtime";
 import { PrismaService } from "@/api/services/Prisma.service";
-import {
-  Prisma,
-  User,
-  Basic,
-  Location,
-  Profile,
-  Work,
-  Volunteer,
-  Education,
-  Award,
-  Publication,
-  Skill,
-  SkillKeyword,
-  Language,
-  Interest,
-  Reference,
-  Project,
-} from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import { ConnectUserDto, CreateUserDto, UpdateUserDto } from "@/api/generated/nestjs-dto/user/dto";
 import { ConnectBasicDto, CreateBasicDto, UpdateBasicDto } from "@/api/generated/nestjs-dto/basic/dto";
 import { ConnectLocationDto, CreateLocationDto, UpdateLocationDto } from "@/api/generated/nestjs-dto/location/dto";
@@ -33,10 +16,25 @@ import { ConnectLanguageDto, CreateLanguageDto, UpdateLanguageDto } from "@/api/
 import { ConnectInterestDto, CreateInterestDto, UpdateInterestDto } from "@/api/generated/nestjs-dto/interest/dto";
 import { ConnectReferenceDto, CreateReferenceDto, UpdateReferenceDto } from "@/api/generated/nestjs-dto/reference/dto";
 import { ConnectProjectDto, CreateProjectDto, UpdateProjectDto } from "@/api/generated/nestjs-dto/project/dto";
+import { User } from "@/api/generated/nestjs-dto/user/entities";
+import { Basic } from "@/api/generated/nestjs-dto/basic/entities";
+import { Location } from "@/api/generated/nestjs-dto/location/entities";
+import { Profile } from "@/api/generated/nestjs-dto/profile/entities";
+import { Work } from "@/api/generated/nestjs-dto/work/entities";
+import { Volunteer } from "@/api/generated/nestjs-dto/volunteer/entities";
+import { Education } from "@/api/generated/nestjs-dto/education/entities";
+import { Award } from "@/api/generated/nestjs-dto/award/entities";
+import { Publication } from "@/api/generated/nestjs-dto/publication/entities";
+import { Skill } from "@/api/generated/nestjs-dto/skill/entities";
+import { SkillKeyword } from "@/api/generated/nestjs-dto/skillKeyword/entities";
+import { Language } from "@/api/generated/nestjs-dto/language/entities";
+import { Interest } from "@/api/generated/nestjs-dto/interest/entities";
+import { Reference } from "@/api/generated/nestjs-dto/reference/entities";
+import { Project } from "@/api/generated/nestjs-dto/project/entities";
 
 export type UserModule = {
   name: "User";
-  entity: User;
+  entity: typeof User;
   delegate: Prisma.UserDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectUserDto;
   createDto: typeof CreateUserDto;
@@ -46,7 +44,7 @@ export type UserModule = {
 
 export type BasicModule = {
   name: "Basic";
-  entity: Basic;
+  entity: typeof Basic;
   delegate: Prisma.BasicDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectBasicDto;
   createDto: typeof CreateBasicDto;
@@ -56,7 +54,7 @@ export type BasicModule = {
 
 export type LocationModule = {
   name: "Location";
-  entity: Location;
+  entity: typeof Location;
   delegate: Prisma.LocationDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectLocationDto;
   createDto: typeof CreateLocationDto;
@@ -66,7 +64,7 @@ export type LocationModule = {
 
 export type ProfileModule = {
   name: "Profile";
-  entity: Profile;
+  entity: typeof Profile;
   delegate: Prisma.ProfileDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectProfileDto;
   createDto: typeof CreateProfileDto;
@@ -76,7 +74,7 @@ export type ProfileModule = {
 
 export type WorkModule = {
   name: "Work";
-  entity: Work;
+  entity: typeof Work;
   delegate: Prisma.WorkDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectWorkDto;
   createDto: typeof CreateWorkDto;
@@ -86,7 +84,7 @@ export type WorkModule = {
 
 export type VolunteerModule = {
   name: "Volunteer";
-  entity: Volunteer;
+  entity: typeof Volunteer;
   delegate: Prisma.VolunteerDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectVolunteerDto;
   createDto: typeof CreateVolunteerDto;
@@ -96,7 +94,7 @@ export type VolunteerModule = {
 
 export type EducationModule = {
   name: "Education";
-  entity: Education;
+  entity: typeof Education;
   delegate: Prisma.EducationDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectEducationDto;
   createDto: typeof CreateEducationDto;
@@ -106,7 +104,7 @@ export type EducationModule = {
 
 export type AwardModule = {
   name: "Award";
-  entity: Award;
+  entity: typeof Award;
   delegate: Prisma.AwardDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectAwardDto;
   createDto: typeof CreateAwardDto;
@@ -116,7 +114,7 @@ export type AwardModule = {
 
 export type PublicationModule = {
   name: "Publication";
-  entity: Publication;
+  entity: typeof Publication;
   delegate: Prisma.PublicationDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectPublicationDto;
   createDto: typeof CreatePublicationDto;
@@ -132,7 +130,7 @@ export type PublicationModule = {
 
 export type SkillModule = {
   name: "Skill";
-  entity: Skill;
+  entity: typeof Skill;
   delegate: Prisma.SkillDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectSkillDto;
   createDto: typeof CreateSkillDto;
@@ -142,7 +140,7 @@ export type SkillModule = {
 
 export type SkillKeywordModule = {
   name: "SkillKeyword";
-  entity: SkillKeyword;
+  entity: typeof SkillKeyword;
   delegate: Prisma.SkillKeywordDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectSkillKeywordDto;
   createDto: typeof CreateSkillKeywordDto;
@@ -158,7 +156,7 @@ export type SkillKeywordModule = {
 
 export type LanguageModule = {
   name: "Language";
-  entity: Language;
+  entity: typeof Language;
   delegate: Prisma.LanguageDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectLanguageDto;
   createDto: typeof CreateLanguageDto;
@@ -168,7 +166,7 @@ export type LanguageModule = {
 
 export type InterestModule = {
   name: "Interest";
-  entity: Interest;
+  entity: typeof Interest;
   delegate: Prisma.InterestDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectInterestDto;
   createDto: typeof CreateInterestDto;
@@ -178,7 +176,7 @@ export type InterestModule = {
 
 export type ReferenceModule = {
   name: "Reference";
-  entity: Reference;
+  entity: typeof Reference;
   delegate: Prisma.ReferenceDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectReferenceDto;
   createDto: typeof CreateReferenceDto;
@@ -188,7 +186,7 @@ export type ReferenceModule = {
 
 export type ProjectModule = {
   name: "Project";
-  entity: Project;
+  entity: typeof Project;
   delegate: Prisma.ProjectDelegate<PrismaClientOptions["rejectOnNotFound"]>;
   connectDto: typeof ConnectProjectDto;
   createDto: typeof CreateProjectDto;
@@ -235,6 +233,7 @@ const prismaService = new PrismaService();
 export const PrismaCrudClasses: PrismaModulesType = {
   User: {
     delegate: prismaService.user,
+    entity: User,
     connectDto: ConnectUserDto,
     createDto: CreateUserDto,
     updateDto: UpdateUserDto,
@@ -242,6 +241,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as UserModule,
   Basic: {
     delegate: prismaService.basic,
+    entity: Basic,
     connectDto: ConnectBasicDto,
     createDto: CreateBasicDto,
     updateDto: UpdateBasicDto,
@@ -249,6 +249,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as BasicModule,
   Location: {
     delegate: prismaService.location,
+    entity: Location,
     connectDto: ConnectLocationDto,
     createDto: CreateLocationDto,
     updateDto: UpdateLocationDto,
@@ -256,6 +257,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as LocationModule,
   Profile: {
     delegate: prismaService.profile,
+    entity: Profile,
     connectDto: ConnectProfileDto,
     createDto: CreateProfileDto,
     updateDto: UpdateProfileDto,
@@ -263,6 +265,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as ProfileModule,
   Work: {
     delegate: prismaService.work,
+    entity: Work,
     connectDto: ConnectWorkDto,
     createDto: CreateWorkDto,
     updateDto: UpdateWorkDto,
@@ -270,6 +273,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as WorkModule,
   Volunteer: {
     delegate: prismaService.volunteer,
+    entity: Volunteer,
     connectDto: ConnectVolunteerDto,
     createDto: CreateVolunteerDto,
     updateDto: UpdateVolunteerDto,
@@ -277,6 +281,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as VolunteerModule,
   Education: {
     delegate: prismaService.education,
+    entity: Education,
     connectDto: ConnectEducationDto,
     createDto: CreateEducationDto,
     updateDto: UpdateEducationDto,
@@ -284,6 +289,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as EducationModule,
   Award: {
     delegate: prismaService.award,
+    entity: Award,
     connectDto: ConnectAwardDto,
     createDto: CreateAwardDto,
     updateDto: UpdateAwardDto,
@@ -291,6 +297,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as AwardModule,
   Publication: {
     delegate: prismaService.publication,
+    entity: Publication,
     connectDto: ConnectPublicationDto,
     createDto: CreatePublicationDto,
     updateDto: UpdatePublicationDto,
@@ -298,6 +305,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as PublicationModule,
   Skill: {
     delegate: prismaService.skill,
+    entity: Skill,
     connectDto: ConnectSkillDto,
     createDto: CreateSkillDto,
     updateDto: UpdateSkillDto,
@@ -305,6 +313,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as SkillModule,
   SkillKeyword: {
     delegate: prismaService.skillKeyword,
+    entity: SkillKeyword,
     connectDto: ConnectSkillKeywordDto,
     createDto: CreateSkillKeywordDto,
     updateDto: UpdateSkillKeywordDto,
@@ -312,6 +321,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as SkillKeywordModule,
   Language: {
     delegate: prismaService.language,
+    entity: Language,
     connectDto: ConnectLanguageDto,
     createDto: CreateLanguageDto,
     updateDto: UpdateLanguageDto,
@@ -319,6 +329,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as LanguageModule,
   Interest: {
     delegate: prismaService.interest,
+    entity: Interest,
     connectDto: ConnectInterestDto,
     createDto: CreateInterestDto,
     updateDto: UpdateInterestDto,
@@ -326,6 +337,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as InterestModule,
   Reference: {
     delegate: prismaService.reference,
+    entity: Reference,
     connectDto: ConnectReferenceDto,
     createDto: CreateReferenceDto,
     updateDto: UpdateReferenceDto,
@@ -333,6 +345,7 @@ export const PrismaCrudClasses: PrismaModulesType = {
   } as ReferenceModule,
   Project: {
     delegate: prismaService.project,
+    entity: Project,
     connectDto: ConnectProjectDto,
     createDto: CreateProjectDto,
     updateDto: UpdateProjectDto,

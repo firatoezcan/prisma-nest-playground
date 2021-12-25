@@ -1,6 +1,6 @@
-import { Prisma } from ".prisma/client";
 import { Controller, Get } from "@nestjs/common";
-import { AppService } from "./app.service";
+import { ApiResponse } from "@nestjs/swagger";
+import { AppService, DMMF } from "./app.service";
 
 @Controller()
 export class AppController {
@@ -10,8 +10,10 @@ export class AppController {
   health(): string {
     return this.appService.health();
   }
+
   @Get("/dmmf")
-  dmmf(): Prisma.DMMF.Document {
-    return Prisma.dmmf;
+  @ApiResponse({ status: 200, type: DMMF, description: "The Prisma DMMF that I cannot get Swagger response working for because im bad" })
+  dmmf() {
+    return this.appService.dmmf();
   }
 }
