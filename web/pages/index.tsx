@@ -8,7 +8,7 @@ const Homepage = () => {
   const [users, setUsers] = useState<DMMFDto | null>();
 
   useEffect(() => {
-    api.dmmfAppController().then((res) => setUsers(res));
+    api.dmmf().then((res) => setUsers(res));
   }, []);
 
   return (

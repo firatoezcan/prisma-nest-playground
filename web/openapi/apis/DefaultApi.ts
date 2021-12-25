@@ -27,7 +27,7 @@ export class DefaultApi extends runtime.BaseAPI {
 
     /**
      */
-    async dmmfAppControllerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<DMMFDto>> {
+    async dmmfRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<DMMFDto>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -44,14 +44,14 @@ export class DefaultApi extends runtime.BaseAPI {
 
     /**
      */
-    async dmmfAppController(initOverrides?: RequestInit): Promise<DMMFDto> {
-        const response = await this.dmmfAppControllerRaw(initOverrides);
+    async dmmf(initOverrides?: RequestInit): Promise<DMMFDto> {
+        const response = await this.dmmfRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async healthAppControllerRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
+    async healthRaw(initOverrides?: RequestInit): Promise<runtime.ApiResponse<string>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -68,8 +68,8 @@ export class DefaultApi extends runtime.BaseAPI {
 
     /**
      */
-    async healthAppController(initOverrides?: RequestInit): Promise<string> {
-        const response = await this.healthAppControllerRaw(initOverrides);
+    async health(initOverrides?: RequestInit): Promise<string> {
+        const response = await this.healthRaw(initOverrides);
         return await response.value();
     }
 

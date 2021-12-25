@@ -14,7 +14,7 @@ async function bootstrap() {
   const config = new DocumentBuilder().setTitle("JSON Resume").setDescription("Standarized resumes").setVersion("1.0").build();
   const document = SwaggerModule.createDocument(app, config, {
     operationIdFactory: (controllerKey, methodKey) => {
-      return methodKey + controllerKey.replace("EntityController", "");
+      return methodKey + controllerKey.replace("EntityController", "").replace("AppController", "").replace("Controller", "");
     },
   });
   SwaggerModule.setup("swagger", app, document);
