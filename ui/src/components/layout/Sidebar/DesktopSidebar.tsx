@@ -9,7 +9,7 @@ import { SidebarFooter } from "./SidebarFooter";
 export const DesktopSidebar: FC<SidebarProps> = (props) => {
   return (
     <div className="hidden bg-white md:flex md:flex-shrink-0">
-      <div className="flex flex-col w-64">
+      <div className="fixed inset-y-0 flex flex-col w-64">
         <div className="flex flex-col flex-grow pt-5 overflow-y-auto border-r border-gray-200">
           <div className="flex items-center flex-shrink-0 px-4">
             <img className="w-auto h-12" src={layoutConfig.brand.logo} alt={layoutConfig.brand.name} />
