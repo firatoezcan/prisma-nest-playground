@@ -1,21 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { createContext, FC, useContext, useEffect, useMemo, useState } from "react";
-import { Configuration, ConfigurationParameters } from "web/openapi";
+import { useContext, useEffect, useState } from "ui/node_modules/@types/react";
 
 import * as APIs from "@/web/../openapi/apis";
 
-export type ApiContextType = Omit<ConfigurationParameters, "basePath"> & {
-  basePath: string;
-};
+import { __ApiContext } from "./ApiContext";
 
-const ApiContext = createContext<Configuration | undefined>(undefined);
-
-export const ApiProvider: FC<ApiContextType> = (props) => {
-  const { children, ...value } = props;
-  const config = useMemo(() => new Configuration(value), [value]);
-
-  return <ApiContext.Provider value={config}>{children}</ApiContext.Provider>;
-};
+type Resources<T extends string> = T extends `${infer Prefix}Api` ? Prefix : never;
 
 type RemoveRaw<T extends string> = T extends `${string}Raw` ? never : T;
 type RemoveMiddleware<T extends string> = T extends `${string}Middleware` ? never : T;
@@ -29,15 +19,17 @@ type Mutations<T extends any> = RemoveQueries<OperationsOnly<T>>;
 
 type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T;
 
-const createApi = <ApiType extends typeof APIs[keyof typeof APIs]>(api: ApiType) => {
+export const createApiHooks = <ResourceName extends Resources<keyof typeof APIs>>(name: ResourceName) => {
+  type ApiType = typeof APIs[`${ResourceName}Api`];
+
   type Instance = InstanceType<ApiType>;
 
   const createClient = () => {
-    const config = useContext(ApiContext);
+    const config = useContext(__ApiContext);
     if (config === undefined) {
       throw new Error("useApi must be used within a ApiProvider");
     }
-    return new api(config);
+    return new APIs[name + "Api"](config);
   };
 
   let resourceClient: ReturnType<typeof createClient> | undefined;
@@ -61,11 +53,6 @@ const createApi = <ApiType extends typeof APIs[keyof typeof APIs]>(api: ApiType)
     const execute = async (...params: Parameters<Operation>) => {
       setisLoading(true);
       try {
-        /**
-         * Typescript thinks we can combine one operation with the parameters of another operation.
-         * We know that this won't compile though, so in a sense we do check for this so we expect this error to be here
-         */
-        // @ts-expect-error
         const res = await client[operation](...params);
         setResult(res);
       } catch (error: any) {
@@ -96,13 +83,3 @@ const createApi = <ApiType extends typeof APIs[keyof typeof APIs]>(api: ApiType)
   };
   return { query, mutate };
 };
-
-const userHooks = createApi(APIs.UserApi);
-// const findManyResponse = userHooks.query("findManyUser");
-// const findOneResponse = userHooks.query("findOneUser", { id: "5" });
-// const createFunc = userHooks.mutate("createUser");
-// const deleteFunc = userHooks.mutate("deleteUser");
-// const updateFunc = userHooks.mutate("updateUser");
-
-export const useUserMutation = userHooks.mutate;
-export const useUserQuery = userHooks.query;
