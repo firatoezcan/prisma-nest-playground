@@ -2,7 +2,9 @@ import { ExclamationCircleIcon } from "@heroicons/react/solid";
 import clsx from "clsx";
 import React, { FC } from "react";
 
-export type InputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> & {
+export type UncontrolledInputProps = Omit<React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, "value" | "defaultValue"> & {
+  defaultValue?: string;
+  value?: string;
   label: string;
   helpText?: string;
   error?: string;
@@ -12,7 +14,7 @@ export type InputProps = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLI
   trailingIcon?: React.ReactElement;
 };
 
-export const UncontrolledInput: FC<InputProps> = (props) => {
+export const UncontrolledInput: FC<UncontrolledInputProps> = (props) => {
   const { label, helpText, error, hint, labelHidden, leadingIcon, trailingIcon, className, ...inputProps } = props;
   const { name, required } = inputProps;
   const inlineIconClasses = "absolute inset-y-0 flex items-center pointer-events-none";

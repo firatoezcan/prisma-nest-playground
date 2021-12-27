@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useContext, useEffect, useState } from "ui/node_modules/@types/react";
+import { useContext, useEffect, useState } from "react";
 
 import * as APIs from "@/web/../openapi/apis";
 

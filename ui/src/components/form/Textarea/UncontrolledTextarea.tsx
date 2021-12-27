@@ -2,7 +2,9 @@ import { ExclamationCircleIcon } from "@heroicons/react/solid";
 import clsx from "clsx";
 import React, { FC } from "react";
 
-export type TextareaProps = React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> & {
+export type UncontrolledTextareaProps = Omit<React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>, "value" | "defaultValue"> & {
+  defaultValue?: string;
+  value?: string;
   label: string;
   helpText?: string;
   error?: string;
@@ -12,7 +14,7 @@ export type TextareaProps = React.DetailedHTMLProps<React.TextareaHTMLAttributes
   trailingIcon?: React.ReactElement;
 };
 
-export const UncontrolledTextarea: FC<TextareaProps> = (props) => {
+export const UncontrolledTextarea: FC<UncontrolledTextareaProps> = (props) => {
   const { label, helpText, error, hint, labelHidden, leadingIcon, trailingIcon, className, ...textareaProps } = props;
   const { name, required } = textareaProps;
   const inlineIconClasses = "absolute inset-y-3 flex items-center pointer-events-none";
@@ -29,7 +31,7 @@ export const UncontrolledTextarea: FC<TextareaProps> = (props) => {
         <textarea
           rows={4}
           {...textareaProps}
-          className={clsx("block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm", className, {
+          className={clsx("block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm min-h-[6rem]", className, {
             "pl-10": leadingIcon,
             "pr-10": trailingIcon,
           })}
