@@ -14,7 +14,7 @@ const Homepage = () => {
   const form = useFormHook();
 
   return (
-    <div className="grid grid-cols-[16rem,1fr] h-full">
+    <div className="block md:grid grid-cols-[16rem,1fr] h-full">
       <Sidebar navigationConfig={[]} />
       <div className="px-4 py-8">
         <div className="flex flex-col items-start my-8 space-y-4">

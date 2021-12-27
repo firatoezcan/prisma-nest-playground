@@ -1,5 +1,5 @@
 import { Transition } from "@headlessui/react";
-import { XIcon } from "@heroicons/react/solid";
+import { MenuAlt2Icon, XIcon } from "@heroicons/react/solid";
 import cn from "clsx";
 import React, { FC, useState } from "react";
 
@@ -13,8 +13,8 @@ export const MobileSidebar: FC<SidebarProps> = (props) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className={cn("md:hidden", { "pointer-events-none": !isSidebarOpen })}>
-      <div className="fixed inset-0 z-40 flex">
+    <div className="md:hidden">
+      <div className={cn("fixed inset-0 z-40 flex", { "pointer-events-none": !isSidebarOpen })}>
         <Transition
           show={isSidebarOpen}
           enter="transition-opacity ease-linear duration-300"
@@ -56,6 +56,17 @@ export const MobileSidebar: FC<SidebarProps> = (props) => {
           <SidebarFooter />
         </Transition>
         <div className="flex-shrink-0 w-14">{/* Dummy element to force sidebar to shrink to fit close icon */}</div>
+      </div>
+      <div className="flex flex-col flex-1 w-0">
+        <div className="pt-1 pl-1 md:hidden sm:pl-3 sm:pt-3">
+          <button
+            className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            onClick={() => setSidebarOpen(true)}
+          >
+            <span className="sr-only">Open sidebar</span>
+            <MenuAlt2Icon className="w-6 h-6" />
+          </button>
+        </div>
       </div>
     </div>
   );
